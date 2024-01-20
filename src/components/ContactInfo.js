@@ -1,8 +1,10 @@
 // src/components/ContactInfo.js
 import React from 'react';
 
+import './Info.css'
+
 const ContactInfo = () => (
-  <div>
+  <div className='info'>
     <h2>Contact info</h2>
     <p>Email: a-p.kvs@protonmail.com</p>
     <p>Phone: 0408215137</p>
