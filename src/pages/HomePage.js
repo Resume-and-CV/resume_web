@@ -11,7 +11,7 @@ import './HomePage.css';
 
 const HomePage = () => {
 
-  
+ console.log("homePAge")  
 
   return (
     <div>
