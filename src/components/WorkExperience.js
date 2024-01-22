@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
-import './Info.css'
+import "./Info.css";
 
 const WorkExperience = () => (
-  <div className='info'>
+  <div className="info">
     <h2>Work Experience</h2>
     <p>Software Developer at ABC Company</p>
     <p>July 2020 - Present</p>
