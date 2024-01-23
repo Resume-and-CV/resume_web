@@ -24,7 +24,7 @@ const ContactInfo = () => {
           config
         );
         setContacts(results.data);
-        console.log(results.data);
+        //console.log(results.data);
       } catch (err) {
         setError(err.message);
       }
@@ -38,18 +38,18 @@ const ContactInfo = () => {
 
   return (
     <div className="info">
-      <h2>{t("ContactInfo")}</h2>
+      <h2>{t("contactInfo")}</h2>
       {contacts.length > 0 ? (
         contacts.map((contact, index) => (
           <div key={index}>
             <p>
-              {t("Email")}: {contact.email}
+              {t("phone")}: {contact.phone}
             </p>
             <p>
-              {t("Phone")}: {contact.phone}
+              {t("email")}: {contact.email}
             </p>
             <p>
-              {t("Adress")}: {contact.address}
+              {t("address")}: {contact.address}
             </p>
           </div>
         ))
