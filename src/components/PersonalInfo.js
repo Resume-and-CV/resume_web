@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
 
-import "./Info.css";
+
 
 const PersonalInfo = () => {
   const { t } = useTranslation();
@@ -38,8 +38,8 @@ const PersonalInfo = () => {
   }
 
   return (
-    <div className="info">
-      <h2>{t("personalInfo")}</h2>
+    <div style={styles.box}>
+      <h2 style={styles.heading}>{t("personalInfo")}</h2>
       {infos.length > 0 ? (
         infos.map((info, index) => (
           <div key={index}>
@@ -68,3 +68,20 @@ const PersonalInfo = () => {
 };
 
 export default PersonalInfo;
+
+const styles = {
+  box: {
+    border: '2px solid #2c3e50', // Darker border for contrast
+    padding: '20px',
+    backgroundColor: '#ffffff', // White background for cleanliness
+    color: '#2c3e50', // Dark blue-gray text
+    margin: '20px auto', // Centered margin for login box
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', // Subtle shadow for depth
+    borderRadius: '8px', // Rounded corners
+  },
+  heading: {
+    color: '#3498db', // Blue heading color
+    marginBottom: '15px', // Spacing below heading
+    textAlign: 'center', // Center-align the heading
+  },
+};

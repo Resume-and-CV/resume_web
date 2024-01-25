@@ -19,6 +19,10 @@ const resources = {
       email: "Email",
       phone: "Phone",
       address: "Address",
+      //LoginPage
+      logIn: "Login",
+      userName: "Username",
+      passwprd: "Password",
     },
   },
   fi: {
@@ -37,6 +41,10 @@ const resources = {
       email: "Sähköposti",
       phone: "Puhelin",
       address: "Osoite",
+      //LoginPage
+      logIn: "Kirjaudu sisään",
+      userName: "Käyttätunnus",
+      password: "Salasana",
     },
   },
 };
