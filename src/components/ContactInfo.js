@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
 
-
-
 const ContactInfo = () => {
   const { t } = useTranslation();
   const [contacts, setContacts] = useState([]);
@@ -13,14 +11,17 @@ const ContactInfo = () => {
 
   useEffect(() => {
     const getData = async () => {
+      const token = localStorage.getItem("token"); // Retrieve the token from localStorage
+
       try {
         const config = {
           headers: {
             "Accept-Language": i18n.language,
+            Authorization: `Bearer ${token}`,
           },
         };
         const results = await axios.get(
-          "http://localhost:3000/contactinfo/lang",
+          "https://localhost:3000/contactinfo/lang",
           config
         );
         setContacts(results.data);
@@ -62,21 +63,19 @@ const ContactInfo = () => {
 
 export default ContactInfo;
 
-
 const styles = {
   box: {
-    border: '2px solid #2c3e50', // Darker border for contrast
-    padding: '20px',
-    backgroundColor: '#ffffff', // White background for cleanliness
-    color: '#2c3e50', // Dark blue-gray text
-    margin: '20px auto', // Centered margin for login box
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', // Subtle shadow for depth
-    borderRadius: '8px', // Rounded corners
-    
+    border: "2px solid #2c3e50", // Darker border for contrast
+    padding: "20px",
+    backgroundColor: "#ffffff", // White background for cleanliness
+    color: "#2c3e50", // Dark blue-gray text
+    margin: "20px auto", // Centered margin for login box
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", // Subtle shadow for depth
+    borderRadius: "8px", // Rounded corners
   },
   heading: {
-    color: '#3498db', // Blue heading color
-    marginBottom: '15px', // Spacing below heading
-    textAlign: 'center', // Center-align the heading
+    color: "#3498db", // Blue heading color
+    marginBottom: "15px", // Spacing below heading
+    textAlign: "center", // Center-align the heading
   },
 };

@@ -1,19 +1,43 @@
-import React from "react";
-import LanguageSwitcher from "../components/LanguageSwitcher";
-import { useTranslation } from "react-i18next";
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 import LoginBox from "../components/LoginBox";
 import Header from "../components/Header";
 
 const LoginPage = () => {
-  const { t } = useTranslation();
+  const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleLogin = async (username, password) => {
+    try {
+      const response = await axios.post("https://localhost:3000/login", {
+        username,
+        password,
+      });
+
+      if (response.status === 200) {
+        localStorage.setItem("token", response.data.token);
+        navigate("/home");
+        console.log("Authentication successful user: ", username);
+      }
+    } catch (error) {
+      if (error.response && error.response.data) {
+        // Set the error message from the server response
+        setErrorMessage(error.response.data.message);
+      } else {
+        console.error("Login error:", error);
+        setErrorMessage("An error occurred while trying to log in.");
+      }
+    }
+  };
 
   return (
     <div>
       <Header />
       <div className="mainBox">
         <div className="box">
-          <LoginBox />
+          <LoginBox onLogin={handleLogin} errorMessage={errorMessage} />
         </div>
       </div>
     </div>
@@ -21,18 +45,3 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
-
-const headerStyles = {
-  header: {
-    backgroundColor: "#2c3e50", // Dark blue-gray background
-    color: "#ecf0f1", // Light gray text
-    padding: "20px",
-    textAlign: "center",
-    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.3)", // Adding some shadow for depth
-  },
-  title: {
-    marginBottom: "20px",
-    fontSize: "2em", // Larger font size for the heading
-    color: "#3498db", // Blue heading color similar to LoginBox
-  },
-};

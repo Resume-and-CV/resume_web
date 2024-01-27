@@ -1,7 +1,6 @@
 // src/pages/HomePage.js
 import React from "react";
-import LanguageSwitcher from "../components/LanguageSwitcher";
-import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 import PersonalInfo from "../components/PersonalInfo";
 import Education from "../components/Education";
@@ -10,11 +9,17 @@ import WorkExperience from "../components/WorkExperience";
 import Header from "../components/Header";
 
 const HomePage = () => {
-  const { t } = useTranslation();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/");
+    console.log("Logged out");
+  };
 
   return (
     <div>
-      <Header />
+      <Header onLogout={handleLogout} />
       <div style={styles.mainBox}>
         <div style={styles.box}>
           <div style={styles.boxItem}>
@@ -51,20 +56,5 @@ const styles = {
   boxItem: {
     flex: 1, // Each item will take equal space
     margin: "10px", // Margin for each box item for spacing
-  },
-};
-
-const headerStyles = {
-  header: {
-    backgroundColor: "#2c3e50", // Dark blue-gray background
-    color: "#ecf0f1", // Light gray text
-    padding: "20px",
-    textAlign: "center",
-    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.3)", // Adding some shadow for depth
-  },
-  title: {
-    marginBottom: "20px",
-    fontSize: "2em", // Larger font size for the heading
-    color: "#3498db", // Blue heading color similar to LoginBox
   },
 };

@@ -1,21 +1,22 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-const LoginBox = () => {
+const LoginBox = ({ onLogin, errorMessage }) => {
   const { t } = useTranslation();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-
-
-  const handleLogin = (event) => {
-    event.preventDefault();
-    console.log("Logging in with:", username, password);
-  };
+  const [username, setUsername] = useState("user1");
+  const [password, setPassword] = useState("pass1");
 
   return (
     <div style={styles.loginBox}>
       <h2 style={styles.heading}>{t("logIn")}</h2>
-      <form onSubmit={handleLogin}>
+      {errorMessage && <div style={styles.error}>{errorMessage}</div>}{" "}
+      {/* Display error message */}
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          onLogin(username, password);
+        }}
+      >
         <div>
           <label htmlFor="username">{t("userName")}</label>
           <input
@@ -83,5 +84,10 @@ const styles = {
   buttonHover: {
     // Separate style for hover effect
     backgroundColor: "#2980b9", // Slightly darker blue on hover
+  },
+  error: {
+    color: "red",
+    textAlign: "center",
+    marginBottom: "10px",
   },
 };
