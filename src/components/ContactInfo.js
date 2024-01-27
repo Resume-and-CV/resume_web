@@ -20,7 +20,7 @@ const ContactInfo = () => {
           },
         };
         const results = await axios.get(
-          "http://localhost:3000/contactinfo/lang",
+          "https://localhost:3000/contactinfo/lang",
           config
         );
         setContacts(results.data);

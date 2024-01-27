@@ -21,11 +21,10 @@ const PersonalInfo = () => {
           },
         };
         const results = await axios.get(
-          "http://localhost:3000/personalinfo/lang",
+          "https://localhost:3000/personalinfo/lang",
           config
         );
         setInfos(results.data);
-        //console.log(results.data);
       } catch (err) {
         setError(err.message);
       }

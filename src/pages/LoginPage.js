@@ -1,19 +1,43 @@
 import React from "react";
-import LanguageSwitcher from "../components/LanguageSwitcher";
-import { useTranslation } from "react-i18next";
+import axios from 'axios';
 
 import LoginBox from "../components/LoginBox";
 import Header from "../components/Header";
 
 const LoginPage = () => {
-  const { t } = useTranslation();
+
+  // handleLogin is an async function that attempts to log in a user
+  const handleLogin = async (username, password) => {
+    try {
+      // Sending a POST request to the login endpoint
+      const response = await axios.post("https://localhost:3000/login", { username, password });
+
+      if (response.status === 200) {
+        // If authentication is successful
+        console.log("Authentication successful");
+        // Here, you can handle a successful authentication,
+        // such as redirecting the user or storing the login token
+      } else {
+        // If the server responds with a status other than 200
+        console.log("Authentication failed with status:", response.status);
+        // Handle the failed authentication scenario
+        // You might want to display an error message to the user
+      }
+    } catch (error) {
+      // Catch and handle errors during the login attempt
+      console.error("Login error:", error);
+      // Display an error notification or message to the user
+      // The error might be a network issue, server down, etc.
+    }
+  };
 
   return (
     <div>
       <Header />
       <div className="mainBox">
         <div className="box">
-          <LoginBox />
+          {/* Pass handleLogin to LoginBox to handle the form submission */}
+          <LoginBox onSubmit={handleLogin}/>
         </div>
       </div>
     </div>
@@ -21,18 +45,3 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
-
-const headerStyles = {
-  header: {
-    backgroundColor: "#2c3e50", // Dark blue-gray background
-    color: "#ecf0f1", // Light gray text
-    padding: "20px",
-    textAlign: "center",
-    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.3)", // Adding some shadow for depth
-  },
-  title: {
-    marginBottom: "20px",
-    fontSize: "2em", // Larger font size for the heading
-    color: "#3498db", // Blue heading color similar to LoginBox
-  },
-};

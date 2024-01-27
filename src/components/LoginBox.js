@@ -1,21 +1,18 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-const LoginBox = () => {
+const LoginBox = ({onSubmit}) => {
   const { t } = useTranslation();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-
-  const handleLogin = (event) => {
-    event.preventDefault();
-    console.log("Logging in with:", username, password);
-  };
-
   return (
     <div style={styles.loginBox}>
       <h2 style={styles.heading}>{t("logIn")}</h2>
-      <form onSubmit={handleLogin}>
+      <form onSubmit={(e) => { 
+        e.preventDefault();
+        onSubmit(username, password);
+        }}> 
         <div>
           <label htmlFor="username">{t("userName")}</label>
           <input
