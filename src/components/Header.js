@@ -2,19 +2,16 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "./LanguageSwitcher";
 
-const Header = () => {
+const Header = ({ onLogout }) => {
   const { t } = useTranslation();
 
   return (
     <header style={styles.header}>
       <h1 style={styles.title}>{t("myResume")}</h1>
       <nav style={styles.navLinks}>
-        <a href="/" style={styles.navLink}>
-          Leave
-        </a>
-        <a href="/home" style={styles.navLink}>
-          Home
-        </a>
+        <button style={buttenStyles.button} onClick={onLogout}>
+          Logout
+        </button>
         <LanguageSwitcher />
         {/* More navigation links */}
       </nav>
@@ -49,5 +46,18 @@ const styles = {
     textDecoration: "none",
     fontWeight: "bold",
     cursor: "pointer",
+  },
+};
+
+const buttenStyles = {
+  button: {
+    margin: "1px",
+    padding: "5px",
+    backgroundColor: "#3498db", // Blue button
+    color: "white",
+    border: "none",
+    borderRadius: "4px", // Rounded corners for button
+    cursor: "pointer",
+    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)", // Shadow for button
   },
 };

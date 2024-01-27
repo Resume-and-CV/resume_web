@@ -1,5 +1,6 @@
 // src/pages/HomePage.js
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import PersonalInfo from "../components/PersonalInfo";
 import Education from "../components/Education";
@@ -8,11 +9,17 @@ import WorkExperience from "../components/WorkExperience";
 import Header from "../components/Header";
 
 const HomePage = () => {
+  const navigate = useNavigate();
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/");
+    console.log("Logged out");
+  };
 
   return (
     <div>
-      <Header />
+      <Header onLogout={handleLogout} />
       <div style={styles.mainBox}>
         <div style={styles.box}>
           <div style={styles.boxItem}>
