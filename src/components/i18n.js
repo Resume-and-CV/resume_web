@@ -23,6 +23,14 @@ const resources = {
       logIn: "Login",
       userName: "Username",
       passwprd: "Password",
+      //Education
+      education: "Education",
+      institution: "Institution",
+      degree: "Degree",
+      major: "Major",
+      start_date: "Start date",
+      end_date: "End date",
+      GPA: "GPA",
     },
   },
   fi: {
@@ -45,6 +53,14 @@ const resources = {
       logIn: "Kirjaudu sisään",
       userName: "Käyttätunnus",
       password: "Salasana",
+      //Education
+      education: "Koulutus",
+      institution: "Oppilaitos",
+      degree: "Tutkinto",
+      major: "Suuntautuminen",
+      start_date: "Aloituspäivä",
+      end_date: "Valmistumispäivä",
+      GPA: "Keskiarvo",
     },
   },
 };

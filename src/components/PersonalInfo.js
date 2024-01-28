@@ -21,7 +21,7 @@ const PersonalInfo = () => {
           },
         };
         const results = await axios.get(
-          "https://localhost:3000/personalinfo/lang",
+          `${process.env.REACT_APP_SERVER_URL}/personalinfo/lang`,
           config
         );
         setInfos(results.data);
@@ -46,7 +46,8 @@ const PersonalInfo = () => {
               {t("name")}: {info.name}
             </p>
             <p>
-              {t("dateOfBirth")}: {info.birthdate}
+              {t("dateOfBirth")}:{' '}
+              {new Date(info.birthdate).toLocaleDateString("fi-FI")}
             </p>
             <p>
               {t("Nationality")}: {info.nationality}

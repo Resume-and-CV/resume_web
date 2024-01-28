@@ -17,7 +17,12 @@
 .env.development.local
 .env.test.local
 .env.production.local
+.env  # Add this line to ignore .env files
+.env.*  # Add this line to ignore all .env.* files
+.env.*.local  # This ignores local overrides for environment-specific files
 
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Add any other files or patterns you want to ignore

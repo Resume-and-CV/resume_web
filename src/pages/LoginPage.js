@@ -10,11 +10,15 @@ const LoginPage = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleLogin = async (username, password) => {
+    console.log(process.env.REACT_APP_SERVER_URL)
     try {
-      const response = await axios.post("https://localhost:3000/login", {
-        username,
-        password,
-      });
+      const response = await axios.post(
+        `${process.env.REACT_APP_SERVER_URL}/login`,
+        {
+          username,
+          password,
+        }    
+      );
 
       if (response.status === 200) {
         localStorage.setItem("token", response.data.token);
