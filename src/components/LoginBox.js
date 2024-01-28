@@ -3,8 +3,8 @@ import { useTranslation } from "react-i18next";
 
 const LoginBox = ({ onLogin, errorMessage }) => {
   const { t } = useTranslation();
-  const [username, setUsername] = useState("user1");
-  const [password, setPassword] = useState("pass1");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   return (
     <div style={styles.loginBox}>
