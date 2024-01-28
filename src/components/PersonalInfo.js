@@ -41,12 +41,12 @@ const PersonalInfo = () => {
       <h2 style={styles.heading}>{t("personalInfo")}</h2>
       {infos.length > 0 ? (
         infos.map((info, index) => (
-          <div key={index}>
+          <div key={index} style={styles.entryBox}>
             <p>
               {t("name")}: {info.name}
             </p>
             <p>
-              {t("dateOfBirth")}:{' '}
+              {t("dateOfBirth")}:{" "}
               {new Date(info.birthdate).toLocaleDateString("fi-FI")}
             </p>
             <p>
@@ -73,13 +73,22 @@ const styles = {
   box: {
     border: "2px solid #2c3e50", // Darker border for contrast
     padding: "20px",
+    //backgroundColor: "#3498db", // Dark blue-gray background
     backgroundColor: "#ffffff", // White background for cleanliness
     color: "#2c3e50", // Dark blue-gray text
     margin: "20px auto", // Centered margin for login box
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", // Subtle shadow for depth
     borderRadius: "8px", // Rounded corners
   },
+  entryBox: {
+    border: "1px solid #ccc",
+    padding: "10px",
+    margin: "10px 0",
+    borderRadius: "5px",
+    backgroundColor: "#f9f9f9",
+  },
   heading: {
+    //color: "#ecf0f1", // Light gray text
     color: "#3498db", // Blue heading color
     marginBottom: "15px", // Spacing below heading
     textAlign: "center", // Center-align the heading

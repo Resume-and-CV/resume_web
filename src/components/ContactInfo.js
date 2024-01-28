@@ -42,7 +42,7 @@ const ContactInfo = () => {
       <h2 style={styles.heading}>{t("contactInfo")}</h2>
       {contacts.length > 0 ? (
         contacts.map((contact, index) => (
-          <div key={index}>
+          <div key={index} style={styles.entryBox}>
             <p>
               {t("phone")}: {contact.phone}
             </p>
@@ -68,13 +68,22 @@ const styles = {
     border: "2px solid #2c3e50", // Darker border for contrast
     padding: "20px",
     backgroundColor: "#ffffff", // White background for cleanliness
+    //backgroundColor: "#3498db", // Dark blue-gray background
     color: "#2c3e50", // Dark blue-gray text
     margin: "20px auto", // Centered margin for login box
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", // Subtle shadow for depth
     borderRadius: "8px", // Rounded corners
   },
+  entryBox: {
+    border: "1px solid #ccc",
+    padding: "10px",
+    margin: "10px 0",
+    borderRadius: "5px",
+    backgroundColor: "#f9f9f9",
+  },
   heading: {
     color: "#3498db", // Blue heading color
+    //color: "#ecf0f1", // Light gray text
     marginBottom: "15px", // Spacing below heading
     textAlign: "center", // Center-align the heading
   },

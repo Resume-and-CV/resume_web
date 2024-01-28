@@ -37,10 +37,10 @@ const LoginPage = () => {
   };
 
   return (
-    <div>
+    <div >
       <Header />
-      <div className="mainBox">
-        <div className="box">
+      <div style={styles.mainBox} >
+        <div >
           <LoginBox onLogin={handleLogin} errorMessage={errorMessage} />
         </div>
       </div>
@@ -49,3 +49,12 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
+
+const styles = {
+  mainBox: {
+    backgroundColor: "#3498db", // Dark blue-gray background
+    padding: "10%",
+    paddingBottom: "20%", // Corrected property name
+    margin: "10px",
+  },
+};

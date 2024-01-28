@@ -47,6 +47,7 @@ export default HomePage;
 const styles = {
   mainBox: {
     margin: "10px", // Add spacing around all boxes
+    backgroundColor: "#3498db", // Dark blue-gray background
   },
   box: {
     display: "flex",

@@ -1,34 +1,5 @@
 // src/components/Education.js
-/* import React from "react";
 
-const Education = () => (
-  <div style={styles.box}>
-    <h2 style={styles.heading}>Education</h2>
-    <p>University of React, Bachelor of Science in Computer Science</p>
-    <p>Graduation Year: 2022</p>
-  </div>
-);
-
-export default Education;
-
-const styles = {
-  box: {
-    border: "2px solid #2c3e50", // Darker border for contrast
-    padding: "20px",
-    backgroundColor: "#ffffff", // White background for cleanliness
-    color: "#2c3e50", // Dark blue-gray text
-    margin: "20px auto", // Centered margin for login box
-    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", // Subtle shadow for depth
-    borderRadius: "8px", // Rounded corners
-  },
-  heading: {
-    color: "#3498db", // Blue heading color
-    marginBottom: "15px", // Spacing below heading
-    textAlign: "center", // Center-align the heading
-  },
-}; */
-
-// src/components/PersonalInfo.js
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
@@ -65,7 +36,7 @@ const Education = () => {
   if (error) {
     return <div className="info">Error: {error}</div>;
   }
-  console.log(educations);
+  // console.log(educations);
   return (
     <div style={styles.box}>
       <h2 style={styles.heading}>{t("education")}</h2>
@@ -83,11 +54,15 @@ const Education = () => {
             </p>
             <p>
               {t("start_date")}:{" "}
-              {new Date(data.start_date).toLocaleDateString("fi-FI")}
+              {data.start_date
+                ? new Date(data.start_date).toLocaleDateString("fi-FI")
+                : t("ongoing")}
             </p>
             <p>
               {t("end_date")}:{" "}
-              {new Date(data.end_date).toLocaleDateString("fi-FI")}
+              {data.end_date
+                ? new Date(data.end_date).toLocaleDateString("fi-FI")
+                : t("ongoing")}
             </p>
           </div>
         ))
@@ -105,6 +80,7 @@ const styles = {
     border: "2px solid #2c3e50", // Darker border for contrast
     padding: "20px",
     backgroundColor: "#ffffff", // White background for cleanliness
+    //backgroundColor: "#3498db", // Dark blue-gray background
     color: "#2c3e50", // Dark blue-gray text
     margin: "20px auto", // Centered margin for login box
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", // Subtle shadow for depth
@@ -119,6 +95,7 @@ const styles = {
   },
   heading: {
     color: "#3498db", // Blue heading color
+    //color: "#ecf0f1", // Light gray text
     marginBottom: "15px", // Spacing below heading
     textAlign: "center", // Center-align the heading
   },

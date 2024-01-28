@@ -31,6 +31,12 @@ const resources = {
       start_date: "Start date",
       end_date: "End date",
       GPA: "GPA",
+      //Work experience
+      workExperience: "Work Experience",
+      company: "Company",
+      description: "Description",
+      jobTitle: "Title",
+      endJobDate: "End date",
     },
   },
   fi: {
@@ -61,6 +67,12 @@ const resources = {
       start_date: "Aloituspäivä",
       end_date: "Valmistumispäivä",
       GPA: "Keskiarvo",
+      //Work experience
+      workExperience: "Työkokemus",
+      company: "Yritys",
+      description: "Kuvaus",
+      jobTitle: "Työnimike",
+      endJobDate: "Lopetuspäivä",
     },
   },
 };
