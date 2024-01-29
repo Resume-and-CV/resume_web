@@ -17,6 +17,7 @@
 .env.development.local
 .env.test.local
 .env.production.local
+.env.production
 .env  # Add this line to ignore .env files
 .env.*  # Add this line to ignore all .env.* files
 .env.*.local  # This ignores local overrides for environment-specific files
