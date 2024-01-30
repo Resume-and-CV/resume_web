@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.js": "/resume_web/static/js/main.3a426080.js",
-    "index.html": "/resume_web/index.html",
-    "main.3a426080.js.map": "/resume_web/static/js/main.3a426080.js.map"
+    "main.js": "/static/js/main.3a426080.js",
+    "index.html": "/index.html",
+    "main.3a426080.js.map": "/static/js/main.3a426080.js.map"
   },
   "entrypoints": [
     "static/js/main.3a426080.js"
