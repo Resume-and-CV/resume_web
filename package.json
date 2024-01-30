@@ -1,8 +1,9 @@
 {
-  "homepage": "https://resume-and-cv.github.io/resume_web",
+  
   "name": "resume_web",
   "version": "0.1.0",
-  "private": false,
+  "homepage": "https://asku1990.github.io/resume_web",
+  "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
