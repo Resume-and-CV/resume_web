@@ -11,8 +11,12 @@ const LanguageSwitcher = () => {
 
   return (
     <div>
-      <button style={styles.button} onClick={() => changeLanguage("en")}>English</button>
-      <button style={styles.button} onClick={() => changeLanguage("fi")}>Suomi</button>
+      <button style={styles.button} onClick={() => changeLanguage("en")}>
+        English
+      </button>
+      <button style={styles.button} onClick={() => changeLanguage("fi")}>
+        Suomi
+      </button>
     </div>
   );
 };
@@ -21,7 +25,7 @@ export default LanguageSwitcher;
 
 const styles = {
   button: {
-    margin: '1px',
+    margin: "1px",
     padding: "5px",
     backgroundColor: "#3498db", // Blue button
     color: "white",

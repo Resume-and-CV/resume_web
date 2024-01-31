@@ -7,6 +7,7 @@ import Education from "../components/Education";
 import ContactInfo from "../components/ContactInfo";
 import WorkExperience from "../components/WorkExperience";
 import Header from "../components/Header";
+import LanguageInfo from "../components/LanguageInfo";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -24,19 +25,24 @@ const HomePage = () => {
         <div style={styles.box}>
           <div style={styles.boxItem}>
             <PersonalInfo />
+            <ContactInfo />
+            <LanguageInfo />
+          
           </div>
           <div style={styles.boxItem}>
-            <ContactInfo />
+           
+            <Education />
+            <WorkExperience />
           </div>
         </div>
-        <div style={styles.box}>
+{/*         <div style={styles.box}>
           <div style={styles.boxItem}>
             <Education />
           </div>
           <div style={styles.boxItem}>
             <WorkExperience />
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
@@ -48,6 +54,10 @@ const styles = {
   mainBox: {
     margin: "10px", // Add spacing around all boxes
     backgroundColor: "#3498db", // Dark blue-gray background
+    border: "2px solid #2c3e50", // Darker border for contrast
+    color: "#2c3e50", // Dark blue-gray text
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", // Subtle shadow for depth
+    borderRadius: "8px", // Rounded corners
   },
   box: {
     display: "flex",

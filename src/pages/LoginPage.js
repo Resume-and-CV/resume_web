@@ -10,14 +10,14 @@ const LoginPage = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleLogin = async (username, password) => {
-    console.log(process.env.REACT_APP_SERVER_URL)
+    console.log(process.env.REACT_APP_SERVER_URL);
     try {
       const response = await axios.post(
         `${process.env.REACT_APP_SERVER_URL}/login`,
         {
           username,
           password,
-        }    
+        }
       );
 
       if (response.status === 200) {
@@ -37,10 +37,10 @@ const LoginPage = () => {
   };
 
   return (
-    <div >
+    <div>
       <Header />
-      <div style={styles.mainBox} >
-        <div >
+      <div style={styles.mainBox}>
+        <div>
           <LoginBox onLogin={handleLogin} errorMessage={errorMessage} />
         </div>
       </div>
@@ -56,5 +56,8 @@ const styles = {
     padding: "10%",
     paddingBottom: "20%", // Corrected property name
     margin: "10px",
+    border: "2px solid #2c3e50", // Darker border for contrast
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", // Subtle shadow for depth
+    borderRadius: "8px", // Rounded corners
   },
 };

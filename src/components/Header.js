@@ -4,6 +4,7 @@ import LanguageSwitcher from "./LanguageSwitcher";
 
 const Header = ({ onLogout }) => {
   const { t } = useTranslation();
+  console.log(t)
 
   return (
     <header style={styles.header}>
