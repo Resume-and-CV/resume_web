@@ -9,6 +9,7 @@ import WorkExperience from "../components/WorkExperience";
 import Header from "../components/Header";
 import LanguageInfo from "../components/LanguageInfo";
 import HobbiesInfo from "../components/HobbiesInfo";
+import RecommendationsInfo from "../components/RecommendationsInfo";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -28,15 +29,15 @@ const HomePage = () => {
             <PersonalInfo />
             <ContactInfo />
             <LanguageInfo />
-          <HobbiesInfo />
+            <RecommendationsInfo />
           </div>
           <div style={styles.boxItem}>
-           
             <Education />
             <WorkExperience />
+            <HobbiesInfo />
           </div>
         </div>
-{/*         <div style={styles.box}>
+        {/*         <div style={styles.box}>
           <div style={styles.boxItem}>
             <Education />
           </div>

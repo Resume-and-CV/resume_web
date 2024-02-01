@@ -29,5 +29,8 @@
             "english": "English",
             "finnish": "Finnish",
             "swedish": "Swedish",
-            "hobbiesInfo": "My Hobbies"
+            "hobbiesInfo": "My Hobbies",
+            "recommendations": "Recommendations",
+            "title": "Tilte"
+            
         }
