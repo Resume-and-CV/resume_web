@@ -25,8 +25,12 @@
             "description": "Kuvaus",
             "jobTitle": "Työnimike",
             "endJobDate": "Lopetuspäivä",
-            "languageSkils": "Kielet",
+            "languageSkills": "Kielitaito",
             "english": "Englanti",
-            "Finnish": "Suomi",
-            "Swedish": "Ruotsi"
+            "finnish": "Suomi",
+            "swedish": "Ruotsi",
+            "hobbiesInfo": "Harrastukset",
+            "recommendations": "Suosittelijat",
+            "title": "Titteli"
+
         }

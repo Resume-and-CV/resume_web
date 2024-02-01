@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
 
-const LanguageInfo = () => {
+const RecommendationsInfo = () => {
   const { t } = useTranslation();
-  const [languages, setLanguages] = useState([]);
+  const [recommendations, setRecommendations] = useState([]);
   const [error, setError] = useState(null);
 
   const { i18n } = useTranslation();
@@ -21,10 +21,10 @@ const LanguageInfo = () => {
           },
         };
         const results = await axios.get(
-          `${process.env.REACT_APP_SERVER_URL}/languageInfo/lang`,
+          `${process.env.REACT_APP_SERVER_URL}/recommendations/lang`,
           config
         );
-        setLanguages(results.data);
+        setRecommendations(results.data);
         //console.log(results.data);
       } catch (err) {
         setError(err.message);
@@ -39,25 +39,33 @@ const LanguageInfo = () => {
 
   return (
     <div style={styles.box}>
-      <h2 style={styles.heading}>{t("languageSkills")}</h2>
-      <div style={styles.entryBox}>
-      {languages.length > 0 ? (
-        languages.map((data, index) => (
-          <div key={index}>
+      <h2 style={styles.heading}>{t("recommendations")}</h2>
+      {recommendations.length > 0 ? (
+        recommendations.map((data, index) => (
+          <div key={index} style={styles.entryBox}>
             <p>
-            {t(data.language)}: {data.level} {data.description && `- ${data.description}`}
-              
+              {t("name")}: {data.name}
             </p>
+            <p>
+              {t("phone")}: {data.phone}
+            </p>
+            <p>
+              {t("email")}: {data.email}
+            </p>
+            <p>
+              {t("title")}: {data.title}
+            </p>
+            <p>{t("description")}: {data.description}</p>
           </div>
         ))
       ) : (
-        <p>Loading language skills...</p>
-      )}</div>
+        <p>Loading contact info...</p>
+      )}
     </div>
   );
 };
 
-export default LanguageInfo;
+export default RecommendationsInfo;
 
 const styles = {
   box: {

@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
 
-const LanguageInfo = () => {
+const HobbiesInfo = () => {
   const { t } = useTranslation();
-  const [languages, setLanguages] = useState([]);
+  const [hobbies, setHobbies] = useState([]);
   const [error, setError] = useState(null);
 
   const { i18n } = useTranslation();
@@ -21,10 +21,10 @@ const LanguageInfo = () => {
           },
         };
         const results = await axios.get(
-          `${process.env.REACT_APP_SERVER_URL}/languageInfo/lang`,
+          `${process.env.REACT_APP_SERVER_URL}/hobbiesinfo/lang`,
           config
         );
-        setLanguages(results.data);
+        setHobbies(results.data);
         //console.log(results.data);
       } catch (err) {
         setError(err.message);
@@ -39,13 +39,13 @@ const LanguageInfo = () => {
 
   return (
     <div style={styles.box}>
-      <h2 style={styles.heading}>{t("languageSkills")}</h2>
+      <h2 style={styles.heading}>{t("hobbiesInfo")}</h2>
       <div style={styles.entryBox}>
-      {languages.length > 0 ? (
-        languages.map((data, index) => (
+      {hobbies.length > 0 ? (
+        hobbies.map((data, index) => (
           <div key={index}>
             <p>
-            {t(data.language)}: {data.level} {data.description && `- ${data.description}`}
+            {t(data.description)}
               
             </p>
           </div>
@@ -57,7 +57,7 @@ const LanguageInfo = () => {
   );
 };
 
-export default LanguageInfo;
+export default HobbiesInfo;
 
 const styles = {
   box: {
