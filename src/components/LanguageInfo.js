@@ -39,24 +39,20 @@ const LanguageInfo = () => {
 
   return (
     <div style={styles.box}>
-      <h2 style={styles.heading}>{t("language")}</h2>
+      <h2 style={styles.heading}>{t("languageSkills")}</h2>
+      <div style={styles.entryBox}>
       {languages.length > 0 ? (
-        languages.map((languages, index) => (
-          <div key={index} style={styles.entryBox}>
+        languages.map((data, index) => (
+          <div key={index}>
             <p>
-              {t("finnish")}: {languages.finnish}
-            </p>
-            <p>
-              {t("english")}: {languages.english}
-            </p>
-            <p>
-              {t("swedish")}: {languages.swedish}
+            {t(data.language)}: {data.level} {data.description && `- ${data.description}`}
+              
             </p>
           </div>
         ))
       ) : (
-        <p>Loading contact info...</p>
-      )}
+        <p>Loading language skills...</p>
+      )}</div>
     </div>
   );
 };
