@@ -92,13 +92,13 @@ const PersonalProjects = () => {
               }}
             >
               <p>
-                {t("startDate")}:{" "}
+                {t("start_date")}:{" "}
                 {data.start_date
                   ? new Date(data.start_date).toLocaleDateString("fi-FI")
                   : t("ongoing")}
               </p>
               <p>
-                {t("endDate")}:{" "}
+                {t("end_date")}:{" "}
                 {data.end_date
                   ? new Date(data.end_date).toLocaleDateString("fi-FI")
                   : t("ongoing")}
