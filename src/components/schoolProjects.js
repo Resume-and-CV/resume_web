@@ -39,7 +39,7 @@ const SchoolProjects = () => {
   //console.log(workPlaces);
   return (
     <div style={styles.box}>
-      <h2 style={styles.heading}>{t("schoolprojects")}</h2>
+      <h2 style={styles.heading}>{t("schoolProjects")}</h2>
       {projects.length > 0 ? (
         projects.map((data, index) => (
           <div key={index} style={styles.entryBox}>

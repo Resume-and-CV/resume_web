@@ -39,6 +39,7 @@
             "deploymentStatus": "Julkaisun Tila",
             "ongoing": "Meineillään",
             "grade": "Arvosana",
-            "completitionDate": "Suorituspäivä"
+            "completitionDate": "Suorituspäivä",
+            "courseName": "Kurssin Nimi"
 
         }

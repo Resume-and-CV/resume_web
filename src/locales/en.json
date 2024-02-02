@@ -39,6 +39,7 @@
             "deploymentStatus": "Deployment Status",
             "ongoing": "Ongoing",
             "grade": "Grade",
-            "completitionDate": "Completition Date"
+            "completitionDate": "Completition Date",
+            "courseName": "Course Name"
             
         }
