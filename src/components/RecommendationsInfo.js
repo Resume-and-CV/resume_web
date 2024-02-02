@@ -53,9 +53,14 @@ const RecommendationsInfo = () => {
               {t("email")}: {data.email}
             </p>
             <p>
+              {t("company")}: {data.company}
+            </p>
+            <p>
               {t("title")}: {data.title}
             </p>
-            <p>{t("description")}: {data.description}</p>
+            <p>
+              {t("description")}: {data.description}
+            </p>
           </div>
         ))
       ) : (
