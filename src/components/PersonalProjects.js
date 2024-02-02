@@ -4,9 +4,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
 
-const WorkExperience = () => {
+const PersonalProjects = () => {
   const { t } = useTranslation();
-  const [workPlaces, setWorkPlaces] = useState([]);
+  const [projects, setProjects] = useState([]);
   const [error, setError] = useState(null);
 
   const { i18n } = useTranslation();
@@ -22,10 +22,10 @@ const WorkExperience = () => {
           },
         };
         const results = await axios.get(
-          `${process.env.REACT_APP_SERVER_URL}/work/lang`,
+          `${process.env.REACT_APP_SERVER_URL}/personalprojects/lang`,
           config
         );
-        setWorkPlaces(results.data);
+        setProjects(results.data);
       } catch (err) {
         setError(err.message);
       }
@@ -39,16 +39,48 @@ const WorkExperience = () => {
   //console.log(workPlaces);
   return (
     <div style={styles.box}>
-      <h2 style={styles.heading}>{t("workExperience")}</h2>
-      {workPlaces.length > 0 ? (
-        workPlaces.map((data, index) => (
+      <h2 style={styles.heading}>{t("personalProjects")}</h2>
+      {projects.length > 0 ? (
+        projects.map((data, index) => (
           <div key={index} style={styles.entryBox}>
             <p>
-              {t("company")}: {data.company}
+              {t("projectName")}: {data.projectName}
             </p>
             <p>
-              {t("jobTitle")}: {data.job_title}
+              {t("technologiesUsed")}: {data.technologiesUsed}
             </p>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                flexWrap: "wrap",
+                marginBottom: "10px",
+              }}
+            >
+              <p style={{ margin: 0 }}>
+                {t("deploymentStatus")}: {data.deploymentStatus}
+              </p>
+              {data.projectUrl && (
+                <a
+                  href={data.projectUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ marginLeft: "10px" }}
+                >
+                  Visit Website
+                </a>
+              )}
+              {data.repositoryLink && (
+                <a
+                  href={data.repositoryLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ marginLeft: "10px" }}
+                >
+                  Visit Repository
+                </a>
+              )}
+            </div>
             <p>
               {t("description")}: {data.description}
             </p>
@@ -81,16 +113,15 @@ const WorkExperience = () => {
   );
 };
 
-export default WorkExperience;
+export default PersonalProjects;
 
 const styles = {
   box: {
     border: "2px solid #2c3e50", // Darker border for contrast
     padding: "20px",
     backgroundColor: "#ffffff", // White background for cleanliness
-    //backgroundColor: "#3498db", // Dark blue-gray background
     color: "#2c3e50", // Dark blue-gray text
-    margin: "20px auto", // Centered margin for login box
+    margin: "20px auto", // Centered margin
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", // Subtle shadow for depth
     borderRadius: "8px", // Rounded corners
   },
@@ -103,8 +134,13 @@ const styles = {
   },
   heading: {
     color: "#3498db", // Blue heading color
-    //color: "#ecf0f1", // Light gray text
     marginBottom: "15px", // Spacing below heading
     textAlign: "center", // Center-align the heading
+  },
+  detailHeader: {
+    // New style for detail headers
+    fontWeight: "bold", // Make text bold
+    color: "#2c3e50", // Use the same dark blue-gray color for consistency
+    marginBottom: "5px", // Reduce bottom margin for a tighter grouping with its description
   },
 };

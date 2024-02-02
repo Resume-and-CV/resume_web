@@ -10,6 +10,8 @@ import Header from "../components/Header";
 import LanguageInfo from "../components/LanguageInfo";
 import HobbiesInfo from "../components/HobbiesInfo";
 import RecommendationsInfo from "../components/RecommendationsInfo";
+import SchoolProjects from "../components/schoolProjects";
+import PersonalProjects from "../components/PersonalProjects";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -29,12 +31,14 @@ const HomePage = () => {
             <PersonalInfo />
             <ContactInfo />
             <LanguageInfo />
+            <WorkExperience />
+            <HobbiesInfo />
             <RecommendationsInfo />
           </div>
           <div style={styles.boxItem}>
             <Education />
-            <WorkExperience />
-            <HobbiesInfo />
+            <PersonalProjects />
+            <SchoolProjects />
           </div>
         </div>
         {/*         <div style={styles.box}>

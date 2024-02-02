@@ -52,18 +52,26 @@ const Education = () => {
             <p>
               {t("major")}: {data.major}
             </p>
-            <p>
-              {t("start_date")}:{" "}
-              {data.start_date
-                ? new Date(data.start_date).toLocaleDateString("fi-FI")
-                : t("ongoing")}
-            </p>
-            <p>
-              {t("end_date")}:{" "}
-              {data.end_date
-                ? new Date(data.end_date).toLocaleDateString("fi-FI")
-                : t("ongoing")}
-            </p>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                width: "100%",
+              }}
+            >
+              <p>
+                {t("start_date")}:{" "}
+                {data.start_date
+                  ? new Date(data.start_date).toLocaleDateString("fi-FI")
+                  : t("ongoing")}
+              </p>
+              <p>
+                {t("end_date")}:{" "}
+                {data.end_date
+                  ? new Date(data.end_date).toLocaleDateString("fi-FI")
+                  : t("ongoing")}
+              </p>
+            </div>
           </div>
         ))
       ) : (

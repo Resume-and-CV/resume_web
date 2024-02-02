@@ -31,6 +31,15 @@
             "swedish": "Ruotsi",
             "hobbiesInfo": "Harrastukset",
             "recommendations": "Suosittelijat",
-            "title": "Titteli"
+            "title": "Titteli",
+            "personalProjects": "Omat Projektit",
+            "schoolProjects": "Kouluprojektit",
+            "projectName": "Projektinimi",
+            "technologiesUsed": "Käytetyt Teknologiat",
+            "deploymentStatus": "Julkaisun Tila",
+            "ongoing": "Meineillään",
+            "grade": "Arvosana",
+            "completitionDate": "Suorituspäivä",
+            "courseName": "Kurssin Nimi"
 
         }

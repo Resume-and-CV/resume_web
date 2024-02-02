@@ -4,9 +4,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
 
-const WorkExperience = () => {
+const SchoolProjects = () => {
   const { t } = useTranslation();
-  const [workPlaces, setWorkPlaces] = useState([]);
+  const [projects, setProjects] = useState([]);
   const [error, setError] = useState(null);
 
   const { i18n } = useTranslation();
@@ -22,10 +22,10 @@ const WorkExperience = () => {
           },
         };
         const results = await axios.get(
-          `${process.env.REACT_APP_SERVER_URL}/work/lang`,
+          `${process.env.REACT_APP_SERVER_URL}/schoolprojects/lang`,
           config
         );
-        setWorkPlaces(results.data);
+        setProjects(results.data);
       } catch (err) {
         setError(err.message);
       }
@@ -39,39 +39,38 @@ const WorkExperience = () => {
   //console.log(workPlaces);
   return (
     <div style={styles.box}>
-      <h2 style={styles.heading}>{t("workExperience")}</h2>
-      {workPlaces.length > 0 ? (
-        workPlaces.map((data, index) => (
+      <h2 style={styles.heading}>{t("schoolProjects")}</h2>
+      {projects.length > 0 ? (
+        projects.map((data, index) => (
           <div key={index} style={styles.entryBox}>
             <p>
-              {t("company")}: {data.company}
+              {t("projectName")}: {data.projectName}
             </p>
             <p>
-              {t("jobTitle")}: {data.job_title}
+              {t("technologiesUsed")}: {data.technologiesUsed}
             </p>
             <p>
               {t("description")}: {data.description}
             </p>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                width: "100%",
-              }}
-            >
-              <p>
-                {t("start_date")}:{" "}
-                {data.start_date
-                  ? new Date(data.start_date).toLocaleDateString("fi-FI")
-                  : t("ongoing")}
-              </p>
-              <p>
-                {t("end_date")}:{" "}
-                {data.end_date
-                  ? new Date(data.end_date).toLocaleDateString("fi-FI")
-                  : t("ongoing")}
-              </p>
-            </div>
+            <p>
+              {t("courseName")}: {data.courseName}
+            </p>
+            <p>
+              {t("grade")}: {data.grade}
+            </p>  
+
+    
+            <a href={data.repositoryLink} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            >Visit Repository</a>
+
+            <p>
+              {t("completitionDate")}:{" "}
+              {data.completitionDate
+                ? new Date(data.completitionDate).toLocaleDateString("fi-FI")
+                : t("ongoing")}
+            </p>
           </div>
         ))
       ) : (
@@ -81,7 +80,7 @@ const WorkExperience = () => {
   );
 };
 
-export default WorkExperience;
+export default SchoolProjects;
 
 const styles = {
   box: {
