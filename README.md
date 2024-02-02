@@ -1,70 +1,97 @@
-# Getting Started with Create React App
+# resume_web
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Introduction
 
-In the project directory, you can run:
+`resume_web` is a dynamic web-based resume designed to showcase the professional and personal milestones of individuals looking to secure a position in the information technology industry. Developed using Create React App, this client-side application interacts with the `resume_server` and a MySQL database to present a responsive and interactive resume. It aims to provide a modern alternative to traditional resume formats, offering users an engaging way to learn about an individual's skills, experiences, and hobbies.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Personal Information**: A detailed section for users to understand the resume owner's background.
+- **Contact Information**: Easy access to contact methods for potential employers or collaborators.
+- **Language Skills**: Showcases the owner's proficiency in various languages.
+- **Recommendations**: Displays endorsements and recommendations from peers or superiors.
+- **Education**: Lists educational achievements and qualifications.
+- **Work Experience**: A timeline view of professional experiences.
+- **Hobbies**: Highlights personal interests and hobbies to give a well-rounded view of the individual.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technology Stack
 
-### `npm run build`
+- **React**: Utilized for building the user interface in a modular and efficient manner.
+- **Create React App**: A toolset for setting up a new single-page React application, ensuring best practices.
+- **CSS**: For styling components and ensuring responsive design.
+- **JWT**: For secure communication with `resume_server` and protection of sensitive information.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Environment Variables
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To run this project, you need to add the following environment variable to your `.env` file:
 
-### `npm run eject`
+- `REACT_APP_SERVER_URL`: The URL of the `resume_server` to connect to for fetching and sending data.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Installation
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+To set up and run `resume_web` on your local machine, follow these steps:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. **Clone the repository**:
+   ```
+   git clone https://github.com/Resume-and-CV/resume_web.git
+   cd resume_web
+   ```
 
-## Learn More
+2. **Install dependencies**:
+   ```
+   npm install
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3. **Configure your `.env` file** with the `REACT_APP_SERVER_URL` pointing to your running instance of `resume_server`.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+4. **Start the application**:
+   ```
+   npm start
+   ```
 
-### Code Splitting
+   This will run the app in development mode. Open [http://localhost:3000](http://localhost:3000) to view it in the browser. The page will reload if you make edits.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+## Lessons Learned
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Building `resume_web` provided invaluable insights into modern web development practices and the React ecosystem. Implementing responsive design principles and securing the application with JWT were crucial learning points. The project underscored the importance of user experience design and security in web applications.
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Future Plans for resume_web
 
-### Advanced Configuration
+As resume_web continues to evolve, we are excited to share our roadmap for enhancing the platform to better serve our users and expand its capabilities. Our upcoming features are designed with the user experience and administrative efficiency in mind:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+1. Administrative Access for Data Management
+Goal: To provide a secure, intuitive administrative interface that allows designated administrators to update and manage content across the resume_web platform without direct database access or complex technical requirements.
+Implementation: We plan to develop a backend dashboard that supports CRUD (Create, Read, Update, Delete) operations on all resume sections. This will include authentication mechanisms to ensure secure access.
 
-### Deployment
+2. Downloadable PDF CV
+Goal: To offer a downloadable PDF version of the resume, allowing users and potential employers to easily obtain a printable or offline copy of the resume.
+Implementation: Integration of a PDF generation library that can convert the online resume into a well-formatted PDF document. This feature will ensure that the layout, fonts, and styles match the web version for consistency.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+3. Request Account via Emai
+Goal: To streamline the process for users to request access to resume_web, making it easier to manage and track requests.
 
-### `npm run build` fails to minify
+4. Technical and Design Considerations
+User Interface Design: The administrative dashboard and PDF download feature will be designed with usability in mind, ensuring that they are intuitive and accessible to users with varying levels of technical expertise.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+These planned features represent the next step in making resume_web a more versatile and user-friendly platform. By enabling easier content management for administrators, offering downloadable PDF resumes, and simplifying account requests, we aim to enhance the utility and accessibility of resume_web for all users. Stay tuned for updates on our progress and launch dates for these exciting new features.
+
+
+
+
+
+
+
+
+
+
+
+
+
