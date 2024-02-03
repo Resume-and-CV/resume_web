@@ -4,10 +4,13 @@ import { useNavigate } from "react-router-dom";
 
 import LoginBox from "../components/LoginBox";
 import Header from "../components/Header";
+import EmailForm from "../components/EmailForm";
 
 const LoginPage = () => {
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState("");
+  const [isEmailFormVisible, setIsEmailFormVisible] = useState(false);
+  const [isLoginBoxVisible, setIsLoginBoxVisible] = useState(true);
 
   const handleLogin = async (username, password) => {
     console.log(process.env.REACT_APP_SERVER_URL);
@@ -36,12 +39,43 @@ const LoginPage = () => {
     }
   };
 
+  const toggleVisibility = () => {
+    setIsEmailFormVisible(!isEmailFormVisible);
+    setIsLoginBoxVisible(!isLoginBoxVisible);
+  };
+
   return (
     <div>
       <Header />
       <div style={styles.mainBox}>
-        <div>
+        {isLoginBoxVisible && (
           <LoginBox onLogin={handleLogin} errorMessage={errorMessage} />
+        )}
+        {isEmailFormVisible && (
+          <EmailForm
+            onSubmit={(formData) => {
+              console.log(formData); // Form submission logic...
+            }}
+          />
+        )}
+        {/* This section is always visible, provides a way to toggle between the login form and contact form */}
+        <div style={{ textAlign: "center", marginTop: "20px" }}>
+          {!isEmailFormVisible ? (
+            <>
+              <p>Are you an employee?</p>
+              <p>Don't have an account? Request one here.</p>
+              <p>
+                A contact form is coming soon. Meanwhile, please contact me at{" "}
+                <a href="mailto:A-p.kvs2@protonmail.com">
+                  A-p.kvs2@protonmail.com
+                </a>{" "}
+              </p>
+              {/* Vhen contact form is working, apply this */}
+              {/* <button onClick={toggleVisibility}>Contact Us</button> */} 
+            </>
+          ) : (
+            <button onClick={toggleVisibility}>Back to Login</button>
+          )}
         </div>
       </div>
     </div>
