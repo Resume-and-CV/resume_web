@@ -38,25 +38,32 @@ const PersonalInfo = () => {
 
   return (
     <div style={styles.box}>
-      <h2 style={styles.heading}>{t("personalInfo")}</h2>
+      <h2 style={styles.heading}>{t("personalInfo")}</h2>{" "}
+      {/* Missing closing tag added */}
       {infos.length > 0 ? (
         infos.map((info, index) => (
           <div key={index} style={styles.entryBox}>
             <p>
-              {t("name")}: {info.name}
+              <span style={styles.label}>{t("name")}:</span>
+              <span style={styles.value}>{info.name}</span>
             </p>
             <p>
-              {t("dateOfBirth")}:{" "}
-              {new Date(info.birthdate).toLocaleDateString("fi-FI")}
+              <span style={styles.label}>{t("dateOfBirth")}:</span>
+              <span style={styles.value}>
+                {new Date(info.birthdate).toLocaleDateString("fi-FI")}
+              </span>
             </p>
             <p>
-              {t("Nationality")}: {info.nationality}
+              <span style={styles.label}>{t("Nationality")}:</span>
+              <span style={styles.value}>{info.nationality}</span>
             </p>
             <p>
-              {t("driversLicense")}: {info.driversLicense}
+              <span style={styles.label}>{t("driversLicense")}:</span>
+              <span style={styles.value}>{info.driversLicense}</span>
             </p>
             <p>
-              {t("militaryService")}: {info.militaryService}
+              <span style={styles.label}>{t("militaryService")}:</span>
+              <span style={styles.value}>{info.militaryService}</span>
             </p>
           </div>
         ))
@@ -92,5 +99,14 @@ const styles = {
     color: "#3498db", // Blue heading color
     marginBottom: "15px", // Spacing below heading
     textAlign: "center", // Center-align the heading
+  },
+  label: {
+    fontWeight: "bold",
+    marginRight: "10px", // Adds some space between the label and the value
+    color: "#3498db", // Or any color you prefer for labels
+  },
+  value: {
+    color: "#2c3e50", // Dark blue-gray, or choose a different color for contrast
+    // Any additional styling for values
   },
 };

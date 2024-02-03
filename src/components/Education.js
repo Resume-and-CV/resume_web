@@ -44,13 +44,16 @@ const Education = () => {
         educations.map((data, index) => (
           <div key={index} style={styles.entryBox}>
             <p>
-              {t("institution")}: {data.institution}
+              <span style={styles.label}>{t("institution")}:</span>
+              <span style={styles.value}>{data.institution}</span>
             </p>
             <p>
-              {t("degree")}: {data.degree}
+              <span style={styles.label}>{t("degree")}:</span>
+              <span style={styles.value}>{data.degree}</span>
             </p>
             <p>
-              {t("major")}: {data.major}
+              <span style={styles.label}>{t("major")}:</span>
+              <span style={styles.value}>{data.major}</span>
             </p>
             <div
               style={{
@@ -60,16 +63,22 @@ const Education = () => {
               }}
             >
               <p>
-                {t("start_date")}:{" "}
-                {data.start_date
-                  ? new Date(data.start_date).toLocaleDateString("fi-FI")
-                  : t("ongoing")}
+                <span style={styles.label}> {t("start_date")}: </span>
+                <span style={styles.value}>
+                  {" "}
+                  {data.start_date
+                    ? new Date(data.start_date).toLocaleDateString("fi-FI")
+                    : t("ongoing")}
+                </span>
               </p>
               <p>
-                {t("end_date")}:{" "}
-                {data.end_date
-                  ? new Date(data.end_date).toLocaleDateString("fi-FI")
-                  : t("ongoing")}
+                <span style={styles.label}> {t("end_date")}: </span>
+                <span style={styles.value}>
+                  {" "}
+                  {data.start_date
+                    ? new Date(data.end_date).toLocaleDateString("fi-FI")
+                    : t("ongoing")}
+                </span>
               </p>
             </div>
           </div>
@@ -106,5 +115,14 @@ const styles = {
     //color: "#ecf0f1", // Light gray text
     marginBottom: "15px", // Spacing below heading
     textAlign: "center", // Center-align the heading
+  },
+  label: {
+    fontWeight: "bold",
+    marginRight: "10px", // Adds some space between the label and the value
+    color: "#3498db", // Or any color you prefer for labels
+  },
+  value: {
+    color: "#2c3e50", // Dark blue-gray, or choose a different color for contrast
+    // Any additional styling for values
   },
 };

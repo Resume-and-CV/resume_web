@@ -44,10 +44,12 @@ const PersonalProjects = () => {
         projects.map((data, index) => (
           <div key={index} style={styles.entryBox}>
             <p>
-              {t("projectName")}: {data.projectName}
+              <span style={styles.label}>{t("projectName")}:</span>
+              <span style={styles.value}>{data.projectName}</span>
             </p>
             <p>
-              {t("technologiesUsed")}: {data.technologiesUsed}
+              <span style={styles.label}>{t("technologiesUsed")}:</span>
+              <span style={styles.value}>{data.technologiesUsed}</span>
             </p>
             <div
               style={{
@@ -58,7 +60,8 @@ const PersonalProjects = () => {
               }}
             >
               <p style={{ margin: 0 }}>
-                {t("deploymentStatus")}: {data.deploymentStatus}
+                <span style={styles.label}>{t("deploymentStatus")}:</span>
+                <span style={styles.value}>{data.deploymentStatus}</span>
               </p>
               {data.projectUrl && (
                 <a
@@ -82,7 +85,8 @@ const PersonalProjects = () => {
               )}
             </div>
             <p>
-              {t("description")}: {data.description}
+              <span style={styles.label}>{t("description")}:</span>
+                <span style={styles.value}>{data.description}</span>
             </p>
             <div
               style={{
@@ -91,17 +95,23 @@ const PersonalProjects = () => {
                 width: "100%",
               }}
             >
-              <p>
-                {t("start_date")}:{" "}
-                {data.start_date
-                  ? new Date(data.start_date).toLocaleDateString("fi-FI")
-                  : t("ongoing")}
+              <p >
+                <span style={styles.label}> {t("start_date")}: </span>
+                <span style={styles.value}>
+                  {" "}
+                  {data.start_date
+                    ? new Date(data.start_date).toLocaleDateString("fi-FI")
+                    : t("ongoing")}
+                </span>
               </p>
               <p>
-                {t("end_date")}:{" "}
-                {data.end_date
-                  ? new Date(data.end_date).toLocaleDateString("fi-FI")
-                  : t("ongoing")}
+                <span style={styles.label}> {t("end_date")}: </span>
+                <span style={styles.value}>
+                  {" "}
+                  {data.start_date
+                    ? new Date(data.end_date).toLocaleDateString("fi-FI")
+                    : t("ongoing")}
+                </span>
               </p>
             </div>
           </div>
@@ -142,5 +152,14 @@ const styles = {
     fontWeight: "bold", // Make text bold
     color: "#2c3e50", // Use the same dark blue-gray color for consistency
     marginBottom: "5px", // Reduce bottom margin for a tighter grouping with its description
+  },
+  label: {
+    fontWeight: "bold",
+    marginRight: "10px", // Adds some space between the label and the value
+    color: "#3498db", // Or any color you prefer for labels
+  },
+  value: {
+    color: "#2c3e50", // Dark blue-gray, or choose a different color for contrast
+    // Any additional styling for values
   },
 };
