@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-const LoginBox = ({ onLogin, errorMessage }) => {
+const LoginBox = ({ onLogin, errorMessage, isVisible }) => {
   const { t } = useTranslation();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  if (isVisible) return null; // Don't render anything if not visible
 
   return (
     <div style={styles.loginBox}>

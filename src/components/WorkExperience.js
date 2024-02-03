@@ -72,10 +72,10 @@ const WorkExperience = () => {
                 </span>
               </p>
               <p>
-                <span style={styles.label}> {t("end_date")}: </span>
+                <span style={styles.label}> {t("endJobDate")}: </span>
                 <span style={styles.value}>
                   {" "}
-                  {data.start_date
+                  {data.end_date
                     ? new Date(data.end_date).toLocaleDateString("fi-FI")
                     : t("ongoing")}
                 </span>
