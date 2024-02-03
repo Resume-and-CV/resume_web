@@ -44,22 +44,28 @@ const RecommendationsInfo = () => {
         recommendations.map((data, index) => (
           <div key={index} style={styles.entryBox}>
             <p>
-              {t("name")}: {data.name}
+              <span style={styles.label}>{t("name")}:</span>
+              <span style={styles.value}>{data.name}</span>
             </p>
             <p>
-              {t("phone")}: {data.phone}
+              <span style={styles.label}>{t("phone")}:</span>
+              <span style={styles.value}>{data.phone}</span>
             </p>
             <p>
-              {t("email")}: {data.email}
+              <span style={styles.label}>{t("email")}:</span>
+              <span style={styles.value}>{data.email}</span>
             </p>
             <p>
-              {t("company")}: {data.company}
+              <span style={styles.label}>{t("company")}:</span>
+              <span style={styles.value}>{data.company}</span>
             </p>
             <p>
-              {t("title")}: {data.title}
+              <span style={styles.label}>{t("title")}:</span>
+              <span style={styles.value}>{data.title}</span>
             </p>
             <p>
-              {t("description")}: {data.description}
+              <span style={styles.label}>{t("description")}:</span>
+              <span style={styles.value}>{data.description}</span>
             </p>
           </div>
         ))
@@ -95,5 +101,14 @@ const styles = {
     //color: "#ecf0f1", // Light gray text
     marginBottom: "15px", // Spacing below heading
     textAlign: "center", // Center-align the heading
+  },
+  label: {
+    fontWeight: "bold",
+    marginRight: "10px", // Adds some space between the label and the value
+    color: "#3498db", // Or any color you prefer for labels
+  },
+  value: {
+    color: "#2c3e50", // Dark blue-gray, or choose a different color for contrast
+    // Any additional styling for values
   },
 };

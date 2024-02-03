@@ -44,32 +44,55 @@ const SchoolProjects = () => {
         projects.map((data, index) => (
           <div key={index} style={styles.entryBox}>
             <p>
-              {t("projectName")}: {data.projectName}
+              <span style={styles.label}>{t("projectName")}:</span>
+              <span style={styles.value}>{data.projectName}</span>
             </p>
             <p>
-              {t("technologiesUsed")}: {data.technologiesUsed}
+              <span style={styles.label}>{t("technologiesUsed")}:</span>
+              <span style={styles.value}>{data.technologiesUsed}</span>
             </p>
             <p>
-              {t("description")}: {data.description}
+              <span style={styles.label}>{t("description")}:</span>
+              <span style={styles.value}>{data.description}</span>
             </p>
             <p>
-              {t("courseName")}: {data.courseName}
+              <span style={styles.label}>{t("courseName")}:</span>
+              <span style={styles.value}>{data.courseName}</span>
             </p>
-            <p>
-              {t("grade")}: {data.grade}
-            </p>  
 
-    
-            <a href={data.repositoryLink} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            >Visit Repository</a>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                flexWrap: "wrap",
+                marginBottom: "10px",
+              }}
+            >
+              <p style={{ margin: 0 }}>
+                <span style={styles.label}>{t("grade")}:</span>
+                <span style={styles.value}>{data.grade}</span>
+              </p>
 
-            <p>
-              {t("completitionDate")}:{" "}
-              {data.completitionDate
-                ? new Date(data.completitionDate).toLocaleDateString("fi-FI")
-                : t("ongoing")}
+              {data.repositoryLink && (
+                <a
+                  href={data.repositoryLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ marginLeft: "10px" }}
+                >
+                  Visit Repository
+                </a>
+              )}
+            </div>
+
+            <p >
+              <span style={styles.label}> {t("completitionDate")}: </span>
+              <span style={styles.value}>
+                {" "}
+                {data.completitionDate
+                  ? new Date(data.completitionDate).toLocaleDateString("fi-FI")
+                  : t("ongoing")}
+              </span>
             </p>
           </div>
         ))
@@ -105,5 +128,14 @@ const styles = {
     //color: "#ecf0f1", // Light gray text
     marginBottom: "15px", // Spacing below heading
     textAlign: "center", // Center-align the heading
+  },
+  label: {
+    fontWeight: "bold",
+    marginRight: "10px", // Adds some space between the label and the value
+    color: "#3498db", // Or any color you prefer for labels
+  },
+  value: {
+    color: "#2c3e50", // Dark blue-gray, or choose a different color for contrast
+    // Any additional styling for values
   },
 };

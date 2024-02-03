@@ -44,13 +44,16 @@ const ContactInfo = () => {
         contacts.map((contact, index) => (
           <div key={index} style={styles.entryBox}>
             <p>
-              {t("phone")}: {contact.phone}
+              <span style={styles.label}>{t("phone")}:</span>
+              <span style={styles.value}>{contact.phone}</span>
             </p>
             <p>
-              {t("email")}: {contact.email}
+              <span style={styles.label}>{t("email")}:</span>
+              <span style={styles.value}>{contact.email}</span>
             </p>
             <p>
-              {t("address")}: {contact.address}
+              <span style={styles.label}>{t("address")}:</span>
+              <span style={styles.value}>{contact.address}</span>
             </p>
           </div>
         ))
@@ -86,5 +89,14 @@ const styles = {
     //color: "#ecf0f1", // Light gray text
     marginBottom: "15px", // Spacing below heading
     textAlign: "center", // Center-align the heading
+  },
+  label: {
+    fontWeight: "bold",
+    marginRight: "10px", // Adds some space between the label and the value
+    color: "#3498db", // Or any color you prefer for labels
+  },
+  value: {
+    color: "#2c3e50", // Dark blue-gray, or choose a different color for contrast
+    // Any additional styling for values
   },
 };

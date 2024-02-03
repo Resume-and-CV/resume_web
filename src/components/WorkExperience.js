@@ -44,13 +44,16 @@ const WorkExperience = () => {
         workPlaces.map((data, index) => (
           <div key={index} style={styles.entryBox}>
             <p>
-              {t("company")}: {data.company}
+              <span style={styles.label}>{t("company")}:</span>
+              <span style={styles.value}>{data.company}</span>
             </p>
             <p>
-              {t("jobTitle")}: {data.job_title}
+              <span style={styles.label}>{t("jobTitle")}:</span>
+              <span style={styles.value}>{data.job_title}</span>
             </p>
             <p>
-              {t("description")}: {data.description}
+              <span style={styles.label}>{t("description")}:</span>
+              <span style={styles.value}>{data.description}</span>
             </p>
             <div
               style={{
@@ -60,16 +63,22 @@ const WorkExperience = () => {
               }}
             >
               <p>
-                {t("start_date")}:{" "}
-                {data.start_date
-                  ? new Date(data.start_date).toLocaleDateString("fi-FI")
-                  : t("ongoing")}
+                <span style={styles.label}> {t("start_date")}: </span>
+                <span style={styles.value}>
+                  {" "}
+                  {data.start_date
+                    ? new Date(data.start_date).toLocaleDateString("fi-FI")
+                    : t("ongoing")}
+                </span>
               </p>
               <p>
-                {t("end_date")}:{" "}
-                {data.end_date
-                  ? new Date(data.end_date).toLocaleDateString("fi-FI")
-                  : t("ongoing")}
+                <span style={styles.label}> {t("end_date")}: </span>
+                <span style={styles.value}>
+                  {" "}
+                  {data.start_date
+                    ? new Date(data.end_date).toLocaleDateString("fi-FI")
+                    : t("ongoing")}
+                </span>
               </p>
             </div>
           </div>
@@ -106,5 +115,14 @@ const styles = {
     //color: "#ecf0f1", // Light gray text
     marginBottom: "15px", // Spacing below heading
     textAlign: "center", // Center-align the heading
+  },
+  label: {
+    fontWeight: "bold",
+    marginRight: "10px", // Adds some space between the label and the value
+    color: "#3498db", // Or any color you prefer for labels
+  },
+  value: {
+    color: "#2c3e50", // Dark blue-gray, or choose a different color for contrast
+    // Any additional styling for values
   },
 };

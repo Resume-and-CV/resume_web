@@ -41,18 +41,21 @@ const LanguageInfo = () => {
     <div style={styles.box}>
       <h2 style={styles.heading}>{t("languageSkills")}</h2>
       <div style={styles.entryBox}>
-      {languages.length > 0 ? (
-        languages.map((data, index) => (
-          <div key={index}>
-            <p>
-            {t(data.language)}: {data.level} {data.description && `- ${data.description}`}
-              
-            </p>
-          </div>
-        ))
-      ) : (
-        <p>Loading language skills...</p>
-      )}</div>
+        {languages.length > 0 ? (
+          languages.map((data, index) => (
+            <div key={index}>
+              <p>
+                <span style={styles.label}>{t(data.language)}:</span>
+                <span style={styles.value}>
+                  {data.level} {data.description && `- ${data.description}`}
+                </span>
+              </p>
+            </div>
+          ))
+        ) : (
+          <p>Loading language skills...</p>
+        )}
+      </div>
     </div>
   );
 };
@@ -82,5 +85,14 @@ const styles = {
     //color: "#ecf0f1", // Light gray text
     marginBottom: "15px", // Spacing below heading
     textAlign: "center", // Center-align the heading
+  },
+  label: {
+    fontWeight: "bold",
+    marginRight: "10px", // Adds some space between the label and the value
+    color: "#3498db", // Or any color you prefer for labels
+  },
+  value: {
+    color: "#2c3e50", // Dark blue-gray, or choose a different color for contrast
+    // Any additional styling for values
   },
 };
