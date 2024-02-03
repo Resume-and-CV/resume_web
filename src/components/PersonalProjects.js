@@ -67,7 +67,7 @@ const PersonalProjects = () => {
                   rel="noopener noreferrer"
                   style={{ marginLeft: "10px" }}
                 >
-                  Visit Website
+                  Visit Repository
                 </a>
               )}
               {data.repositoryLink && (
