@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+
 
 import LoginBox from "../components/LoginBox";
 import Header from "../components/Header";
@@ -11,6 +13,8 @@ const LoginPage = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [isEmailFormVisible, setIsEmailFormVisible] = useState(false);
   const [isLoginBoxVisible, setIsLoginBoxVisible] = useState(true);
+  const { t } = useTranslation();
+
 
   const handleLogin = async (username, password) => {
     console.log(process.env.REACT_APP_SERVER_URL);
@@ -71,10 +75,10 @@ const LoginPage = () => {
                 </a>{" "}
               </p>
               {/* Vhen contact form is working, apply this */}
-              {/* <button onClick={toggleVisibility}>Contact Us</button> */} 
+              <button onClick={toggleVisibility}>{t("contactForm")}</button>
             </>
           ) : (
-            <button onClick={toggleVisibility}>Back to Login</button>
+            <button onClick={toggleVisibility}>{t("back")}</button>
           )}
         </div>
       </div>

@@ -11,7 +11,7 @@ const Header = ({ onLogout }) => {
       <h1 style={styles.title}>{t("myResume")}</h1>
       <nav style={styles.navLinks}>
         <button style={buttenStyles.button} onClick={onLogout}>
-          Logout
+          {t("logout")}
         </button>
         <LanguageSwitcher />
         {/* More navigation links */}

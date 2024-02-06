@@ -1,45 +1,50 @@
 // EmailForm.js
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
+
 
 // Correctly define EmailForm as a functional component
-function EmailForm({ onSubmit, isVisible, toggleFrom }) {
+function EmailForm({ onAccountRequest, isVisible, toggleFrom }) {
+  const { t } = useTranslation();
+
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    onSubmit({ email, subject, message });
-  };
 
   if (isVisible) return null; // Don't render anything if not visible
 
   return (
     <div style={emailFormStyles.formBox}>
-      <h2 style={emailFormStyles.formHeading}>Contact Us</h2>
-      <form onSubmit={handleSubmit}>
+      <h2 style={emailFormStyles.formHeading}>{t("contactForm")}</h2>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          onAccountRequest(email, subject, message);
+        }}
+      >
         <input
           type="email"
           style={emailFormStyles.formInput}
-          placeholder="Your email"
+          placeholder={t("yourEmail")}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type="text"
           style={emailFormStyles.formInput}
-          placeholder="Subject"
+          placeholder={t("subject")}
           value={subject}
           onChange={(e) => setSubject(e.target.value)}
         />
         <textarea
           style={emailFormStyles.formInput}
-          placeholder="Message"
+          placeholder={t("message")}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
         <button type="submit" style={emailFormStyles.formButton}>
-          Send Email
+          {t("accountRequest")}
         </button>
       </form>
     </div>

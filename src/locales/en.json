@@ -40,6 +40,16 @@
             "ongoing": "Ongoing",
             "grade": "Grade",
             "completitionDate": "Completition Date",
-            "courseName": "Course Name"
+            "courseName": "Course Name",
+            "accountRequest": "Send Email",
+            "contactForm": "Contact As",
+            "yourEmail": "Your email",
+            "subject": "Subject",
+            "message": "Message",
+            "logout": "Logout",
+            "back": "Back"
+            
+
+
             
         }
