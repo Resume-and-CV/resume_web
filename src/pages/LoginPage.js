@@ -48,7 +48,7 @@ const LoginPage = () => {
 
   const handleAccountRequest = (email, subject, message) => {
     // Ensure you have REACT_APP_SERVER_URL defined in your .env file, e.g., REACT_APP_SERVER_URL=http://localhost:3000
-    const apiUrl = `${process.env.REACT_APP_SERVER_URL}/requestaccount`; // Corrected API endpoint construction
+    const apiUrl = `${process.env.REACT_APP_SERVER_URL}/email/requestaccount`; // Corrected API endpoint construction
     axios
       .post(apiUrl, { email, subject, message })
       .then((response) => {
