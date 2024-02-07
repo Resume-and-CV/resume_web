@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 
 
 // Correctly define EmailForm as a functional component
-function EmailForm({ onAccountRequest, isVisible, toggleFrom }) {
+function EmailForm({ onAccountRequest, isVisible, requestErrorMessage }) {
   const { t } = useTranslation();
 
   const [email, setEmail] = useState("");
@@ -17,6 +17,8 @@ function EmailForm({ onAccountRequest, isVisible, toggleFrom }) {
   return (
     <div style={emailFormStyles.formBox}>
       <h2 style={emailFormStyles.formHeading}>{t("contactForm")}</h2>
+      {requestErrorMessage && <div style={emailFormStyles.formError}>{requestErrorMessage}</div>}{" "}
+      {/* Display error message */}
       <form
         onSubmit={(e) => {
           e.preventDefault();

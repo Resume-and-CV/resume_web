@@ -3,7 +3,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-
 import LoginBox from "../components/LoginBox";
 import Header from "../components/Header";
 import EmailForm from "../components/EmailForm";
@@ -15,9 +14,8 @@ const LoginPage = () => {
   const [isLoginBoxVisible, setIsLoginBoxVisible] = useState(true);
   const { t } = useTranslation();
 
-
   const handleLogin = async (username, password) => {
-    console.log(process.env.REACT_APP_SERVER_URL);
+    //console.log(process.env.REACT_APP_SERVER_URL);
     try {
       const response = await axios.post(
         `${process.env.REACT_APP_SERVER_URL}/login`,
@@ -48,6 +46,26 @@ const LoginPage = () => {
     setIsLoginBoxVisible(!isLoginBoxVisible);
   };
 
+  const handleAccountRequest = (email, subject, message) => {
+    // Ensure you have REACT_APP_SERVER_URL defined in your .env file, e.g., REACT_APP_SERVER_URL=http://localhost:3000
+    const apiUrl = `${process.env.REACT_APP_SERVER_URL}/requestaccount`; // Corrected API endpoint construction
+    axios
+      .post(apiUrl, { email, subject, message })
+      .then((response) => {
+        if (response.status === 200) {
+          console.log("Email sent successfully:", response.data.message);
+          // Handle success, maybe show a success message to the user
+        } else {
+          console.error("Email request denied:", response.data.message);
+          // Handle denial, maybe show an error message to the user
+        }
+      })
+      .catch((error) => {
+        console.error("Error sending email:", error);
+        // Handle other errors, e.g., network issues
+      });
+  };
+
   return (
     <div>
       <Header />
@@ -57,6 +75,7 @@ const LoginPage = () => {
         )}
         {isEmailFormVisible && (
           <EmailForm
+            onAccountRequest={handleAccountRequest}
             onSubmit={(formData) => {
               console.log(formData); // Form submission logic...
             }}
