@@ -40,6 +40,16 @@
             "ongoing": "Meineillään",
             "grade": "Arvosana",
             "completitionDate": "Suorituspäivä",
-            "courseName": "Kurssin Nimi"
+            "courseName": "Kurssin Nimi",
+            "accountRequest": "Lähetä sähköposti",
+            "contactForm": "Ota yhteyttä",
+            "yourEmail": "Sähköposti osoitteesi",
+            "subject": "Otsikko",
+            "message": "Viesti",
+            "logout": "Kirjaudu ulos",
+            "back": "Takaisin",
+            "Contact here text": "Oletko työnantaja kiinnostunut tutustumaan osaamiseeni ja työhistoriaani? Kutsun teidät tutkimaan jännittävää ansioluetteloani. Ottakaa rohkeasti yhteyttä, niin annan mielelläni lisätietoja ammattitaidostani ja saavutuksistani."
+            
+            
 
         }

@@ -40,6 +40,17 @@
             "ongoing": "Ongoing",
             "grade": "Grade",
             "completitionDate": "Completition Date",
-            "courseName": "Course Name"
+            "courseName": "Course Name",
+            "accountRequest": "Send Email",
+            "contactForm": "Contact Here",
+            "yourEmail": "Your email",
+            "subject": "Subject",
+            "message": "Message",
+            "logout": "Logout",
+            "back": "Back",
+            "Contact here text": "Are you an employer interested in exploring my qualifications and work experience? I invite you to request access to my comprehensive resume. Please don't hesitate to reach out for a detailed overview of my skills and accomplishments."
+            
+
+
             
         }

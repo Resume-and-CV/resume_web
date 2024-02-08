@@ -4,14 +4,14 @@ import LanguageSwitcher from "./LanguageSwitcher";
 
 const Header = ({ onLogout }) => {
   const { t } = useTranslation();
-  console.log(t)
+  //console.log(t)
 
   return (
     <header style={styles.header}>
       <h1 style={styles.title}>{t("myResume")}</h1>
       <nav style={styles.navLinks}>
         <button style={buttenStyles.button} onClick={onLogout}>
-          Logout
+          {t("logout")}
         </button>
         <LanguageSwitcher />
         {/* More navigation links */}
