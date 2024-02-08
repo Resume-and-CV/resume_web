@@ -1,36 +1,65 @@
 // EmailForm.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
-
-// Correctly define EmailForm as a functional component
-function EmailForm({ onAccountRequest, isVisible, requestErrorMessage }) {
+function EmailForm({
+  onAccountRequest,
+  isVisible,
+  requestErrorMessage,
+  requestSuccessMessage,
+  isLoading,
+}) {
   const { t } = useTranslation();
-
   const [from, setFrom] = useState("");
   const [subject, setSubject] = useState("");
   const [text, setText] = useState("");
+  const [validationError, setValidationError] = useState("");
 
+  useEffect(() => {
+    // Clear form fields if there's a new success message
+    if (requestSuccessMessage) {
+      setFrom("");
+      setSubject("");
+      setText("");
+      setValidationError(""); // Also reset any validation errors
+    }
+  }, [requestSuccessMessage]);
 
-  if (isVisible) return null; // Don't render anything if not visible
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!from || !subject || !text) {
+      setValidationError("All fields are required.");
+      return;
+    }
+    onAccountRequest(from, subject, text);
+  };
+
+  if (!isVisible) return null;
 
   return (
     <div style={emailFormStyles.formBox}>
       <h2 style={emailFormStyles.formHeading}>{t("contactForm")}</h2>
-      {requestErrorMessage && <div style={emailFormStyles.formError}>{requestErrorMessage}</div>}{" "}
-      {/* Display error message */}
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          onAccountRequest(from, subject, text);
-        }}
-      >
+
+      {validationError && (
+        <div style={emailFormStyles.formError}>{validationError}</div>
+      )}
+      {requestErrorMessage && (
+        <div style={emailFormStyles.formError}>{requestErrorMessage}</div>
+      )}
+      {requestSuccessMessage && (
+        <div style={{ ...emailFormStyles.formError, color: "green" }}>
+          {requestSuccessMessage}
+        </div>
+      )}
+
+      <form onSubmit={handleSubmit}>
         <input
           type="email"
           style={emailFormStyles.formInput}
           placeholder={t("yourEmail")}
           value={from}
           onChange={(e) => setFrom(e.target.value)}
+          required // HTML5 form validation for email input
         />
         <input
           type="text"
@@ -38,15 +67,21 @@ function EmailForm({ onAccountRequest, isVisible, requestErrorMessage }) {
           placeholder={t("subject")}
           value={subject}
           onChange={(e) => setSubject(e.target.value)}
+          required // HTML5 form validation for subject input
         />
         <textarea
           style={emailFormStyles.formInput}
           placeholder={t("message")}
           value={text}
           onChange={(e) => setText(e.target.value)}
+          required // HTML5 form validation for text area
         />
-        <button type="submit" style={emailFormStyles.formButton}>
-          {t("accountRequest")}
+        <button
+          type="submit"
+          style={emailFormStyles.formButton}
+          disabled={isLoading}
+        >
+          {isLoading ? t("sending") : t("accountRequest")}
         </button>
       </form>
     </div>

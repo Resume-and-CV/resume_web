@@ -13,6 +13,8 @@ const LoginPage = () => {
   const [isEmailFormVisible, setIsEmailFormVisible] = useState(false);
   const [isLoginBoxVisible, setIsLoginBoxVisible] = useState(true);
   const { t } = useTranslation();
+  const [isLoading, setIsLoading] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
   const handleLogin = async (username, password) => {
     //console.log(process.env.REACT_APP_SERVER_URL);
@@ -47,25 +49,28 @@ const LoginPage = () => {
   };
 
   const handleAccountRequest = (from, subject, text) => {
-    // Ensure you have REACT_APP_SERVER_URL defined in your .env file, e.g., REACT_APP_SERVER_URL=http://localhost:3000
-    const apiUrl = `${process.env.REACT_APP_SERVER_URL}/email/send-request`; // Corrected API endpoint construction
+    // Clear messages at the start of a new request
+    setSuccessMessage("");
+    setErrorMessage("");
+    setIsLoading(true);
+
+    const apiUrl = `${process.env.REACT_APP_SERVER_URL}/email/send-request`;
     axios
       .post(apiUrl, { from, subject, text })
       .then((response) => {
-        if (response.status === 200) {
-          console.log("Email sent successfully:", response.data.message);
-          // Handle success, maybe show a success message to the user
+        setIsLoading(false);
+        if (response.status === 200 && response.data.status === "success") {
+          setSuccessMessage(response.data.message);
         } else {
-          console.error("Email request denied:", response.data.message);
-          // Handle denial, maybe show an error message to the user
+          // Consider handling non-success status codes that are not errors (e.g., 4xx codes from your server)
+          setErrorMessage("Received non-success response from the server.");
         }
       })
       .catch((error) => {
-        console.error("Error sending email:", error);
-        // Handle other errors, e.g., network issues
+        setIsLoading(false);
+        setErrorMessage("An error occurred while trying to send the email.");
       });
   };
-
   return (
     <div>
       <Header />
@@ -75,6 +80,10 @@ const LoginPage = () => {
         )}
         {isEmailFormVisible && (
           <ContactForm
+            isVisible={isEmailFormVisible}
+            requestErrorMessage={errorMessage}
+            requestSuccessMessage={successMessage}
+            isLoading={isLoading}
             onAccountRequest={handleAccountRequest}
             onSubmit={(formData) => {
               console.log(formData); // Form submission logic...
@@ -85,14 +94,9 @@ const LoginPage = () => {
         <div style={{ textAlign: "center", marginTop: "20px" }}>
           {!isEmailFormVisible ? (
             <>
-              <p>Are you an employee?</p>
-              <p>Don't have an account? Request one here.</p>
-              <p>
-                A contact form is coming soon. Meanwhile, please contact me at{" "}
-                <a href="mailto:A-p.kvs2@protonmail.com">
-                  A-p.kvs2@protonmail.com
-                </a>{" "}
+              <p>{t("Contact here text")}
               </p>
+
               {/* Vhen contact form is working, apply this */}
               <button onClick={toggleVisibility}>{t("contactForm")}</button>
             </>
