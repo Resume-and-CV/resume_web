@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 
 import LoginBox from "../components/LoginBox";
 import Header from "../components/Header";
-import EmailForm from "../components/EmailForm";
+import ContactForm from "../components/ContactForm";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -46,11 +46,11 @@ const LoginPage = () => {
     setIsLoginBoxVisible(!isLoginBoxVisible);
   };
 
-  const handleAccountRequest = (email, subject, message) => {
+  const handleAccountRequest = (from, subject, text) => {
     // Ensure you have REACT_APP_SERVER_URL defined in your .env file, e.g., REACT_APP_SERVER_URL=http://localhost:3000
-    const apiUrl = `${process.env.REACT_APP_SERVER_URL}/email/requestaccount`; // Corrected API endpoint construction
+    const apiUrl = `${process.env.REACT_APP_SERVER_URL}/email/send-request`; // Corrected API endpoint construction
     axios
-      .post(apiUrl, { email, subject, message })
+      .post(apiUrl, { from, subject, text })
       .then((response) => {
         if (response.status === 200) {
           console.log("Email sent successfully:", response.data.message);
@@ -74,7 +74,7 @@ const LoginPage = () => {
           <LoginBox onLogin={handleLogin} errorMessage={errorMessage} />
         )}
         {isEmailFormVisible && (
-          <EmailForm
+          <ContactForm
             onAccountRequest={handleAccountRequest}
             onSubmit={(formData) => {
               console.log(formData); // Form submission logic...

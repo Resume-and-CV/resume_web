@@ -7,9 +7,9 @@ import { useTranslation } from "react-i18next";
 function EmailForm({ onAccountRequest, isVisible, requestErrorMessage }) {
   const { t } = useTranslation();
 
-  const [email, setEmail] = useState("");
+  const [from, setFrom] = useState("");
   const [subject, setSubject] = useState("");
-  const [message, setMessage] = useState("");
+  const [text, setText] = useState("");
 
 
   if (isVisible) return null; // Don't render anything if not visible
@@ -22,15 +22,15 @@ function EmailForm({ onAccountRequest, isVisible, requestErrorMessage }) {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          onAccountRequest(email, subject, message);
+          onAccountRequest(from, subject, text);
         }}
       >
         <input
           type="email"
           style={emailFormStyles.formInput}
           placeholder={t("yourEmail")}
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={from}
+          onChange={(e) => setFrom(e.target.value)}
         />
         <input
           type="text"
@@ -42,8 +42,8 @@ function EmailForm({ onAccountRequest, isVisible, requestErrorMessage }) {
         <textarea
           style={emailFormStyles.formInput}
           placeholder={t("message")}
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
+          value={text}
+          onChange={(e) => setText(e.target.value)}
         />
         <button type="submit" style={emailFormStyles.formButton}>
           {t("accountRequest")}
