@@ -1,19 +1,21 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import LoginBox from "../components/LoginBox";
 import Header from "../components/Header";
-import EmailForm from "../components/EmailForm";
+import ContactForm from "../components/ContactForm";
 
 const LoginPage = () => {
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState("");
   const [isEmailFormVisible, setIsEmailFormVisible] = useState(false);
   const [isLoginBoxVisible, setIsLoginBoxVisible] = useState(true);
+  const { t } = useTranslation();
 
   const handleLogin = async (username, password) => {
-    console.log(process.env.REACT_APP_SERVER_URL);
+    //console.log(process.env.REACT_APP_SERVER_URL);
     try {
       const response = await axios.post(
         `${process.env.REACT_APP_SERVER_URL}/login`,
@@ -44,6 +46,26 @@ const LoginPage = () => {
     setIsLoginBoxVisible(!isLoginBoxVisible);
   };
 
+  const handleAccountRequest = (from, subject, text) => {
+    // Ensure you have REACT_APP_SERVER_URL defined in your .env file, e.g., REACT_APP_SERVER_URL=http://localhost:3000
+    const apiUrl = `${process.env.REACT_APP_SERVER_URL}/email/send-request`; // Corrected API endpoint construction
+    axios
+      .post(apiUrl, { from, subject, text })
+      .then((response) => {
+        if (response.status === 200) {
+          console.log("Email sent successfully:", response.data.message);
+          // Handle success, maybe show a success message to the user
+        } else {
+          console.error("Email request denied:", response.data.message);
+          // Handle denial, maybe show an error message to the user
+        }
+      })
+      .catch((error) => {
+        console.error("Error sending email:", error);
+        // Handle other errors, e.g., network issues
+      });
+  };
+
   return (
     <div>
       <Header />
@@ -52,7 +74,8 @@ const LoginPage = () => {
           <LoginBox onLogin={handleLogin} errorMessage={errorMessage} />
         )}
         {isEmailFormVisible && (
-          <EmailForm
+          <ContactForm
+            onAccountRequest={handleAccountRequest}
             onSubmit={(formData) => {
               console.log(formData); // Form submission logic...
             }}
@@ -71,10 +94,10 @@ const LoginPage = () => {
                 </a>{" "}
               </p>
               {/* Vhen contact form is working, apply this */}
-              {/* <button onClick={toggleVisibility}>Contact Us</button> */} 
+              <button onClick={toggleVisibility}>{t("contactForm")}</button>
             </>
           ) : (
-            <button onClick={toggleVisibility}>Back to Login</button>
+            <button onClick={toggleVisibility}>{t("back")}</button>
           )}
         </div>
       </div>

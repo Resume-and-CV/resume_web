@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 
 const LoginBox = ({ onLogin, errorMessage, isVisible }) => {
   const { t } = useTranslation();
+  
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 

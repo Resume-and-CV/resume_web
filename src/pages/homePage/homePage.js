@@ -2,7 +2,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import styles from "./HomePage.module.css";
+import styles from "./homePage.module.css";
 
 import PersonalInfo from "../../components/PersonalInfo";
 import Education from "../../components/Education";

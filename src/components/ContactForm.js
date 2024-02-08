@@ -1,45 +1,52 @@
 // EmailForm.js
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
+
 
 // Correctly define EmailForm as a functional component
-function EmailForm({ onSubmit, isVisible, toggleFrom }) {
-  const [email, setEmail] = useState("");
-  const [subject, setSubject] = useState("");
-  const [message, setMessage] = useState("");
+function EmailForm({ onAccountRequest, isVisible, requestErrorMessage }) {
+  const { t } = useTranslation();
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    onSubmit({ email, subject, message });
-  };
+  const [from, setFrom] = useState("");
+  const [subject, setSubject] = useState("");
+  const [text, setText] = useState("");
+
 
   if (isVisible) return null; // Don't render anything if not visible
 
   return (
     <div style={emailFormStyles.formBox}>
-      <h2 style={emailFormStyles.formHeading}>Contact Us</h2>
-      <form onSubmit={handleSubmit}>
+      <h2 style={emailFormStyles.formHeading}>{t("contactForm")}</h2>
+      {requestErrorMessage && <div style={emailFormStyles.formError}>{requestErrorMessage}</div>}{" "}
+      {/* Display error message */}
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          onAccountRequest(from, subject, text);
+        }}
+      >
         <input
           type="email"
           style={emailFormStyles.formInput}
-          placeholder="Your email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          placeholder={t("yourEmail")}
+          value={from}
+          onChange={(e) => setFrom(e.target.value)}
         />
         <input
           type="text"
           style={emailFormStyles.formInput}
-          placeholder="Subject"
+          placeholder={t("subject")}
           value={subject}
           onChange={(e) => setSubject(e.target.value)}
         />
         <textarea
           style={emailFormStyles.formInput}
-          placeholder="Message"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
+          placeholder={t("message")}
+          value={text}
+          onChange={(e) => setText(e.target.value)}
         />
         <button type="submit" style={emailFormStyles.formButton}>
-          Send Email
+          {t("accountRequest")}
         </button>
       </form>
     </div>
