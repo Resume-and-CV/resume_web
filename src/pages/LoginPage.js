@@ -9,6 +9,7 @@ import ContactForm from "../components/ContactForm";
 
 const LoginPage = () => {
   const navigate = useNavigate();
+
   const [errorMessage, setErrorMessage] = useState("");
   const [isEmailFormVisible, setIsEmailFormVisible] = useState(false);
   const [isLoginBoxVisible, setIsLoginBoxVisible] = useState(true);
@@ -94,8 +95,7 @@ const LoginPage = () => {
         <div style={{ textAlign: "center", marginTop: "20px" }}>
           {!isEmailFormVisible ? (
             <>
-              <p>{t("Contact here text")}
-              </p>
+              <p>{t("Contact here text")}</p>
 
               {/* Vhen contact form is working, apply this */}
               <button onClick={toggleVisibility}>{t("contactForm")}</button>
