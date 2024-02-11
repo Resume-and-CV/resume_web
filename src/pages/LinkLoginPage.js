@@ -6,7 +6,6 @@ const LinkLoginPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [statusMessage, setStatusMessage] = useState('Processing your request...');
-  const [loginInfo, setLoginInfo] = useState(null); // Hold additional login information
 
   useEffect(() => {
     const query = new URLSearchParams(location.search);
