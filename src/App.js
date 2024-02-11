@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import HomePage from "./pages/homePage/homePage";
 import LoginPage from "./pages/LoginPage";
 import PrivateRoute from "./middleWare/PrivateRoute2"; // Adjust the path as necessary
+import LinkLoginPage from "./pages/LinkLoginPage";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <ToastContainer />
       <Routes>
         <Route path="/" element={<LoginPage />} />
+        <Route path="/linkloginpage" element={<LinkLoginPage />} />
         <Route
           path="/home"
           element={
