@@ -1,6 +1,6 @@
 // EmailForm.js
-import React, { useState, useEffect } from "react";
-import { useTranslation } from "react-i18next";
+import React, { useState, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 
 function EmailForm({
   onAccountRequest,
@@ -9,36 +9,36 @@ function EmailForm({
   requestSuccessMessage,
   isLoading,
 }) {
-  const { t } = useTranslation();
-  const [from, setFrom] = useState("");
-  const [subject, setSubject] = useState("");
-  const [text, setText] = useState("");
-  const [validationError, setValidationError] = useState("");
+  const { t } = useTranslation()
+  const [from, setFrom] = useState('')
+  const [subject, setSubject] = useState('')
+  const [text, setText] = useState('')
+  const [validationError, setValidationError] = useState('')
 
   useEffect(() => {
     // Clear form fields if there's a new success message
     if (requestSuccessMessage) {
-      setFrom("");
-      setSubject("");
-      setText("");
-      setValidationError(""); // Also reset any validation errors
+      setFrom('')
+      setSubject('')
+      setText('')
+      setValidationError('') // Also reset any validation errors
     }
-  }, [requestSuccessMessage]);
+  }, [requestSuccessMessage])
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     if (!from || !subject || !text) {
-      setValidationError("All fields are required.");
-      return;
+      setValidationError('All fields are required.')
+      return
     }
-    onAccountRequest(from, subject, text);
-  };
+    onAccountRequest(from, subject, text)
+  }
 
-  if (!isVisible) return null;
+  if (!isVisible) return null
 
   return (
     <div style={emailFormStyles.formBox}>
-      <h2 style={emailFormStyles.formHeading}>{t("contactForm")}</h2>
+      <h2 style={emailFormStyles.formHeading}>{t('contactForm')}</h2>
 
       {validationError && (
         <div style={emailFormStyles.formError}>{validationError}</div>
@@ -47,7 +47,7 @@ function EmailForm({
         <div style={emailFormStyles.formError}>{requestErrorMessage}</div>
       )}
       {requestSuccessMessage && (
-        <div style={{ ...emailFormStyles.formError, color: "green" }}>
+        <div style={{ ...emailFormStyles.formError, color: 'green' }}>
           {requestSuccessMessage}
         </div>
       )}
@@ -56,7 +56,7 @@ function EmailForm({
         <input
           type="email"
           style={emailFormStyles.formInput}
-          placeholder={t("yourEmail")}
+          placeholder={t('yourEmail')}
           value={from}
           onChange={(e) => setFrom(e.target.value)}
           required // HTML5 form validation for email input
@@ -64,14 +64,15 @@ function EmailForm({
         <input
           type="text"
           style={emailFormStyles.formInput}
-          placeholder={t("subject")}
+          placeholder={t('subject')}
           value={subject}
           onChange={(e) => setSubject(e.target.value)}
           required // HTML5 form validation for subject input
         />
+
         <textarea
           style={emailFormStyles.formInput}
-          placeholder={t("message")}
+          placeholder={t('message')}
           value={text}
           onChange={(e) => setText(e.target.value)}
           required // HTML5 form validation for text area
@@ -81,56 +82,56 @@ function EmailForm({
           style={emailFormStyles.formButton}
           disabled={isLoading}
         >
-          {isLoading ? t("sending") : t("accountRequest")}
+          {isLoading ? t('sending') : t('accountRequest')}
         </button>
       </form>
     </div>
-  );
+  )
 }
 
-export default EmailForm;
+export default EmailForm
 
 // Correctly defined styles object
 const emailFormStyles = {
   formBox: {
-    border: "2px solid #2c3e50",
-    padding: "20px",
-    backgroundColor: "#ffffff",
-    color: "#2c3e50",
-    margin: "20px auto",
-    maxWidth: "400px",
-    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-    borderRadius: "8px",
+    border: '2px solid #2c3e50',
+    padding: '20px',
+    backgroundColor: '#ffffff',
+    color: '#2c3e50',
+    margin: '20px auto',
+    maxWidth: '400px',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    borderRadius: '8px',
   },
   formHeading: {
-    color: "#3498db",
-    marginBottom: "15px",
-    textAlign: "center",
+    color: '#3498db',
+    marginBottom: '15px',
+    textAlign: 'center',
   },
   formInput: {
-    width: "calc(100% - 20px)",
-    padding: "10px",
-    marginBottom: "15px",
-    border: "1px solid #bdc3c7",
-    borderRadius: "4px",
-    boxSizing: "border-box",
+    width: 'calc(100% - 20px)',
+    padding: '10px',
+    marginBottom: '15px',
+    border: '1px solid #bdc3c7',
+    borderRadius: '4px',
+    boxSizing: 'border-box',
   },
   formButton: {
-    width: "100%",
-    padding: "10px",
-    backgroundColor: "#3498db",
-    color: "white",
-    border: "none",
-    borderRadius: "4px",
-    cursor: "pointer",
-    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+    width: '100%',
+    padding: '10px',
+    backgroundColor: '#3498db',
+    color: 'white',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'pointer',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
   },
   formButtonHover: {
-    backgroundColor: "#2980b9",
+    backgroundColor: '#2980b9',
   },
   formError: {
-    color: "red",
-    textAlign: "center",
-    marginBottom: "10px",
+    color: 'red',
+    textAlign: 'center',
+    marginBottom: '10px',
   },
-};
+}

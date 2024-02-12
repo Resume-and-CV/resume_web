@@ -1,9 +1,9 @@
-import i18n from "i18next";
-import { initReactI18next } from "react-i18next";
+import i18n from 'i18next'
+import { initReactI18next } from 'react-i18next'
 
 // Importing the translation files
-import enTranslation from "../locales/en.json";
-import fiTranslation from "../locales/fi.json";
+import enTranslation from '../locales/en.json'
+import fiTranslation from '../locales/fi.json'
 
 // Setting up the i18n configuration
 i18n
@@ -13,11 +13,11 @@ i18n
       en: { translation: enTranslation },
       fi: { translation: fiTranslation },
     },
-    lng: "en", // Default language
-    fallbackLng: "en", // Fallback language if the current one isn't available
+    lng: 'en', // Default language
+    fallbackLng: 'en', // Fallback language if the current one isn't available
     interpolation: {
       escapeValue: false, // React already escapes values
     },
-  });
+  })
 
-export default i18n;
+export default i18n
