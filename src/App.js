@@ -1,12 +1,12 @@
-import React from "react";
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
+import React from 'react'
+import { HashRouter as Router, Routes, Route } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
 
-import "react-toastify/dist/ReactToastify.css";
-import HomePage from "./pages/homePage/homePage";
-import LoginPage from "./pages/LoginPage";
-import PrivateRoute from "./middleWare/PrivateRoute2"; // Adjust the path as necessary
-import LinkLoginPage from "./pages/LinkLoginPage";
+import 'react-toastify/dist/ReactToastify.css'
+import HomePage from './pages/homePage/homePage'
+import LoginPage from './pages/LoginPage'
+import PrivateRoute from './middleWare/PrivateRoute2' // Adjust the path as necessary
+import LinkLoginPage from './pages/LinkLoginPage'
 
 function App() {
   return (
@@ -25,7 +25,7 @@ function App() {
         />
       </Routes>
     </Router>
-  );
+  )
 }
 
-export default App;
+export default App
