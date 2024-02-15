@@ -1,5 +1,5 @@
 {
-  "myResume": "My Resume!",
+  "headerTitle": "Aki Kuivas | Future Software Developer, Fourth Year Student",
   "personalInfo": "Personal Info",
   "name": "Name",
   "dateOfBirth": "Birthdate",
@@ -48,5 +48,6 @@
   "message": "Message",
   "logout": "Logout",
   "back": "Back",
-  "Contact here text": "Are you an employer interested in exploring my qualifications and work experience? I invite you to request access to my comprehensive resume. Please don't hesitate to reach out for a detailed overview of my skills and accomplishments."
+  "Contact here text": "Are you an employer interested in exploring my qualifications and work experience? I invite you to request access to my comprehensive resume. Please don't hesitate to reach out for a detailed overview of my skills and accomplishments.",
+  "headerTextTitle": "Welcome to my personal website!"
 }

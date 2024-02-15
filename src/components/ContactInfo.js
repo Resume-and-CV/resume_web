@@ -55,6 +55,28 @@ const ContactInfo = () => {
               <span style={styles.label}>{t('address')}:</span>
               <span style={styles.value}>{contact.address}</span>
             </p>
+            <p>
+              <span style={styles.label}>{t('LinkedIn')}:</span>
+              <a
+                href={contact.linkedin}
+                style={styles.link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {new URL(contact.linkedin).pathname.split('/').pop()}
+              </a>
+            </p>
+            <p>
+              <span style={styles.label}>{t('GitHub')}:</span>
+              <a
+                href={contact.github}
+                style={styles.link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {contact.github.split('/').pop()}
+              </a>
+            </p>
           </div>
         ))
       ) : (
@@ -98,5 +120,9 @@ const styles = {
   value: {
     color: '#2c3e50', // Dark blue-gray, or choose a different color for contrast
     // Any additional styling for values
+  },
+  link: {
+    textDecoration: 'none', // Remove underline from links
+    color: '#3498db', // Use the same blue color for consistency
   },
 }

@@ -8,7 +8,7 @@ const Header = ({ onLogout }) => {
 
   return (
     <header style={styles.header}>
-      <h1 style={styles.title}>{t('myResume')}</h1>
+      <h1 style={styles.title}>{t('headerTitle')}</h1>
       <nav style={styles.navLinks}>
         <button style={buttenStyles.button} onClick={onLogout}>
           {t('logout')}
@@ -33,6 +33,7 @@ const styles = {
     alignItems: 'center',
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', // Subtle shadow for depth
     borderRadius: '8px', // Rounded corners
+    margin: '10px', // Centered margin for login box
   },
   title: {
     fontSize: '2em',

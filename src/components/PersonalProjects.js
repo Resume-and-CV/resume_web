@@ -68,9 +68,13 @@ const PersonalProjects = () => {
                   href={data.projectUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ marginLeft: '10px' }}
+                  style={{
+                    marginLeft: '10px',
+                    textDecoration: 'none', // Remove underline from links
+                    color: '#3498db', // Use the same blue color for consistency
+                  }}
                 >
-                  Visit Website
+                  {new URL(data.projectUrl).hostname}
                 </a>
               )}
               {data.repositoryLink && (
@@ -78,9 +82,13 @@ const PersonalProjects = () => {
                   href={data.repositoryLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ marginLeft: '10px' }}
+                  style={{
+                    marginLeft: '10px',
+                    textDecoration: 'none', // Remove underline from links
+                    color: '#3498db', // Use the same blue color for consistency
+                  }}
                 >
-                  Visit Repository
+                  {new URL(data.repositoryLink).hostname}{' '}
                 </a>
               )}
             </div>

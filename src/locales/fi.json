@@ -1,5 +1,5 @@
 {
-  "myResume": "Ansioluetteloni!",
+  "headerTitle": "Aki Kuivas | Tulevaisuuden ohjelmistokehittäjä, Neljännen vuoden opiskelija",
   "personalInfo": "Henkilötiedot",
   "name": "Nimi",
   "dateOfBirth": "Syntymäaika",
@@ -48,5 +48,6 @@
   "message": "Viesti",
   "logout": "Kirjaudu ulos",
   "back": "Takaisin",
-  "Contact here text": "Oletko työnantaja kiinnostunut tutustumaan osaamiseeni ja työhistoriaani? Kutsun teidät tutkimaan jännittävää ansioluetteloani. Ottakaa rohkeasti yhteyttä, niin annan mielelläni lisätietoja ammattitaidostani ja saavutuksistani."
+  "Contact here text": "Oletko työnantaja kiinnostunut tutustumaan osaamiseeni ja työhistoriaani? Kutsun teidät tutkimaan jännittävää ansioluetteloani. Ottakaa rohkeasti yhteyttä, niin annan mielelläni lisätietoja ammattitaidostani ja saavutuksistani.",
+  "headerTextTitle": "Tervetuloa sivulleni!"
 }

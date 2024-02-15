@@ -14,6 +14,7 @@ import HobbiesInfo from '../../components/HobbiesInfo'
 import RecommendationsInfo from '../../components/RecommendationsInfo'
 import SchoolProjects from '../../components/schoolProjects'
 import PersonalProjects from '../../components/PersonalProjects'
+import HeaderText from '../../components/HeaderText'
 
 const HomePage = () => {
   const navigate = useNavigate()
@@ -28,6 +29,9 @@ const HomePage = () => {
     <div>
       <Header onLogout={handleLogout} />
       <div className={styles.mainBox}>
+        <div className={styles.headerText}>
+          <HeaderText />
+        </div>
         <div className={styles.box}>
           <div className={styles.boxItem}>
             <PersonalInfo />
@@ -43,14 +47,6 @@ const HomePage = () => {
             <SchoolProjects />
           </div>
         </div>
-        {/*         <div style={styles.box}>
-          <div style={styles.boxItem}>
-            <Education />
-          </div>
-          <div style={styles.boxItem}>
-            <WorkExperience />
-          </div>
-        </div> */}
       </div>
     </div>
   )
