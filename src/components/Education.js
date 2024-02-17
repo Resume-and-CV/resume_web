@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router-dom'
+import buttonStyles from './css/button.module.css'
 
 const Education = () => {
   const { t } = useTranslation()
@@ -10,6 +12,7 @@ const Education = () => {
   const [error, setError] = useState(null)
 
   const { i18n } = useTranslation()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const getData = async () => {
@@ -59,7 +62,7 @@ const Education = () => {
               style={{
                 display: 'flex',
                 justifyContent: 'space-between',
-                width: '100%',
+                alignItems: 'center',
               }}
             >
               <p>
@@ -80,6 +83,13 @@ const Education = () => {
                     : t('ongoing')}
                 </span>
               </p>
+              <button
+                id="educationButton"
+                className={buttonStyles.button}
+                onClick={() => navigate('/schoolGradesPage')} // Pass the data to the next page
+              >
+                {t('showGrades')}
+              </button>
             </div>
           </div>
         ))

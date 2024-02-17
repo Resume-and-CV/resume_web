@@ -1,6 +1,7 @@
 // EmailForm.js
 import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
+import buttonStyles from './css/button.module.css'
 
 function EmailForm({
   onAccountRequest,
@@ -83,13 +84,15 @@ function EmailForm({
           onChange={(e) => setText(e.target.value)}
           required // HTML5 form validation for text area
         />
-        <button
-          type="submit"
-          style={emailFormStyles.formButton}
-          disabled={isLoading}
-        >
-          {isLoading ? t('sending') : t('accountRequest')}
-        </button>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <button
+            className={buttonStyles.button}
+            style={{ width: '50%' }} // Adjust as needed
+            disabled={isLoading}
+          >
+            {isLoading ? t('sending') : t('accountRequest')}
+          </button>
+        </div>
       </form>
     </div>
   )
