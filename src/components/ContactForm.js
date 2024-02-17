@@ -55,25 +55,31 @@ function EmailForm({
       <form onSubmit={handleSubmit}>
         <input
           type="email"
+          name="email"
           style={emailFormStyles.formInput}
           placeholder={t('yourEmail')}
           value={from}
+          autoComplete="email"
           onChange={(e) => setFrom(e.target.value)}
           required // HTML5 form validation for email input
         />
         <input
           type="text"
+          name="subject"
           style={emailFormStyles.formInput}
           placeholder={t('subject')}
           value={subject}
+          autoComplete="subject"
           onChange={(e) => setSubject(e.target.value)}
           required // HTML5 form validation for subject input
         />
 
         <textarea
+          name="message"
           style={emailFormStyles.formInput}
           placeholder={t('message')}
           value={text}
+          autoComplete="message"
           onChange={(e) => setText(e.target.value)}
           required // HTML5 form validation for text area
         />
