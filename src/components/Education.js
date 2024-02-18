@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router-dom'
+import buttonStyles from './css/button.module.css'
 
 const Education = () => {
   const { t } = useTranslation()
@@ -10,6 +12,7 @@ const Education = () => {
   const [error, setError] = useState(null)
 
   const { i18n } = useTranslation()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const getData = async () => {
@@ -59,7 +62,7 @@ const Education = () => {
               style={{
                 display: 'flex',
                 justifyContent: 'space-between',
-                width: '100%',
+                alignItems: 'center',
               }}
             >
               <p>
@@ -67,7 +70,10 @@ const Education = () => {
                 <span style={styles.value}>
                   {' '}
                   {data.start_date
-                    ? new Date(data.start_date).toLocaleDateString('fi-FI')
+                    ? new Date(data.start_date).toLocaleDateString('fi-FI', {
+                        month: 'numeric',
+                        year: 'numeric',
+                      })
                     : t('ongoing')}
                 </span>
               </p>
@@ -76,10 +82,24 @@ const Education = () => {
                 <span style={styles.value}>
                   {' '}
                   {data.end_date
-                    ? new Date(data.end_date).toLocaleDateString('fi-FI')
+                    ? new Date(data.end_date).toLocaleDateString('fi-FI', {
+                        month: 'numeric',
+                        year: 'numeric',
+                      })
                     : t('ongoing')}
                 </span>
               </p>
+              <button
+                id="educationButton"
+                className={buttonStyles.button}
+                onClick={() =>
+                  navigate('/schoolGradesPage', {
+                    state: { education_id: data.id },
+                  })
+                }
+              >
+                {t('showGrades')}
+              </button>
             </div>
           </div>
         ))

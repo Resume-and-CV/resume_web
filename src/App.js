@@ -7,6 +7,7 @@ import HomePage from './pages/homePage/homePage'
 import LoginPage from './pages/LoginPage'
 import PrivateRoute from './middleWare/PrivateRoute2' // Adjust the path as necessary
 import LinkLoginPage from './pages/LinkLoginPage'
+import SchoolGradesPage from './pages/schoolGradesPage'
 
 function App() {
   return (
@@ -20,6 +21,14 @@ function App() {
           element={
             <PrivateRoute>
               <HomePage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/schoolGradesPage"
+          element={
+            <PrivateRoute>
+              <SchoolGradesPage />
             </PrivateRoute>
           }
         />

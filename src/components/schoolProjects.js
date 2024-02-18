@@ -94,7 +94,13 @@ const SchoolProjects = () => {
               <span style={styles.value}>
                 {' '}
                 {data.completitionDate
-                  ? new Date(data.completitionDate).toLocaleDateString('fi-FI')
+                  ? new Date(data.completitionDate).toLocaleDateString(
+                      'fi-FI',
+                      {
+                        month: 'numeric',
+                        year: 'numeric',
+                      },
+                    )
                   : t('ongoing')}
               </span>
             </p>

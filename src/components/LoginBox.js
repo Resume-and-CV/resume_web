@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import buttonStyles from './css/button.module.css'
 
 const LoginBox = ({ onLogin, errorMessage, isVisible }) => {
   const { t } = useTranslation()
@@ -27,6 +28,7 @@ const LoginBox = ({ onLogin, errorMessage, isVisible }) => {
             type="text"
             id="username"
             value={username}
+            autoComplete="username"
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
@@ -37,12 +39,19 @@ const LoginBox = ({ onLogin, errorMessage, isVisible }) => {
             type="password"
             id="password"
             value={password}
+            autoComplete="current-password"
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button style={styles.button} type="submit">
-          {t('logIn')}
-        </button>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <button
+            className={buttonStyles.button}
+            style={{ width: '50%' }} // Adjust as needed
+            type="submit"
+          >
+            {t('logIn')}
+          </button>
+        </div>
       </form>
     </div>
   )
@@ -57,9 +66,9 @@ const styles = {
     backgroundColor: '#ffffff', // White background for cleanliness
     color: '#2c3e50', // Dark blue-gray text
     margin: '20px auto', // Centered margin for login box
-    maxWidth: '400px', // Max width for the form
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', // Subtle shadow for depth
     borderRadius: '8px', // Rounded corners
+    minWidth: '400px', // Minimum width for the form
   },
   heading: {
     color: '#3498db', // Blue heading color
@@ -74,20 +83,7 @@ const styles = {
     borderRadius: '4px', // Slightly rounded borders for inputs
     boxSizing: 'border-box', // Include padding and border in width
   },
-  button: {
-    width: '100%',
-    padding: '10px',
-    backgroundColor: '#3498db', // Blue button
-    color: 'white',
-    border: 'none',
-    borderRadius: '4px', // Rounded corners for button
-    cursor: 'pointer',
-    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)', // Shadow for button
-  },
-  buttonHover: {
-    // Separate style for hover effect
-    backgroundColor: '#2980b9', // Slightly darker blue on hover
-  },
+
   error: {
     color: 'red',
     textAlign: 'center',
