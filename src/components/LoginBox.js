@@ -66,9 +66,9 @@ const styles = {
     backgroundColor: '#ffffff', // White background for cleanliness
     color: '#2c3e50', // Dark blue-gray text
     margin: '20px auto', // Centered margin for login box
-    maxWidth: '400px', // Max width for the form
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', // Subtle shadow for depth
     borderRadius: '8px', // Rounded corners
+    minWidth: '400px', // Minimum width for the form
   },
   heading: {
     color: '#3498db', // Blue heading color

@@ -1,8 +1,8 @@
 // src/pages/HomePage.js
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
 
 import styles from './homePage.module.css'
+import mainboxStyles from '../css/mainBoxStyles.module.css'
 
 import PersonalInfo from '../../components/PersonalInfo'
 import Education from '../../components/Education'
@@ -17,18 +17,10 @@ import PersonalProjects from '../../components/PersonalProjects'
 import HeaderText from '../../components/HeaderText'
 
 const HomePage = () => {
-  const navigate = useNavigate()
-
-  const handleLogout = () => {
-    localStorage.removeItem('token')
-    navigate('/')
-    console.log('Logged out')
-  }
-
   return (
     <div>
-      <Header onLogout={handleLogout} />
-      <div className={styles.mainBox}>
+      <Header />
+      <div className={mainboxStyles.mainBox}>
         <div className={styles.headerText}>
           <HeaderText />
         </div>

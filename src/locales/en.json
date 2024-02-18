@@ -1,5 +1,5 @@
 {
-  "headerTitle": "Aki Kuivas | Future Software Developer, Fourth Year Student",
+  "headerTitle": "Aki Kuivas | Future Software Developer",
   "personalInfo": "Personal Info",
   "name": "Name",
   "dateOfBirth": "Birthdate",
@@ -50,5 +50,6 @@
   "back": "Back",
   "Contact here text": "Are you an employer interested in exploring my qualifications and work experience? I invite you to request access to my comprehensive resume. Please don't hesitate to reach out for a detailed overview of my skills and accomplishments.",
   "headerTextTitle": "Welcome to my personal website!",
-  "showGrades": "Show Grades"
+  "showGrades": "Show Grades",
+  "menu": "Menu"
 }

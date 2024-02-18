@@ -1,5 +1,5 @@
 {
-  "headerTitle": "Aki Kuivas | Tulevaisuuden ohjelmistokehittäjä, Neljännen vuoden opiskelija",
+  "headerTitle": "Aki Kuivas, Ohjelmistokehityksen opiskelija",
   "personalInfo": "Henkilötiedot",
   "name": "Nimi",
   "dateOfBirth": "Syntymäaika",
@@ -50,5 +50,6 @@
   "back": "Takaisin",
   "Contact here text": "Oletko työnantaja kiinnostunut tutustumaan osaamiseeni ja työhistoriaani? Kutsun teidät tutkimaan jännittävää ansioluetteloani. Ottakaa rohkeasti yhteyttä, niin annan mielelläni lisätietoja ammattitaidostani ja saavutuksistani.",
   "headerTextTitle": "Tervetuloa sivulleni!",
-  "showGrades": "Näytä arvosanat"
+  "showGrades": "Näytä arvosanat",
+  "menu": "Valikko"
 }

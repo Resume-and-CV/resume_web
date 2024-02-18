@@ -7,6 +7,9 @@ import LoginBox from '../components/LoginBox'
 import Header from '../components/Header'
 import ContactForm from '../components/ContactForm'
 
+import mainboxStyles from './css/mainBoxStyles.module.css'
+import buttonStyles from '../components/css/button.module.css'
+
 const LoginPage = () => {
   const navigate = useNavigate()
 
@@ -75,7 +78,7 @@ const LoginPage = () => {
   return (
     <div>
       <Header />
-      <div style={styles.mainBox}>
+      <div className={mainboxStyles.mainBox}>
         {isLoginBoxVisible && (
           <LoginBox onLogin={handleLogin} errorMessage={errorMessage} />
         )}
@@ -92,16 +95,23 @@ const LoginPage = () => {
           />
         )}
         {/* This section is always visible, provides a way to toggle between the login form and contact form */}
-        <div style={{ textAlign: 'center', marginTop: '20px' }}>
+        <div style={{ textAlign: 'center', maxWidth: '700px' }}>
           {!isEmailFormVisible ? (
             <>
               <p>{t('Contact here text')}</p>
 
               {/* Vhen contact form is working, apply this */}
-              <button onClick={toggleVisibility}>{t('contactForm')}</button>
+              <button
+                onClick={toggleVisibility}
+                className={buttonStyles.button2}
+              >
+                {t('contactForm')}
+              </button>
             </>
           ) : (
-            <button onClick={toggleVisibility}>{t('back')}</button>
+            <button onClick={toggleVisibility} className={buttonStyles.button2}>
+              {t('back')}
+            </button>
           )}
         </div>
       </div>
@@ -110,15 +120,3 @@ const LoginPage = () => {
 }
 
 export default LoginPage
-
-const styles = {
-  mainBox: {
-    backgroundColor: '#3498db', // Dark blue-gray background
-    padding: '10%',
-    paddingBottom: '20%', // Corrected property name
-    margin: '10px',
-    border: '2px solid #2c3e50', // Darker border for contrast
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', // Subtle shadow for depth
-    borderRadius: '8px', // Rounded corners
-  },
-}
