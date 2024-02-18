@@ -17,7 +17,7 @@
   "institution": "Institution",
   "degree": "Degree",
   "major": "Major",
-  "start_date": "Start date",
+  "start_date": "Start Time",
   "end_date": "End date",
   "GPA": "GPA",
   "workExperience": "Work Experience",
@@ -39,7 +39,7 @@
   "deploymentStatus": "Deployment Status",
   "ongoing": "Ongoing",
   "grade": "Grade",
-  "completitionDate": "Completition Date",
+  "completitionDate": "Completition",
   "courseName": "Course Name",
   "accountRequest": "Send Email",
   "contactForm": "Contact Here",
@@ -51,5 +51,12 @@
   "Contact here text": "Are you an employer interested in exploring my qualifications and work experience? I invite you to request access to my comprehensive resume. Please don't hesitate to reach out for a detailed overview of my skills and accomplishments.",
   "headerTextTitle": "Welcome to my personal website!",
   "showGrades": "Show Grades",
-  "menu": "Menu"
+  "menu": "Menu",
+  "courseCode": "Course Code",
+  "credits": "Credits",
+  "courseType": "Type",
+  "courseCompletionDate": "Completion Date",
+  "basicAndProfessionalStudies": "Basic and Professional Studies",
+  "recognitionOfStudies": "Recognition of Studies",
+  "grade_information": "Grade Information"
 }

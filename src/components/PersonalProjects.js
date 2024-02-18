@@ -108,7 +108,10 @@ const PersonalProjects = () => {
                 <span style={styles.value}>
                   {' '}
                   {data.start_date
-                    ? new Date(data.start_date).toLocaleDateString('fi-FI')
+                    ? new Date(data.start_date).toLocaleDateString('fi-FI', {
+                        month: 'numeric',
+                        year: 'numeric',
+                      })
                     : t('ongoing')}
                 </span>
               </p>
@@ -117,7 +120,10 @@ const PersonalProjects = () => {
                 <span style={styles.value}>
                   {' '}
                   {data.end_date
-                    ? new Date(data.end_date).toLocaleDateString('fi-FI')
+                    ? new Date(data.end_date).toLocaleDateString('fi-FI', {
+                        month: 'numeric',
+                        year: 'numeric',
+                      })
                     : t('ongoing')}
                 </span>
               </p>

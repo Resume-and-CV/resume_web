@@ -51,5 +51,12 @@
   "Contact here text": "Oletko työnantaja kiinnostunut tutustumaan osaamiseeni ja työhistoriaani? Kutsun teidät tutkimaan jännittävää ansioluetteloani. Ottakaa rohkeasti yhteyttä, niin annan mielelläni lisätietoja ammattitaidostani ja saavutuksistani.",
   "headerTextTitle": "Tervetuloa sivulleni!",
   "showGrades": "Näytä arvosanat",
-  "menu": "Valikko"
+  "menu": "Valikko",
+  "courseCode": "Kurssikoodi",
+  "credits": "Opintopisteet",
+  "courseType": "Tyyppi",
+  "courseCompletionDate": "Suorituspäivä",
+  "basicAndProfessionalStudies": "Perus ja ammattiopinnot",
+  "recognitionOfStudies": "Opintojen hyväksiluku",
+  "grade_information": "Arvosanat"
 }

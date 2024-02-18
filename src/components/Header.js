@@ -25,12 +25,15 @@ const Header = () => {
         break
       case 'en':
       case 'fi':
-        changeLanguage(event.target.value)
+        if (location.pathname === '/' || location.pathname === '/home') {
+          changeLanguage(event.target.value)
+        }
         break
       default:
         break
     }
   }
+
   const location = useLocation()
 
   return (
@@ -40,8 +43,12 @@ const Header = () => {
       <nav style={styles.navLinks}>
         <select className={buttonStyles.dropdown} onChange={handleSelectChange}>
           <option value="">{t('menu')}</option>
-          <option value="en">English</option>
-          <option value="fi">Suomi</option>
+          {location.pathname === '/' || location.pathname === '/home' ? (
+            <>
+              <option value="en">English</option>
+              <option value="fi">Suomi</option>
+            </>
+          ) : null}
           {isLoggedIn && location.pathname !== '/home' && (
             <option value="backToLogin">{t('back')}</option>
           )}
@@ -60,7 +67,7 @@ const styles = {
     backgroundColor: '#3498db', // Dark blue-gray background
     color: '#ecf0f1', // Light gray text
     border: '2px solid #2c3e50', // Darker border for contrast
-    padding: '15px',
+    padding: '10px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
