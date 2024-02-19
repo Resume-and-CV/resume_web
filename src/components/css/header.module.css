@@ -1,4 +1,3 @@
-/* header.module.css */
 .header {
     background-color: #3498db;
     color: #ecf0f1;
@@ -12,19 +11,29 @@
     margin: 10px;
 }
 
+.logoContainer, .navLinksContainer {
+    flex: 0; /* Adjusted to not grow */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.titleContainer {
+    flex: 2; /* Adjusted to allow it to grow and take more space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .title {
     font-size: 2em;
     margin: 0;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
     text-align: center;
 }
 
 .navLinks {
     display: flex;
     gap: 20px;
-    margin-left: auto;
 }
 
 .navLink {
@@ -32,17 +41,8 @@
     text-decoration: none;
     font-weight: bold;
     cursor: pointer;
-    width: 50%;
-    justify-content: flex-end;
-
 }
 
-.logoTitleContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 50%;
-  }
 .logo {
     height: 50px;
     width: 50px;

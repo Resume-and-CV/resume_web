@@ -40,7 +40,7 @@ const Header = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 768) {
+      if (window.innerWidth < 800) {
         setTitle(t('headerTitleShort')) // Use a shorter title for small screens
       } else {
         setTitle(t('headerTitle')) // Use the full title for large screens
@@ -58,25 +58,32 @@ const Header = () => {
 
   return (
     <header className={styles.header}>
-      <div className={styles.logoTitleContainer}>
+      <div className={styles.logoContainer}>
         <img src={logo} alt="Logo" className={styles.logo} />
+      </div>
+      <div className={styles.titleContainer}>
         <h1 className={styles.title}>{title}</h1>
       </div>
-      <nav className={styles.navLinks}>
-        <select className={buttonStyles.dropdown} onChange={handleSelectChange}>
-          <option value="">{t('menu')}</option>
-          {location.pathname === '/' || location.pathname === '/home' ? (
-            <>
-              <option value="en">English</option>
-              <option value="fi">Suomi</option>
-            </>
-          ) : null}
-          {isLoggedIn && location.pathname !== '/home' && (
-            <option value="backToLogin">{t('back')}</option>
-          )}
-          {isLoggedIn && <option value="logout">{t('logout')}</option>}
-        </select>
-      </nav>
+      <div className={styles.navLinksContainer}>
+        <nav className={styles.navLinks}>
+          <select
+            className={buttonStyles.dropdown}
+            onChange={handleSelectChange}
+          >
+            <option value="">{t('menu')}</option>
+            {location.pathname === '/' || location.pathname === '/home' ? (
+              <>
+                <option value="en">English</option>
+                <option value="fi">Suomi</option>
+              </>
+            ) : null}
+            {isLoggedIn && location.pathname !== '/home' && (
+              <option value="backToLogin">{t('back')}</option>
+            )}
+            {isLoggedIn && <option value="logout">{t('logout')}</option>}
+          </select>
+        </nav>
+      </div>
     </header>
   )
 }

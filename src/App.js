@@ -3,7 +3,7 @@ import { HashRouter as Router, Routes, Route } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 
 import 'react-toastify/dist/ReactToastify.css'
-import HomePage from './pages/homePage/homePage'
+import HomePage from './pages/homePage'
 import LoginPage from './pages/LoginPage'
 import PrivateRoute from './middleWare/PrivateRoute2' // Adjust the path as necessary
 import LinkLoginPage from './pages/LinkLoginPage'
