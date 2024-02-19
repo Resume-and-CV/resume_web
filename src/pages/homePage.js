@@ -1,20 +1,20 @@
 // src/pages/HomePage.js
 import React from 'react'
 
-import styles from './homePage.module.css'
-import mainboxStyles from '../css/mainBoxStyles.module.css'
+import styles from './css/homePage.module.css'
+import mainboxStyles from './css/mainBoxStyles.module.css'
 
-import PersonalInfo from '../../components/PersonalInfo'
-import Education from '../../components/Education'
-import ContactInfo from '../../components/ContactInfo'
-import WorkExperience from '../../components/WorkExperience'
-import Header from '../../components/Header'
-import LanguageInfo from '../../components/LanguageInfo'
-import HobbiesInfo from '../../components/HobbiesInfo'
-import RecommendationsInfo from '../../components/RecommendationsInfo'
-import SchoolProjects from '../../components/schoolProjects'
-import PersonalProjects from '../../components/PersonalProjects'
-import HeaderText from '../../components/HeaderText'
+import PersonalInfo from '../components/PersonalInfo'
+import Education from '../components/Education'
+import ContactInfo from '../components/ContactInfo'
+import WorkExperience from '../components/WorkExperience'
+import Header from '../components/Header'
+import LanguageInfo from '../components/LanguageInfo'
+import HobbiesInfo from '../components/HobbiesInfo'
+import RecommendationsInfo from '../components/RecommendationsInfo'
+import SchoolProjects from '../components/schoolProjects'
+import PersonalProjects from '../components/PersonalProjects'
+import HeaderText from '../components/HeaderText'
 
 const HomePage = () => {
   return (

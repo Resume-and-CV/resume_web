@@ -5,6 +5,7 @@ import Header from '../components/Header'
 import { useLocation } from 'react-router-dom'
 import axios from 'axios'
 import { useTranslation } from 'react-i18next'
+import styles from './css/schoolGrades.module.css'
 
 const SchoolGradesPage = () => {
   let { state } = useLocation()
@@ -77,16 +78,16 @@ const SchoolGradesPage = () => {
       .flat()
       .map((data, index) => (
         <tr key={index}>
-          <td style={{ ...styles.value, ...styles.institutionValue }}>
+          <td className={{ ...styles.value, ...styles.institutionValue }}>
             {data.original_institution}
           </td>
-          <td style={{ ...styles.value, ...styles.courseNameValue }}>
+          <td className={{ ...styles.value, ...styles.courseNameValue }}>
             {data.original_course_name}
           </td>
-          <td style={styles.value}>{data.original_credits}</td>
-          <td style={styles.value}>{data.grade}</td>
-          <td style={styles.value}>{data.type}</td>
-          <td style={styles.value}>
+          <td className={styles.value}>{data.original_credits}</td>
+          <td className={styles.value}>{data.grade}</td>
+          <td className={styles.value}>{data.type}</td>
+          <td className={styles.value}>
             {data.completion_date
               ? new Date(data.completion_date).toLocaleDateString('fi-FI')
               : ''}
@@ -99,36 +100,43 @@ const SchoolGradesPage = () => {
     <div>
       <Header />
       <div className={mainBoxStyles.mainBox}>
-        <div style={styles.box}>
-          <h1 style={styles.heading}>{t('grade_information')}</h1>
+        <div className={styles.box}>
+          <h1 className={styles.heading}>{t('grade_information')}</h1>
 
           {/* Subheading for Courses */}
           <h2>{t('basicAndProfessionalStudies')}</h2>
           {courses.length > 0 ? (
-            <table style={styles.entryBox}>
+            <table className={styles.entryBox}>
               <thead>
                 <tr>
-                  <th style={styles.label}>{t('courseCode')}</th>
-                  <th style={styles.label}>{t('courseName')}</th>
-                  <th style={styles.label}>{t('credits')}</th>
-                  <th style={styles.label}>{t('grade')}</th>
-                  <th style={styles.label}>{t('courseType')}</th>
-                  <th style={styles.label}>{t('courseCompletionDate')}</th>
+                  <th className={styles.label}>{t('courseCode')}</th>
+                  <th className={styles.label}>{t('courseName')}</th>
+                  <th className={styles.label}>{t('credits')}</th>
+                  <th className={styles.label}>{t('grade')}</th>
+                  <th className={styles.label}>{t('courseType')}</th>
+                  <th className={styles.label}>{t('courseCompletionDate')}</th>
                 </tr>
               </thead>
               <tbody>
                 {courses.map((data, index) => (
                   <tr key={index}>
-                    <td style={{ ...styles.value, ...styles.course_codeValue }}>
+                    <td
+                      className={{
+                        ...styles.value,
+                        ...styles.course_codeValue,
+                      }}
+                    >
                       {data.course_code}
                     </td>
-                    <td style={{ ...styles.value, ...styles.courseNameValue }}>
+                    <td
+                      className={{ ...styles.value, ...styles.courseNameValue }}
+                    >
                       {data.course_name}
                     </td>
-                    <td style={styles.value}>{data.credits}</td>
-                    <td style={styles.value}>{data.grade}</td>
-                    <td style={styles.value}>{data.type}</td>
-                    <td style={styles.value}>
+                    <td className={styles.value}>{data.credits}</td>
+                    <td className={styles.value}>{data.grade}</td>
+                    <td className={styles.value}>{data.type}</td>
+                    <td className={styles.value}>
                       {data.completion_date
                         ? new Date(data.completion_date).toLocaleDateString(
                             'fi-FI',
@@ -140,7 +148,7 @@ const SchoolGradesPage = () => {
               </tbody>
             </table>
           ) : (
-            <p style={styles.noData}>
+            <p className={styles.noData}>
               No courses found. Please check back later.
             </p>
           )}
@@ -149,21 +157,21 @@ const SchoolGradesPage = () => {
           <h2>{t('recognitionOfStudies')}</h2>
           {Object.keys(exemptions).length > 0 &&
           Object.values(exemptions).flat().length > 0 ? (
-            <table style={styles.entryBox}>
+            <table className={styles.entryBox}>
               <thead>
                 <tr>
-                  <th style={styles.label}>{t('institution')}</th>
-                  <th style={styles.label}>{t('courseName')}</th>
-                  <th style={styles.label}>{t('credits')}</th>
-                  <th style={styles.label}>{t('grade')}</th>
-                  <th style={styles.label}>{t('courseType')}</th>
-                  <th style={styles.label}>{t('courseCompletionDate')}</th>
+                  <th className={styles.label}>{t('institution')}</th>
+                  <th className={styles.label}>{t('courseName')}</th>
+                  <th className={styles.label}>{t('credits')}</th>
+                  <th className={styles.label}>{t('grade')}</th>
+                  <th className={styles.label}>{t('courseType')}</th>
+                  <th className={styles.label}>{t('courseCompletionDate')}</th>
                 </tr>
               </thead>
               <tbody>{renderExemptionsRows()}</tbody>
             </table>
           ) : (
-            <p style={styles.noData}>
+            <p className={styles.noData}>
               No exemptions found. Please check back later.
             </p>
           )}
@@ -174,7 +182,7 @@ const SchoolGradesPage = () => {
 }
 export default SchoolGradesPage
 
-const styles = {
+/* const styles = {
   box: {
     border: '2px solid #2c3e50',
     padding: '20px',
@@ -223,3 +231,4 @@ const styles = {
     width: '50%',
   },
 }
+ */

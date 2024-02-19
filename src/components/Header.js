@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import buttonStyles from './css/button.module.css'
 import useAuthStatus from '../middleWare/useAuthStatus' // Adjust the path accordingly
@@ -6,6 +6,7 @@ import { useLogout } from '../middleWare/useLogout' // Adjust the path according
 import { useBuBack } from '../middleWare/useBuBack' // Adjust the path accordingly
 import { useLanguageSwitcher } from '../middleWare/useLanguageSwitcher' // Adjust the path accordingly
 import { useLocation } from 'react-router-dom'
+import styles from './css/header.module.css'
 
 const Header = () => {
   const { t } = useTranslation()
@@ -14,6 +15,7 @@ const Header = () => {
   const onBackToLogin = useBuBack()
   const changeLanguage = useLanguageSwitcher()
   const logo = '/logo192.png'
+  const location = useLocation()
 
   const handleSelectChange = (event) => {
     switch (event.target.value) {
@@ -34,77 +36,56 @@ const Header = () => {
     }
   }
 
-  const location = useLocation()
+  const [title, setTitle] = useState(t('headerTitle'))
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 800) {
+        setTitle(t('headerTitleShort')) // Use a shorter title for small screens
+      } else {
+        setTitle(t('headerTitle')) // Use the full title for large screens
+      }
+    }
+
+    window.addEventListener('resize', handleResize)
+
+    // Call the function once to set the initial title
+    handleResize()
+
+    // Clean up the event listener when the component unmounts
+    return () => window.removeEventListener('resize', handleResize)
+  }, [t])
 
   return (
-    <header style={styles.header}>
-      <img src={logo} alt="Logo" style={styles.logo} /> {/* Add this line */}
-      <h1 style={styles.title}>{t('headerTitle')}</h1>
-      <nav style={styles.navLinks}>
-        <select className={buttonStyles.dropdown} onChange={handleSelectChange}>
-          <option value="">{t('menu')}</option>
-          {location.pathname === '/' || location.pathname === '/home' ? (
-            <>
-              <option value="en">English</option>
-              <option value="fi">Suomi</option>
-            </>
-          ) : null}
-          {isLoggedIn && location.pathname !== '/home' && (
-            <option value="backToLogin">{t('back')}</option>
-          )}
-          {isLoggedIn && <option value="logout">{t('logout')}</option>}
-        </select>
-      </nav>
+    <header className={styles.header}>
+      <div className={styles.logoContainer}>
+        <img src={logo} alt="Logo" className={styles.logo} />
+      </div>
+      <div className={styles.titleContainer}>
+        <h1 className={styles.title}>{title}</h1>
+      </div>
+      <div className={styles.navLinksContainer}>
+        <nav className={styles.navLinks}>
+          <select
+            className={buttonStyles.dropdown}
+            onChange={handleSelectChange}
+          >
+            <option value="">{t('menu')}</option>
+            {location.pathname === '/' || location.pathname === '/home' ? (
+              <>
+                <option value="en">English</option>
+                <option value="fi">Suomi</option>
+              </>
+            ) : null}
+            {isLoggedIn && location.pathname !== '/home' && (
+              <option value="backToLogin">{t('back')}</option>
+            )}
+            {isLoggedIn && <option value="logout">{t('logout')}</option>}
+          </select>
+        </nav>
+      </div>
     </header>
   )
 }
-
 // ... rest of your code
 export default Header
-
-const styles = {
-  header: {
-    backgroundColor: '#3498db', // Dark blue-gray background
-    color: '#ecf0f1', // Light gray text
-    border: '2px solid #2c3e50', // Darker border for contrast
-    padding: '10px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', // Subtle shadow for depth
-    borderRadius: '8px', // Rounded corners
-    margin: '10px', // Centered margin for login box
-  },
-  title: {
-    fontSize: '2em',
-    margin: 0,
-    position: 'absolute',
-    left: '50%',
-    transform: 'translateX(-50%)',
-  },
-  navLinks: {
-    display: 'flex',
-    gap: '20px', // Space between navigation links
-    marginLeft: 'auto',
-  },
-  navLink: {
-    color: 'inherit', // Inherits color from the header
-    textDecoration: 'none',
-    fontWeight: 'bold',
-    cursor: 'pointer',
-  },
-  dropdown: {
-    padding: '10px',
-    fontSize: '16px',
-    color: '#333',
-    borderRadius: '5px',
-    border: '1px solid #ccc',
-    appearance: 'none', // Removes the default appearance
-    backgroundColor: '#fff',
-  },
-  logo: {
-    height: '50px', // Adjust as needed
-    width: '50px', // Adjust as needed
-  },
-}
