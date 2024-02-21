@@ -96,35 +96,37 @@ const Header = () => {
                 alt="Finnish"
                 onClick={() => handleSelectChange({ target: { value: 'fi' } })}
               />
-            )}
-          <div className={styles.logoContainer}>
-            <img
-              src="/images/menu.png"
-              alt="Logo"
-              className={styles.flagIcon}
-              onClick={handleDropdownClick}
-            />
-            {isLoggedIn && dropdownOpen && (
-              <div className={dropdawnStyles.dropdownMenu}>
-                {isLoggedIn &&
-                  location.pathname !== '/' &&
-                  location.pathname !== '/home' && (
-                    <img
-                      src="/images/home.png"
-                      alt="Logo"
-                      className={dropdawnStyles.icon}
-                      onClick={onBackToHome}
-                    />
-                  )}
-                <img
-                  src="/images/logout.png"
-                  alt="Logo"
-                  className={dropdawnStyles.icon}
-                  onClick={onLogout}
-                />
-              </div>
-            )}
-          </div>
+            )}{' '}
+          {isLoggedIn ? (
+            <div className={styles.logoContainer}>
+              <img
+                src="/images/menu.png"
+                alt="Logo"
+                className={styles.flagIcon}
+                onClick={handleDropdownClick}
+              />
+              {dropdownOpen && (
+                <div className={dropdawnStyles.dropdownMenu}>
+                  {isLoggedIn &&
+                    location.pathname !== '/' &&
+                    location.pathname !== '/home' && (
+                      <img
+                        src="/images/home.png"
+                        alt="Logo"
+                        className={dropdawnStyles.icon}
+                        onClick={onBackToHome}
+                      />
+                    )}
+                  <img
+                    src="/images/logout.png"
+                    alt="Logo"
+                    className={dropdawnStyles.icon}
+                    onClick={onLogout}
+                  />
+                </div>
+              )}
+            </div>
+          ) : null}
         </nav>
       </div>
     </header>
