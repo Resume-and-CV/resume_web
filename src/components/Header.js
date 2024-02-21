@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-import buttonStyles from './css/button.module.css'
 import useAuthStatus from '../middleWare/useAuthStatus' // Adjust the path accordingly
 import { useLogout } from '../middleWare/useLogout' // Adjust the path accordingly
 import { useBuBack } from '../middleWare/useBuBack' // Adjust the path accordingly
 import { useLanguageSwitcher } from '../middleWare/useLanguageSwitcher' // Adjust the path accordingly
 import { useLocation } from 'react-router-dom'
 import styles from './css/header.module.css'
+import dropdawnStyles from './css/dropdown.module.css'
 
 const Header = () => {
   const isLoggedIn = useAuthStatus()
   const onLogout = useLogout()
-  const onBackToLogin = useBuBack()
+  const onBackToHome = useBuBack()
   const logo = '/logo192.png'
   const location = useLocation()
   const { t, i18n } = useTranslation()
   const [currentLanguage, setCurrentLanguage] = useState(i18n.language || 'en') // default language
+  const [dropdownOpen, setDropdownOpen] = useState(false) // add this line to define the dropdownOpen state
+
   const { changeLanguage } = useLanguageSwitcher(
     currentLanguage,
     setCurrentLanguage,
@@ -27,7 +29,7 @@ const Header = () => {
         onLogout()
         break
       case 'backToLogin':
-        onBackToLogin()
+        onBackToHome()
         break
       case 'en':
       case 'fi':
@@ -60,6 +62,13 @@ const Header = () => {
     return () => window.removeEventListener('resize', handleResize)
   }, [t])
 
+  const handleDropdownClick = () => {
+    setDropdownOpen((prevState) => {
+      console.log('Dropdown state before toggle:', prevState)
+      return !prevState
+    })
+  }
+
   return (
     <header className={styles.header}>
       <div className={styles.logoContainer}>
@@ -88,24 +97,34 @@ const Header = () => {
                 onClick={() => handleSelectChange({ target: { value: 'fi' } })}
               />
             )}
-          <nav className={styles.navLinks}>
-            {isLoggedIn &&
-              (location.pathname === '/' || location.pathname === '/home') && (
-                <button className={buttonStyles.button2} onClick={onLogout}>
-                  {t('logout')}
-                </button>
-              )}
-            {isLoggedIn &&
-              location.pathname !== '/' &&
-              location.pathname !== '/home' && (
-                <button
-                  className={buttonStyles.button2}
-                  onClick={onBackToLogin}
-                >
-                  {t('back')}
-                </button>
-              )}
-          </nav>
+          <div className={styles.logoContainer}>
+            <img
+              src="/images/menu.png"
+              alt="Logo"
+              className={styles.flagIcon}
+              onClick={handleDropdownClick}
+            />
+            {isLoggedIn && dropdownOpen && (
+              <div className={dropdawnStyles.dropdownMenu}>
+                {isLoggedIn &&
+                  location.pathname !== '/' &&
+                  location.pathname !== '/home' && (
+                    <img
+                      src="/images/home.png"
+                      alt="Logo"
+                      className={dropdawnStyles.icon}
+                      onClick={onBackToHome}
+                    />
+                  )}
+                <img
+                  src="/images/logout.png"
+                  alt="Logo"
+                  className={dropdawnStyles.icon}
+                  onClick={onLogout}
+                />
+              </div>
+            )}
+          </div>
         </nav>
       </div>
     </header>
