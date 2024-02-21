@@ -47,3 +47,7 @@
     height: 50px;
     width: 50px;
 }
+.flagIcon {
+    width: 30px; /* adjust as needed */
+    height: 30px; /* maintain aspect ratio */
+  }

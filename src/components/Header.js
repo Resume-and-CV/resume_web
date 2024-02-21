@@ -9,13 +9,17 @@ import { useLocation } from 'react-router-dom'
 import styles from './css/header.module.css'
 
 const Header = () => {
-  const { t } = useTranslation()
   const isLoggedIn = useAuthStatus()
   const onLogout = useLogout()
   const onBackToLogin = useBuBack()
-  const changeLanguage = useLanguageSwitcher()
   const logo = '/logo192.png'
   const location = useLocation()
+  const { t, i18n } = useTranslation()
+  const [currentLanguage, setCurrentLanguage] = useState(i18n.language || 'en') // default language
+  const { changeLanguage } = useLanguageSwitcher(
+    currentLanguage,
+    setCurrentLanguage,
+  )
 
   const handleSelectChange = (event) => {
     switch (event.target.value) {
@@ -28,7 +32,7 @@ const Header = () => {
       case 'en':
       case 'fi':
         if (location.pathname === '/' || location.pathname === '/home') {
-          changeLanguage(event.target.value)
+          changeLanguage(event.target.value) // update current language
         }
         break
       default:
@@ -66,22 +70,42 @@ const Header = () => {
       </div>
       <div className={styles.navLinksContainer}>
         <nav className={styles.navLinks}>
-          <select
-            className={buttonStyles.dropdown}
-            onChange={handleSelectChange}
-          >
-            <option value="">{t('menu')}</option>
-            {location.pathname === '/' || location.pathname === '/home' ? (
-              <>
-                <option value="en">English</option>
-                <option value="fi">Suomi</option>
-              </>
-            ) : null}
-            {isLoggedIn && location.pathname !== '/home' && (
-              <option value="backToLogin">{t('back')}</option>
+          {(location.pathname === '/' || location.pathname === '/home') &&
+            currentLanguage !== 'en' && (
+              <img
+                className={styles.flagIcon}
+                src="/images/united-kingdom.png"
+                alt="English"
+                onClick={() => handleSelectChange({ target: { value: 'en' } })}
+              />
             )}
-            {isLoggedIn && <option value="logout">{t('logout')}</option>}
-          </select>
+          {(location.pathname === '/' || location.pathname === '/home') &&
+            currentLanguage !== 'fi' && (
+              <img
+                className={styles.flagIcon}
+                src="/images/finland.png"
+                alt="Finnish"
+                onClick={() => handleSelectChange({ target: { value: 'fi' } })}
+              />
+            )}
+          <nav className={styles.navLinks}>
+            {isLoggedIn &&
+              (location.pathname === '/' || location.pathname === '/home') && (
+                <button className={buttonStyles.button2} onClick={onLogout}>
+                  {t('logout')}
+                </button>
+              )}
+            {isLoggedIn &&
+              location.pathname !== '/' &&
+              location.pathname !== '/home' && (
+                <button
+                  className={buttonStyles.button2}
+                  onClick={onBackToLogin}
+                >
+                  {t('back')}
+                </button>
+              )}
+          </nav>
         </nav>
       </div>
     </header>
