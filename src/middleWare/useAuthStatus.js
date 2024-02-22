@@ -1,3 +1,4 @@
+// useAuthStatus.js
 import { useState, useEffect } from 'react'
 
 // Custom hook for checking login status

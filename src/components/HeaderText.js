@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useTranslation } from 'react-i18next'
 import { jwtDecode } from 'jwt-decode'
+import mainStyles from '../pages/css/homePage.module.css'
 
 const HeaderText = () => {
   const { t } = useTranslation()
@@ -54,7 +55,7 @@ const HeaderText = () => {
   console.log('headerText.length:', headerText.header)
 
   return (
-    <div style={styles.box}>
+    <div className={mainStyles.box}>
       <h2 style={styles.heading}>{t('headerTextTitle')}</h2>
       <div style={styles.entryBox}>
         {headerText.length > 0 ? (

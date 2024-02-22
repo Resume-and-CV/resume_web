@@ -21,10 +21,10 @@ const HomePage = () => {
     <div>
       <Header />
       <div className={mainboxStyles.mainBox}>
-        <div className={styles.headerText}>
+        <div>
           <HeaderText />
         </div>
-        <div className={styles.box}>
+        <div className={styles.boxRow}>
           <div className={styles.boxItem}>
             <PersonalInfo />
             <ContactInfo />

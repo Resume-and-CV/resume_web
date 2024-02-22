@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useTranslation } from 'react-i18next'
+import mainStyles from '../pages/css/homePage.module.css'
 
 const PersonalInfo = () => {
   const { t } = useTranslation()
@@ -37,7 +38,7 @@ const PersonalInfo = () => {
   }
 
   return (
-    <div style={styles.box}>
+    <div className={mainStyles.box}>
       <h2 style={styles.heading}>{t('personalInfo')}</h2>{' '}
       {/* Missing closing tag added */}
       {infos.length > 0 ? (

@@ -1,3 +1,5 @@
+// Code for PrivateRoute2.js
+
 import React from 'react'
 import { Navigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
