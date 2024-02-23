@@ -50,7 +50,7 @@
   "logout": "Kirjaudu ulos",
   "back": "Takaisin",
   "Contact here text": "Oletko työnantaja kiinnostunut tutustumaan osaamiseeni ja työhistoriaani? Kutsun teidät tutkimaan jännittävää ansioluetteloani. Ottakaa rohkeasti yhteyttä, niin annan mielelläni lisätietoja ammattitaidostani ja saavutuksistani.",
-  "headerTextTitle": "Tervetuloa sivulleni!",
+  "headerTextTitle": "Tervetuloa {{username}}",
   "showGrades": "Näytä arvosanat",
   "menu": "Valikko",
   "courseCode": "Kurssikoodi",

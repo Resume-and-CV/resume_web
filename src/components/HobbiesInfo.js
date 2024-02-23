@@ -44,7 +44,14 @@ const HobbiesInfo = () => {
         {hobbies.length > 0 ? (
           hobbies.map((data, index) => (
             <div key={index}>
-              <p>{t(data.description)}</p>
+              {t(data.description)
+                .replace(/\\n/g, '\n')
+                .split('\n')
+                .map((text, i) => (
+                  <p key={i} style={styles.otherLines}>
+                    {text}
+                  </p>
+                ))}
             </div>
           ))
         ) : (
@@ -80,5 +87,9 @@ const styles = {
     //color: "#ecf0f1", // Light gray text
     marginBottom: '15px', // Spacing below heading
     textAlign: 'center', // Center-align the heading
+  },
+  otherLines: {
+    fontSize: '14px',
+    fontFamily: 'Arial',
   },
 }
