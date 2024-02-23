@@ -9,12 +9,14 @@ const HeaderText = () => {
 
   const [headerText, setHeaderText] = useState([])
   const [error, setError] = useState(null)
+  const [username, setUsername] = useState('') // Add this line
 
   useEffect(() => {
     const getData = async () => {
       const token = localStorage.getItem('token') // Retrieve the token from localStorage
       const decodedToken = jwtDecode(token)
       const userId = decodedToken.id
+      setUsername(decodedToken.username) // Add this line
 
       if (!userId || !i18n.language) {
         console.error('userId or language is undefined')
@@ -50,18 +52,30 @@ const HeaderText = () => {
   if (error) {
     return <div className="info">Error: {error}</div>
   }
-  console.log('headerText:', headerText)
-  console.log('headerText.length:', headerText.header)
-
+  console.log('username1:', username)
   return (
     <div style={styles.box}>
-      <h2 style={styles.heading}>{t('headerTextTitle')}</h2>
+      <h2 style={styles.heading}>{t('headerTextTitle', { username })}</h2>
       <div style={styles.entryBox}>
-        {headerText.length > 0 ? (
+        {headerText && headerText.length > 0 ? (
           headerText.map((data, index) => (
             <div key={index}>
-              <p>{t(data.header)}</p>
-              <p>{t(data.description)}</p>{' '}
+              {data.header
+                .replace(/\\n/g, '\n')
+                .split('\n')
+                .map((text, i) => (
+                  <p key={i} style={styles.firstLine}>
+                    {text}
+                  </p>
+                ))}
+              {data.description
+                .replace(/\\n/g, '\n')
+                .split('\n')
+                .map((text, i) => (
+                  <p key={i} style={styles.otherLines}>
+                    {text}
+                  </p>
+                ))}
             </div>
           ))
         ) : (
@@ -99,5 +113,13 @@ const styles = {
     //color: "#ecf0f1", // Light gray text
     marginBottom: '15px', // Spacing below heading
     textAlign: 'center', // Center-align the heading
+  },
+  firstLine: {
+    fontSize: '16px',
+    fontFamily: 'Arial',
+  },
+  otherLines: {
+    fontSize: '14px',
+    fontFamily: 'Arial',
   },
 }
