@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useTranslation } from 'react-i18next'
 import { jwtDecode } from 'jwt-decode'
-import mainStyles from '../pages/css/homePage.module.css'
+import mainStyles from '../pages/css/mainBoxStyles.module.css'
+import descriptionTextStyles from './css/descriptionText.module.css'
 
 const HeaderText = () => {
   const { t } = useTranslation()
@@ -55,7 +56,7 @@ const HeaderText = () => {
   }
   console.log('username1:', username)
   return (
-    <div style={mainStyles.box}>
+    <div className={mainStyles.box}>
       <h2 style={styles.heading}>{t('headerTextTitle', { username })}</h2>
       <div style={styles.entryBox}>
         {headerText && headerText.length > 0 ? (
@@ -65,7 +66,7 @@ const HeaderText = () => {
                 .replace(/\\n/g, '\n')
                 .split('\n')
                 .map((text, i) => (
-                  <p key={i} style={styles.firstLine}>
+                  <p key={i} classNamee={descriptionTextStyles.firstLine}>
                     {text}
                   </p>
                 ))}
@@ -73,7 +74,7 @@ const HeaderText = () => {
                 .replace(/\\n/g, '\n')
                 .split('\n')
                 .map((text, i) => (
-                  <p key={i} style={styles.otherLines}>
+                  <p key={i} className={descriptionTextStyles.otherLines}>
                     {text}
                   </p>
                 ))}
@@ -114,13 +115,5 @@ const styles = {
     //color: "#ecf0f1", // Light gray text
     marginBottom: '15px', // Spacing below heading
     textAlign: 'center', // Center-align the heading
-  },
-  firstLine: {
-    fontSize: '16px',
-    fontFamily: 'Arial',
-  },
-  otherLines: {
-    fontSize: '14px',
-    fontFamily: 'Arial',
   },
 }

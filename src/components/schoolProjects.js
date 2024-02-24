@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useTranslation } from 'react-i18next'
+import descriptionTextStyles from './css/descriptionText.module.css'
 
 const SchoolProjects = () => {
   const { t } = useTranslation()
@@ -45,19 +46,34 @@ const SchoolProjects = () => {
           <div key={index} style={styles.entryBox}>
             <p>
               <span style={styles.label}>{t('projectName')}:</span>
-              <span style={styles.value}>{data.projectName}</span>
+              <span className={descriptionTextStyles.otherLines}>
+                {data.projectName}
+              </span>
             </p>
             <p>
               <span style={styles.label}>{t('technologiesUsed')}:</span>
-              <span style={styles.value}>{data.technologiesUsed}</span>
+              <span className={descriptionTextStyles.otherLines}>
+                {data.technologiesUsed}
+              </span>
             </p>
             <p>
               <span style={styles.label}>{t('description')}:</span>
-              <span style={styles.value}>{data.description}</span>
+              <span className={descriptionTextStyles.otherLines}>
+                {data.description
+                  .replace(/\\n/g, '\n')
+                  .split('\n')
+                  .map((text, i) => (
+                    <p key={i} className={descriptionTextStyles.otherLines}>
+                      {text}
+                    </p>
+                  ))}
+              </span>
             </p>
             <p>
               <span style={styles.label}>{t('courseName')}:</span>
-              <span style={styles.value}>{data.courseName}</span>
+              <span className={descriptionTextStyles.otherLines}>
+                {data.courseName}
+              </span>
             </p>
 
             <div
@@ -70,7 +86,9 @@ const SchoolProjects = () => {
             >
               <p style={{ margin: 0 }}>
                 <span style={styles.label}>{t('grade')}:</span>
-                <span style={styles.value}>{data.grade}</span>
+                <span className={descriptionTextStyles.otherLines}>
+                  {data.grade}
+                </span>
               </p>
 
               {data.repositoryLink && (
@@ -91,7 +109,7 @@ const SchoolProjects = () => {
 
             <p>
               <span style={styles.label}> {t('completitionDate')}: </span>
-              <span style={styles.value}>
+              <span className={descriptionTextStyles.otherLines}>
                 {' '}
                 {data.completitionDate
                   ? new Date(data.completitionDate).toLocaleDateString(
