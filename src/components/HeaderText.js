@@ -54,7 +54,7 @@ const HeaderText = () => {
   }
   console.log('username1:', username)
   return (
-    <div style={styles.box}>
+    <div className={mainStyles.box}>
       <h2 style={styles.heading}>{t('headerTextTitle', { username })}</h2>
       <div style={styles.entryBox}>
         {headerText && headerText.length > 0 ? (
