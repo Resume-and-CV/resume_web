@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useTranslation } from 'react-i18next'
+import descriptionTextStyles from './css/descriptionText.module.css'
 
 const HobbiesInfo = () => {
   const { t } = useTranslation()
@@ -48,7 +49,7 @@ const HobbiesInfo = () => {
                 .replace(/\\n/g, '\n')
                 .split('\n')
                 .map((text, i) => (
-                  <p key={i} style={styles.otherLines}>
+                  <p key={i} className={descriptionTextStyles.otherLines}>
                     {text}
                   </p>
                 ))}
@@ -87,9 +88,5 @@ const styles = {
     //color: "#ecf0f1", // Light gray text
     marginBottom: '15px', // Spacing below heading
     textAlign: 'center', // Center-align the heading
-  },
-  otherLines: {
-    fontSize: '14px',
-    fontFamily: 'Arial',
   },
 }

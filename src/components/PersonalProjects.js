@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useTranslation } from 'react-i18next'
+import descriptionTextStyles from './css/descriptionText.module.css'
 
 const PersonalProjects = () => {
   const { t } = useTranslation()
@@ -45,11 +46,15 @@ const PersonalProjects = () => {
           <div key={index} style={styles.entryBox}>
             <p>
               <span style={styles.label}>{t('projectName')}:</span>
-              <span style={styles.value}>{data.projectName}</span>
+              <span className={descriptionTextStyles.otherLines}>
+                {data.projectName}
+              </span>
             </p>
             <p>
               <span style={styles.label}>{t('technologiesUsed')}:</span>
-              <span style={styles.value}>{data.technologiesUsed}</span>
+              <span className={descriptionTextStyles.otherLines}>
+                {data.technologiesUsed}
+              </span>
             </p>
             <div
               style={{
@@ -61,7 +66,9 @@ const PersonalProjects = () => {
             >
               <p style={{ margin: 0 }}>
                 <span style={styles.label}>{t('deploymentStatus')}:</span>
-                <span style={styles.value}>{data.deploymentStatus}</span>
+                <span className={descriptionTextStyles.otherLines}>
+                  {data.deploymentStatus}
+                </span>
               </p>
               {data.projectUrl && (
                 <a
@@ -94,7 +101,16 @@ const PersonalProjects = () => {
             </div>
             <p>
               <span style={styles.label}>{t('description')}:</span>
-              <span style={styles.value}>{data.description}</span>
+              <span className={descriptionTextStyles.otherLines}>
+                {data.description
+                  .replace(/\\n/g, '\n')
+                  .split('\n')
+                  .map((text, i) => (
+                    <p key={i} className={descriptionTextStyles.otherLines}>
+                      {text}
+                    </p>
+                  ))}
+              </span>
             </p>
             <div
               style={{
@@ -105,7 +121,7 @@ const PersonalProjects = () => {
             >
               <p>
                 <span style={styles.label}> {t('start_date')}: </span>
-                <span style={styles.value}>
+                <span className={descriptionTextStyles.otherLines}>
                   {' '}
                   {data.start_date
                     ? new Date(data.start_date).toLocaleDateString('fi-FI', {
@@ -117,7 +133,7 @@ const PersonalProjects = () => {
               </p>
               <p>
                 <span style={styles.label}> {t('end_date')}: </span>
-                <span style={styles.value}>
+                <span className={descriptionTextStyles.otherLines}>
                   {' '}
                   {data.end_date
                     ? new Date(data.end_date).toLocaleDateString('fi-FI', {

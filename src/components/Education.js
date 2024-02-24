@@ -5,6 +5,7 @@ import axios from 'axios'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import buttonStyles from './css/button.module.css'
+import descriptionTextStyles from './css/descriptionText.module.css'
 
 const Education = () => {
   const { t } = useTranslation()
@@ -48,15 +49,21 @@ const Education = () => {
           <div key={index} style={styles.entryBox}>
             <p>
               <span style={styles.label}>{t('institution')}:</span>
-              <span style={styles.value}>{data.institution}</span>
+              <span className={descriptionTextStyles.otherLines}>
+                {data.institution}
+              </span>
             </p>
             <p>
               <span style={styles.label}>{t('degree')}:</span>
-              <span style={styles.value}>{data.degree}</span>
+              <span className={descriptionTextStyles.otherLines}>
+                {data.degree}
+              </span>
             </p>
             <p>
               <span style={styles.label}>{t('major')}:</span>
-              <span style={styles.value}>{data.major}</span>
+              <span className={descriptionTextStyles.otherLines}>
+                {data.major}
+              </span>
             </p>
             <div
               style={{
@@ -67,7 +74,7 @@ const Education = () => {
             >
               <p>
                 <span style={styles.label}> {t('start_date')}: </span>
-                <span style={styles.value}>
+                <span className={descriptionTextStyles.otherLines}>
                   {' '}
                   {data.start_date
                     ? new Date(data.start_date).toLocaleDateString('fi-FI', {
@@ -79,7 +86,7 @@ const Education = () => {
               </p>
               <p>
                 <span style={styles.label}> {t('completitionDate')}: </span>
-                <span style={styles.value}>
+                <span className={descriptionTextStyles.otherLines}>
                   {' '}
                   {data.end_date
                     ? new Date(data.end_date).toLocaleDateString('fi-FI', {

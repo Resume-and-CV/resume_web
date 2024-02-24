@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useTranslation } from 'react-i18next'
+import descriptionTextStyles from './css/descriptionText.module.css'
 
 const ContactInfo = () => {
   const { t } = useTranslation()
@@ -45,15 +46,21 @@ const ContactInfo = () => {
           <div key={index} style={styles.entryBox}>
             <p>
               <span style={styles.label}>{t('phone')}:</span>
-              <span style={styles.value}>{contact.phone}</span>
+              <span className={descriptionTextStyles.otherLines}>
+                {contact.phone}
+              </span>
             </p>
             <p>
               <span style={styles.label}>{t('email')}:</span>
-              <span style={styles.value}>{contact.email}</span>
+              <span className={descriptionTextStyles.otherLines}>
+                {contact.email}
+              </span>
             </p>
             <p>
               <span style={styles.label}>{t('address')}:</span>
-              <span style={styles.value}>{contact.address}</span>
+              <span className={descriptionTextStyles.otherLines}>
+                {contact.address}
+              </span>
             </p>
             <p>
               <span style={styles.label}>{t('LinkedIn')}:</span>
