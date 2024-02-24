@@ -1,0 +1,67 @@
+/* mainBoxStyles.module.css adjustments (example) */
+
+.box {
+  border: 2px solid #2c3e50;
+  padding: 20px;
+  background-color: #ffffff;
+  color: #2c3e50;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  margin: 20px auto;
+}
+
+.entryBox {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.label, .value {
+  margin-right: 10px;
+}
+.entryBox td, .entryBox th {
+  flex: 1 0 auto;
+}
+
+.heading {
+  color: #3498db;
+  margin-bottom: 20px;
+  text-align: center;
+  flex: 1 0 100%;
+  font-size: 1.5em;
+}
+
+.label {
+  font-weight: bold;
+  background-color: #3498db;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin-right: 10px;
+  font-size: 11px; /* Increase font size */
+  border: 2px solid #2c3e50;
+  border-radius: 8px; /* Add rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.noData {
+  color: #2c3e50;
+  text-align: center;
+  margin-top: 30px;
+  font-size: 1.2em;
+}
+
+.course_codeValue, .courseCodeLabel,
+.creditsValue, .gradeValue, .typeValue, .completion_date,
+.creditsLabel, .gradeLabel, .typeLabel, .completionDateLabel {
+  flex: 0 0 5%;
+  max-width: 80px;
+}
+
+.courseNameValue, .courseNameLabel {
+  flex: 1 1 70%;
+}
+
+
