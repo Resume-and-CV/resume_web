@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import buttonStyles from './css/button.module.css'
+import descriptionTextStyles from './css/descriptionText.module.css'
 
 function EmailForm({
   onAccountRequest,

@@ -46,20 +46,24 @@ const WorkExperience = () => {
           <div key={index} style={styles.entryBox}>
             <p>
               <span style={styles.label}>{t('company')}:</span>
-              <span style={styles.value}>{data.company}</span>
+              <span className={descriptionTextStyles.otherLines}>
+                {data.company}
+              </span>
             </p>
             <p>
               <span style={styles.label}>{t('jobTitle')}:</span>
-              <span style={styles.value}>{data.job_title}</span>
+              <span className={descriptionTextStyles.otherLines}>
+                {data.job_title}
+              </span>
             </p>
             <p>
               <span style={styles.label}>{t('description')}:</span>
-              <span style={styles.value}>
+              <span className={descriptionTextStyles.otherLines}>
                 {data.description
                   .replace(/\\n/g, '\n')
                   .split('\n')
                   .map((text, i) => (
-                    <p key={i} classNamee={descriptionTextStyles.otherLines}>
+                    <p key={i} className={descriptionTextStyles.otherLines}>
                       {text}
                     </p>
                   ))}
@@ -74,7 +78,7 @@ const WorkExperience = () => {
             >
               <p>
                 <span style={styles.label}> {t('start_date')}: </span>
-                <span style={styles.value}>
+                <span className={descriptionTextStyles.otherLines}>
                   {' '}
                   {data.start_date
                     ? new Date(data.start_date).toLocaleDateString('fi-FI', {
@@ -86,7 +90,7 @@ const WorkExperience = () => {
               </p>
               <p>
                 <span style={styles.label}> {t('endJobDate')}: </span>
-                <span style={styles.value}>
+                <span className={descriptionTextStyles.otherLines}>
                   {' '}
                   {data.end_date
                     ? new Date(data.end_date).toLocaleDateString('fi-FI', {

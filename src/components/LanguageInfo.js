@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useTranslation } from 'react-i18next'
+import descriptionTextStyles from './css/descriptionText.module.css'
 
 const LanguageInfo = () => {
   const { t } = useTranslation()
@@ -46,7 +47,7 @@ const LanguageInfo = () => {
             <div key={index}>
               <p>
                 <span style={styles.label}>{t(data.language)}:</span>
-                <span style={styles.value}>
+                <span className={descriptionTextStyles.otherLines}>
                   {data.level} {data.description && `- ${data.description}`}
                 </span>
               </p>

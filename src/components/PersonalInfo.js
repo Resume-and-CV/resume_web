@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useTranslation } from 'react-i18next'
+import descriptionTextStyles from './css/descriptionText.module.css'
 
 const PersonalInfo = () => {
   const { t } = useTranslation()
@@ -45,25 +46,33 @@ const PersonalInfo = () => {
           <div key={index} style={styles.entryBox}>
             <p>
               <span style={styles.label}>{t('name')}:</span>
-              <span style={styles.value}>{info.name}</span>
+              <span className={descriptionTextStyles.otherLines}>
+                {info.name}
+              </span>
             </p>
             <p>
               <span style={styles.label}>{t('dateOfBirth')}:</span>
-              <span style={styles.value}>
+              <span className={descriptionTextStyles.otherLines}>
                 {new Date(info.birthdate).toLocaleDateString('fi-FI')}
               </span>
             </p>
             <p>
               <span style={styles.label}>{t('Nationality')}:</span>
-              <span style={styles.value}>{info.nationality}</span>
+              <span className={descriptionTextStyles.otherLines}>
+                {info.nationality}
+              </span>
             </p>
             <p>
               <span style={styles.label}>{t('driversLicense')}:</span>
-              <span style={styles.value}>{info.driversLicense}</span>
+              <span className={descriptionTextStyles.otherLines}>
+                {info.driversLicense}
+              </span>
             </p>
             <p>
               <span style={styles.label}>{t('militaryService')}:</span>
-              <span style={styles.value}>{info.militaryService}</span>
+              <span className={descriptionTextStyles.otherLines}>
+                {info.militaryService}
+              </span>
             </p>
           </div>
         ))

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useTranslation } from 'react-i18next'
+import descriptionTextStyles from './css/descriptionText.module.css'
 
 const RecommendationsInfo = () => {
   const { t } = useTranslation()
@@ -45,27 +46,39 @@ const RecommendationsInfo = () => {
           <div key={index} style={styles.entryBox}>
             <p>
               <span style={styles.label}>{t('name')}:</span>
-              <span style={styles.value}>{data.name}</span>
+              <span className={descriptionTextStyles.otherLines}>
+                {data.name}
+              </span>
             </p>
             <p>
               <span style={styles.label}>{t('phone')}:</span>
-              <span style={styles.value}>{data.phone}</span>
+              <span className={descriptionTextStyles.otherLines}>
+                {data.phone}
+              </span>
             </p>
             <p>
               <span style={styles.label}>{t('email')}:</span>
-              <span style={styles.value}>{data.email}</span>
+              <span className={descriptionTextStyles.otherLines}>
+                {data.email}
+              </span>
             </p>
             <p>
               <span style={styles.label}>{t('company')}:</span>
-              <span style={styles.value}>{data.company}</span>
+              <span className={descriptionTextStyles.otherLines}>
+                {data.company}
+              </span>
             </p>
             <p>
               <span style={styles.label}>{t('title')}:</span>
-              <span style={styles.value}>{data.title}</span>
+              <span className={descriptionTextStyles.otherLines}>
+                {data.title}
+              </span>
             </p>
             <p>
               <span style={styles.label}>{t('description')}:</span>
-              <span style={styles.value}>{data.description}</span>
+              <span className={descriptionTextStyles.otherLines}>
+                {data.description}
+              </span>
             </p>
           </div>
         ))
