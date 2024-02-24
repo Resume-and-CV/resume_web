@@ -13,8 +13,6 @@ const SchoolGradesPage = () => {
   const { t } = useTranslation()
   const { i18n } = useTranslation()
 
-  const [error, setError] = useState(null)
-
   const [courses, setCourses] = useState([])
   const [exemptions, setExemptions] = useState([])
 
@@ -65,7 +63,6 @@ const SchoolGradesPage = () => {
         setExemptions(exemptionsObject)
       } catch (error) {
         console.error('Error fetching courses or exemptions:', error)
-        setError(error)
       }
     }
 

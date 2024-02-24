@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useTranslation } from 'react-i18next'
+import descriptionTextStyles from './css/descriptionText.module.css'
 
 const WorkExperience = () => {
   const { t } = useTranslation()
@@ -53,7 +54,16 @@ const WorkExperience = () => {
             </p>
             <p>
               <span style={styles.label}>{t('description')}:</span>
-              <span style={styles.value}>{data.description}</span>
+              <span style={styles.value}>
+                {data.description
+                  .replace(/\\n/g, '\n')
+                  .split('\n')
+                  .map((text, i) => (
+                    <p key={i} classNamee={descriptionTextStyles.otherLines}>
+                      {text}
+                    </p>
+                  ))}
+              </span>
             </p>
             <div
               style={{
