@@ -52,4 +52,5 @@
 .flagIcon {
     width: 30px; /* adjust as needed */
     height: 30px; /* maintain aspect ratio */
+    cursor: pointer;
   }
