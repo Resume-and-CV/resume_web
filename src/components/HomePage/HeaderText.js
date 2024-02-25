@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useTranslation } from 'react-i18next'
 import { jwtDecode } from 'jwt-decode'
-import homePAgeStyles from '../pages/css/homePage.module.css'
+import homePAgeStyles from './css/homePage.module.css'
 import descriptionTextStyles from './css/descriptionText.module.css'
 
 const HeaderText = () => {
@@ -66,7 +66,7 @@ const HeaderText = () => {
                 .replace(/\\n/g, '\n')
                 .split('\n')
                 .map((text, i) => (
-                  <p key={i} classNamee={descriptionTextStyles.firstLine}>
+                  <p key={i} className={descriptionTextStyles.firstLine}>
                     {text}
                   </p>
                 ))}

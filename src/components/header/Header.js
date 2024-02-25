@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-import useAuthStatus from '../middleWare/useAuthStatus' // Adjust the path accordingly
-import { useLogout } from '../middleWare/useLogout' // Adjust the path accordingly
-import { useBuBack } from '../middleWare/useBuBack' // Adjust the path accordingly
-import { useLanguageSwitcher } from '../middleWare/useLanguageSwitcher' // Adjust the path accordingly
+import useAuthStatus from '../../middleWare/useAuthStatus' // Adjust the path accordingly
+import { useLogout } from '../../middleWare/useLogout' // Adjust the path accordingly
+import { useBuBack } from '../../middleWare/useBuBack' // Adjust the path accordingly
+import { useLanguageSwitcher } from '../../middleWare/useLanguageSwitcher' // Adjust the path accordingly
 import { useLocation } from 'react-router-dom'
 import styles from './css/header.module.css'
 import dropdawnStyles from './css/dropdown.module.css'

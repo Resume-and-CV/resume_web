@@ -1,21 +1,21 @@
+// src/components/PersonalInfo.js
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useTranslation } from 'react-i18next'
 import descriptionTextStyles from './css/descriptionText.module.css'
-import homePAgeStyles from '../pages/css/homePage.module.css'
+import homePAgeStyles from './css/homePage.module.css'
 
-const ContactInfo = () => {
+const PersonalInfo = () => {
   const { t } = useTranslation()
-  const [contacts, setContacts] = useState([])
+  const [infos, setInfos] = useState([])
   const [error, setError] = useState(null)
 
   const { i18n } = useTranslation()
 
   useEffect(() => {
     const getData = async () => {
-      const token = localStorage.getItem('token') // Retrieve the token from localStorage
-
       try {
+        const token = localStorage.getItem('token') // Retrieve the token from localStorage
         const config = {
           headers: {
             'Accept-Language': i18n.language,
@@ -23,11 +23,10 @@ const ContactInfo = () => {
           },
         }
         const results = await axios.get(
-          `${process.env.REACT_APP_SERVER_URL}/contactinfo/lang`,
+          `${process.env.REACT_APP_SERVER_URL}/personalinfo/lang`,
           config,
         )
-        setContacts(results.data)
-        //console.log(results.data);
+        setInfos(results.data)
       } catch (err) {
         setError(err.message)
       }
@@ -41,49 +40,40 @@ const ContactInfo = () => {
 
   return (
     <div className={homePAgeStyles.box}>
-      <h2 style={styles.heading}>{t('contactInfo')}</h2>
-      {contacts.length > 0 ? (
-        contacts.map((contact, index) => (
+      <h2 style={styles.heading}>{t('personalInfo')}</h2>{' '}
+      {/* Missing closing tag added */}
+      {infos.length > 0 ? (
+        infos.map((info, index) => (
           <div key={index} className={homePAgeStyles.entryBox}>
             <p>
-              <span style={styles.label}>{t('phone')}:</span>
+              <span style={styles.label}>{t('name')}:</span>
               <span className={descriptionTextStyles.otherLines}>
-                {contact.phone}
+                {info.name}
               </span>
             </p>
             <p>
-              <span style={styles.label}>{t('email')}:</span>
+              <span style={styles.label}>{t('dateOfBirth')}:</span>
               <span className={descriptionTextStyles.otherLines}>
-                {contact.email}
+                {new Date(info.birthdate).toLocaleDateString('fi-FI')}
               </span>
             </p>
             <p>
-              <span style={styles.label}>{t('address')}:</span>
+              <span style={styles.label}>{t('Nationality')}:</span>
               <span className={descriptionTextStyles.otherLines}>
-                {contact.address}
+                {info.nationality}
               </span>
             </p>
             <p>
-              <span style={styles.label}>{t('LinkedIn')}:</span>
-              <a
-                href={contact.linkedin}
-                style={styles.link}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {new URL(contact.linkedin).pathname.split('/').pop()}
-              </a>
+              <span style={styles.label}>{t('driversLicense')}:</span>
+              <span className={descriptionTextStyles.otherLines}>
+                {info.driversLicense}
+              </span>
             </p>
             <p>
-              <span style={styles.label}>{t('GitHub')}:</span>
-              <a
-                href={contact.github}
-                style={styles.link}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {contact.github.split('/').pop()}
-              </a>
+              <span style={styles.label}>{t('militaryService')}:</span>
+              <span className={descriptionTextStyles.otherLines}>
+                {info.militaryService}
+              </span>
             </p>
           </div>
         ))
@@ -94,12 +84,12 @@ const ContactInfo = () => {
   )
 }
 
-export default ContactInfo
+export default PersonalInfo
 
 const styles = {
   heading: {
-    color: '#3498db', // Blue heading color
     //color: "#ecf0f1", // Light gray text
+    color: '#3498db', // Blue heading color
     marginBottom: '15px', // Spacing below heading
     textAlign: 'center', // Center-align the heading
   },
@@ -107,10 +97,5 @@ const styles = {
     fontWeight: 'bold',
     marginRight: '10px', // Adds some space between the label and the value
     color: '#3498db', // Or any color you prefer for labels
-  },
-
-  link: {
-    textDecoration: 'none', // Remove underline from links
-    color: '#3498db', // Use the same blue color for consistency
   },
 }

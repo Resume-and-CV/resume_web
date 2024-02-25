@@ -4,9 +4,9 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
-import buttonStyles from './css/button.module.css'
+import buttonStyles from '../css/button.module.css'
 import descriptionTextStyles from './css/descriptionText.module.css'
-import homePAgeStyles from '../pages/css/homePage.module.css'
+import homePAgeStyles from './css/homePage.module.css'
 
 const Education = () => {
   const { t } = useTranslation()

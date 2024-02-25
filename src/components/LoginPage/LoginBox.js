@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import buttonStyles from './css/button.module.css'
+import buttonStyles from '../css/button.module.css'
 import styles from './css/loginBox.module.css'
 
 const LoginBox = ({ onLogin, errorMessage, isVisible }) => {

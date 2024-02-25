@@ -2,19 +2,19 @@
 import React from 'react'
 
 import styles from './css/homePage.module.css'
-import mainboxStyles from './css/mainBoxStyles.module.css'
+import mainboxStyles from '../css/mainBoxStyles.module.css'
 
-import PersonalInfo from '../components/PersonalInfo'
-import Education from '../components/Education'
-import ContactInfo from '../components/ContactInfo'
-import WorkExperience from '../components/WorkExperience'
-import Header from '../components/Header'
-import LanguageInfo from '../components/LanguageInfo'
-import HobbiesInfo from '../components/HobbiesInfo'
-import RecommendationsInfo from '../components/RecommendationsInfo'
-import SchoolProjects from '../components/schoolProjects'
-import PersonalProjects from '../components/PersonalProjects'
-import HeaderText from '../components/HeaderText'
+import PersonalInfo from './PersonalInfo'
+import Education from './Education'
+import ContactInfo from './ContactInfo'
+import WorkExperience from './WorkExperience'
+import Header from '../header/Header'
+import LanguageInfo from './LanguageInfo'
+import HobbiesInfo from './HobbiesInfo'
+import RecommendationsInfo from './RecommendationsInfo'
+import SchoolProjects from './schoolProjects'
+import PersonalProjects from './PersonalProjects'
+import HeaderText from './HeaderText'
 
 const HomePage = () => {
   return (

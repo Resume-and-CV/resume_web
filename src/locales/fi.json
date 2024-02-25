@@ -53,7 +53,7 @@
   "headerTextTitle": "Tervetuloa {{username}}",
   "showGrades": "Näytä arvosanat",
   "menu": "Valikko",
-  "courseCode": "Kurssikoodi",
+  "courseCode": "Koodi",
   "credits": "Opintopisteet",
   "courseType": "Tyyppi",
   "courseCompletionDate": "Suorituspäivä",

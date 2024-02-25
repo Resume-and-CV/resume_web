@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useTranslation } from 'react-i18next'
 import descriptionTextStyles from './css/descriptionText.module.css'
-import homePAgeStyles from '../pages/css/homePage.module.css'
+import homePAgeStyles from './css/homePage.module.css'
 
-const RecommendationsInfo = () => {
+const ContactInfo = () => {
   const { t } = useTranslation()
-  const [recommendations, setRecommendations] = useState([])
+  const [contacts, setContacts] = useState([])
   const [error, setError] = useState(null)
 
   const { i18n } = useTranslation()
@@ -23,10 +23,10 @@ const RecommendationsInfo = () => {
           },
         }
         const results = await axios.get(
-          `${process.env.REACT_APP_SERVER_URL}/recommendations/lang`,
+          `${process.env.REACT_APP_SERVER_URL}/contactinfo/lang`,
           config,
         )
-        setRecommendations(results.data)
+        setContacts(results.data)
         //console.log(results.data);
       } catch (err) {
         setError(err.message)
@@ -41,45 +41,49 @@ const RecommendationsInfo = () => {
 
   return (
     <div className={homePAgeStyles.box}>
-      <h2 style={styles.heading}>{t('recommendations')}</h2>
-      {recommendations.length > 0 ? (
-        recommendations.map((data, index) => (
+      <h2 style={styles.heading}>{t('contactInfo')}</h2>
+      {contacts.length > 0 ? (
+        contacts.map((contact, index) => (
           <div key={index} className={homePAgeStyles.entryBox}>
-            <p>
-              <span style={styles.label}>{t('name')}:</span>
-              <span className={descriptionTextStyles.otherLines}>
-                {data.name}
-              </span>
-            </p>
             <p>
               <span style={styles.label}>{t('phone')}:</span>
               <span className={descriptionTextStyles.otherLines}>
-                {data.phone}
+                {contact.phone}
               </span>
             </p>
             <p>
               <span style={styles.label}>{t('email')}:</span>
               <span className={descriptionTextStyles.otherLines}>
-                {data.email}
+                {contact.email}
               </span>
             </p>
             <p>
-              <span style={styles.label}>{t('company')}:</span>
+              <span style={styles.label}>{t('address')}:</span>
               <span className={descriptionTextStyles.otherLines}>
-                {data.company}
+                {contact.address}
               </span>
             </p>
             <p>
-              <span style={styles.label}>{t('title')}:</span>
-              <span className={descriptionTextStyles.otherLines}>
-                {data.title}
-              </span>
+              <span style={styles.label}>{t('LinkedIn')}:</span>
+              <a
+                href={contact.linkedin}
+                style={styles.link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {new URL(contact.linkedin).pathname.split('/').pop()}
+              </a>
             </p>
             <p>
-              <span style={styles.label}>{t('description')}:</span>
-              <span className={descriptionTextStyles.otherLines}>
-                {data.description}
-              </span>
+              <span style={styles.label}>{t('GitHub')}:</span>
+              <a
+                href={contact.github}
+                style={styles.link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {contact.github.split('/').pop()}
+              </a>
             </p>
           </div>
         ))
@@ -90,7 +94,7 @@ const RecommendationsInfo = () => {
   )
 }
 
-export default RecommendationsInfo
+export default ContactInfo
 
 const styles = {
   heading: {
@@ -103,5 +107,10 @@ const styles = {
     fontWeight: 'bold',
     marginRight: '10px', // Adds some space between the label and the value
     color: '#3498db', // Or any color you prefer for labels
+  },
+
+  link: {
+    textDecoration: 'none', // Remove underline from links
+    color: '#3498db', // Use the same blue color for consistency
   },
 }

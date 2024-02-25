@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useTranslation } from 'react-i18next'
 import descriptionTextStyles from './css/descriptionText.module.css'
-import homePAgeStyles from '../pages/css/homePage.module.css'
+import homePAgeStyles from './css/homePage.module.css'
 
 const SchoolProjects = () => {
   const { t } = useTranslation()
@@ -57,7 +57,7 @@ const SchoolProjects = () => {
                 {data.technologiesUsed}
               </span>
             </p>
-            <p>
+            <div>
               <span style={styles.label}>{t('description')}:</span>
               <span className={descriptionTextStyles.otherLines}>
                 {data.description
@@ -69,14 +69,13 @@ const SchoolProjects = () => {
                     </p>
                   ))}
               </span>
-            </p>
+            </div>{' '}
             <p>
               <span style={styles.label}>{t('courseName')}:</span>
               <span className={descriptionTextStyles.otherLines}>
                 {data.courseName}
               </span>
             </p>
-
             <div
               style={{
                 display: 'flex',
@@ -107,7 +106,6 @@ const SchoolProjects = () => {
                 </a>
               )}
             </div>
-
             <p>
               <span style={styles.label}> {t('completitionDate')}: </span>
               <span className={descriptionTextStyles.otherLines}>

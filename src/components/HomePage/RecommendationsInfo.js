@@ -1,21 +1,21 @@
-// src/components/PersonalInfo.js
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useTranslation } from 'react-i18next'
 import descriptionTextStyles from './css/descriptionText.module.css'
-import homePAgeStyles from '../pages/css/homePage.module.css'
+import homePAgeStyles from './css/homePage.module.css'
 
-const PersonalInfo = () => {
+const RecommendationsInfo = () => {
   const { t } = useTranslation()
-  const [infos, setInfos] = useState([])
+  const [recommendations, setRecommendations] = useState([])
   const [error, setError] = useState(null)
 
   const { i18n } = useTranslation()
 
   useEffect(() => {
     const getData = async () => {
+      const token = localStorage.getItem('token') // Retrieve the token from localStorage
+
       try {
-        const token = localStorage.getItem('token') // Retrieve the token from localStorage
         const config = {
           headers: {
             'Accept-Language': i18n.language,
@@ -23,10 +23,11 @@ const PersonalInfo = () => {
           },
         }
         const results = await axios.get(
-          `${process.env.REACT_APP_SERVER_URL}/personalinfo/lang`,
+          `${process.env.REACT_APP_SERVER_URL}/recommendations/lang`,
           config,
         )
-        setInfos(results.data)
+        setRecommendations(results.data)
+        //console.log(results.data);
       } catch (err) {
         setError(err.message)
       }
@@ -40,39 +41,44 @@ const PersonalInfo = () => {
 
   return (
     <div className={homePAgeStyles.box}>
-      <h2 style={styles.heading}>{t('personalInfo')}</h2>{' '}
-      {/* Missing closing tag added */}
-      {infos.length > 0 ? (
-        infos.map((info, index) => (
+      <h2 style={styles.heading}>{t('recommendations')}</h2>
+      {recommendations.length > 0 ? (
+        recommendations.map((data, index) => (
           <div key={index} className={homePAgeStyles.entryBox}>
             <p>
               <span style={styles.label}>{t('name')}:</span>
               <span className={descriptionTextStyles.otherLines}>
-                {info.name}
+                {data.name}
               </span>
             </p>
             <p>
-              <span style={styles.label}>{t('dateOfBirth')}:</span>
+              <span style={styles.label}>{t('phone')}:</span>
               <span className={descriptionTextStyles.otherLines}>
-                {new Date(info.birthdate).toLocaleDateString('fi-FI')}
+                {data.phone}
               </span>
             </p>
             <p>
-              <span style={styles.label}>{t('Nationality')}:</span>
+              <span style={styles.label}>{t('email')}:</span>
               <span className={descriptionTextStyles.otherLines}>
-                {info.nationality}
+                {data.email}
               </span>
             </p>
             <p>
-              <span style={styles.label}>{t('driversLicense')}:</span>
+              <span style={styles.label}>{t('company')}:</span>
               <span className={descriptionTextStyles.otherLines}>
-                {info.driversLicense}
+                {data.company}
               </span>
             </p>
             <p>
-              <span style={styles.label}>{t('militaryService')}:</span>
+              <span style={styles.label}>{t('title')}:</span>
               <span className={descriptionTextStyles.otherLines}>
-                {info.militaryService}
+                {data.title}
+              </span>
+            </p>
+            <p>
+              <span style={styles.label}>{t('description')}:</span>
+              <span className={descriptionTextStyles.otherLines}>
+                {data.description}
               </span>
             </p>
           </div>
@@ -84,12 +90,12 @@ const PersonalInfo = () => {
   )
 }
 
-export default PersonalInfo
+export default RecommendationsInfo
 
 const styles = {
   heading: {
-    //color: "#ecf0f1", // Light gray text
     color: '#3498db', // Blue heading color
+    //color: "#ecf0f1", // Light gray text
     marginBottom: '15px', // Spacing below heading
     textAlign: 'center', // Center-align the heading
   },

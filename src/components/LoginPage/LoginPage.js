@@ -3,13 +3,12 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
-import LoginBox from '../components/LoginBox'
-import Header from '../components/Header'
-import ContactForm from '../components/ContactForm'
+import LoginBox from './LoginBox'
+import Header from '../header/Header'
+import ContactForm from './ContactForm'
 
-import mainboxStyles from './css/mainBoxStyles.module.css'
-import buttonStyles from '../components/css/button.module.css'
-
+import mainboxStyles from '../css/mainBoxStyles.module.css'
+import buttonStyles from '../css/button.module.css'
 const LoginPage = () => {
   const navigate = useNavigate()
 
