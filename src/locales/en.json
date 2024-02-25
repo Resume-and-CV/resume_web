@@ -59,5 +59,7 @@
   "courseCompletionDate": "Completion",
   "basicAndProfessionalStudies": "Basic and Professional Studies",
   "recognitionOfStudies": "Recognition of Studies",
-  "grade_information": "Grade Information"
+  "grade_information": "Grade Information",
+  "sum_of_credits": "Sum of Credits",
+  "average_grade": "Average Grade"
 }

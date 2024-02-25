@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './css/BasicAndProfessionalStudies.module.css'
+import schoolGradeStyles from './css/schoolGrades.module.css'
 import { useTranslation } from 'react-i18next'
 
 const BasicAndProfessionalStudies = ({ courses }) => {
@@ -8,9 +9,9 @@ const BasicAndProfessionalStudies = ({ courses }) => {
   return (
     <div>
       <h2>{t('basicAndProfessionalStudies')}</h2>
-      <div className={styles.scrollableTable}>
+      <div className={schoolGradeStyles.scrollableTable}>
         {courses.length > 0 ? (
-          <table className={styles.entryBox}>
+          <table className={schoolGradeStyles.entryBox}>
             <thead>
               <tr>
                 <th className={`${styles.label} ${styles.courseCodeLabel}`}>
@@ -63,7 +64,7 @@ const BasicAndProfessionalStudies = ({ courses }) => {
             </tbody>
           </table>
         ) : (
-          <p className={styles.noData}>
+          <p className={schoolGradeStyles.noData}>
             No courses found. Please check back later.
           </p>
         )}

@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './css/Exemptions.module.css'
 import { useTranslation } from 'react-i18next'
+import schoolGradeStyles from './css/schoolGrades.module.css'
 
 const Exemptions = ({ exemptions }) => {
   const { t } = useTranslation()
@@ -8,17 +9,33 @@ const Exemptions = ({ exemptions }) => {
   return (
     <div>
       <h2>{t('recognitionOfStudies')}</h2>
-      <div className={styles.scrollableTable}>
+      <div className={schoolGradeStyles.scrollableTable}>
         {Object.keys(exemptions).length > 0 &&
         Object.values(exemptions).flat().length > 0 ? (
-          <table className={styles.entryBox}>
+          <table className={schoolGradeStyles.entryBox}>
             <thead>
               <tr>
-                <th className={styles.label}>{t('institution')}</th>
-                <th className={styles.label}>{t('courseName')}</th>
-                <th className={styles.label}>{t('credits')}</th>
-                <th className={styles.label}>{t('courseType')}</th>
-                <th className={styles.label}>{t('courseCompletionDate')}</th>
+                <th
+                  className={`${styles.institutionLabel} ${styles.institutionValue}`}
+                >
+                  {t('institution')}
+                </th>
+                <th
+                  className={`${styles.courseNameLabel} ${styles.courseNameValue}`}
+                >
+                  {t('courseName')}
+                </th>
+                <th className={`${styles.creditsLabel} ${styles.creditsValue}`}>
+                  {t('credits')}
+                </th>
+                <th className={`${styles.typeLabel} ${styles.typeValue}`}>
+                  {t('courseType')}
+                </th>
+                <th
+                  className={`${styles.completionDateLabel} ${styles.completionDateValue}`}
+                >
+                  {t('courseCompletionDate')}
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -58,7 +75,7 @@ const Exemptions = ({ exemptions }) => {
             </tbody>
           </table>
         ) : (
-          <p className={styles.noData}>
+          <p className={schoolGradeStyles.noData}>
             No exemptions found. Please check back later.
           </p>
         )}

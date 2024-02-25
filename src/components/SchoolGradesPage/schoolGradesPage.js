@@ -12,11 +12,17 @@ import Exemptions from './Exemptions'
 const SchoolGradesPage = () => {
   let { state } = useLocation()
   let education_id = state.education_id
+  let total_credits_required = state.total_credits_required
   const { t } = useTranslation()
   const { i18n } = useTranslation()
 
   const [courses, setCourses] = useState([])
   const [exemptions, setExemptions] = useState([])
+
+  const sumOfCredits = courses.reduce(
+    (sum, course) => sum + parseInt(course.credits),
+    0,
+  )
 
   useEffect(() => {
     const getCoursesAndExemptions = async () => {
@@ -71,12 +77,23 @@ const SchoolGradesPage = () => {
     getCoursesAndExemptions()
   }, [i18n.language, education_id])
 
+  const grades = courses.map((course) => parseInt(course.grade))
+  const sumOfGrades = grades.reduce((a, b) => a + b, 0)
+  const averageGrade = (sumOfGrades / courses.length).toFixed(2)
+
   return (
     <div>
       <Header />
       <div className={mainBoxStyles.mainBox}>
         <div className={styles.box}>
           <h1 className={styles.heading}>{t('grade_information')}</h1>
+          <h2 className={styles.heading2}>
+            {t('sum_of_credits')}: {sumOfCredits} / {total_credits_required}{' '}
+          </h2>
+          <h2 className={styles.heading2}>
+            {t('average_grade')}: {averageGrade}
+          </h2>
+
           {/* Subheading for Courses */}
           <BasicAndProfessionalStudies courses={courses} />
           {/* Subheading for Exemptions */}

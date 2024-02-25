@@ -102,7 +102,10 @@ const Education = () => {
                 className={buttonStyles.button}
                 onClick={() =>
                   navigate('/schoolGradesPage', {
-                    state: { education_id: data.id },
+                    state: {
+                      education_id: data.id,
+                      total_credits_required: data.total_credits_required,
+                    },
                   })
                 }
               >

@@ -59,5 +59,7 @@
   "courseCompletionDate": "Suorituspäivä",
   "basicAndProfessionalStudies": "Perus ja ammattiopinnot",
   "recognitionOfStudies": "Opintojen hyväksiluku",
-  "grade_information": "Arvosanat"
+  "grade_information": "Arvosanat",
+  "sum_of_credits": "Opintopisteiden summa",
+  "average_grade": "Keskiarvo"
 }
