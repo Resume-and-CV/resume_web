@@ -1,6 +1,6 @@
 {
   "headerTitle": "Aki Kuivas, Ohjelmistokehityksen opiskelija",
-  "headerTitleShort": "Kuivas",
+  "headerTitleShort": "Aki Kuivas",
   "personalInfo": "Henkilötiedot",
   "name": "Nimi",
   "dateOfBirth": "Syntymäaika",
@@ -53,7 +53,7 @@
   "headerTextTitle": "Tervetuloa {{username}}",
   "showGrades": "Näytä arvosanat",
   "menu": "Valikko",
-  "courseCode": "Kurssikoodi",
+  "courseCode": "Koodi",
   "credits": "Opintopisteet",
   "courseType": "Tyyppi",
   "courseCompletionDate": "Suorituspäivä",

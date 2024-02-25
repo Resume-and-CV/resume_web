@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useTranslation } from 'react-i18next'
 import { jwtDecode } from 'jwt-decode'
-import mainStyles from '../pages/css/mainBoxStyles.module.css'
+import homePAgeStyles from './css/homePage.module.css'
 import descriptionTextStyles from './css/descriptionText.module.css'
 
 const HeaderText = () => {
@@ -56,9 +56,9 @@ const HeaderText = () => {
   }
   console.log('username1:', username)
   return (
-    <div className={mainStyles.box}>
+    <div className={homePAgeStyles.box}>
       <h2 style={styles.heading}>{t('headerTextTitle', { username })}</h2>
-      <div style={styles.entryBox}>
+      <div className={homePAgeStyles.entryBox}>
         {headerText && headerText.length > 0 ? (
           headerText.map((data, index) => (
             <div key={index}>
@@ -66,7 +66,7 @@ const HeaderText = () => {
                 .replace(/\\n/g, '\n')
                 .split('\n')
                 .map((text, i) => (
-                  <p key={i} classNamee={descriptionTextStyles.firstLine}>
+                  <p key={i} className={descriptionTextStyles.firstLine}>
                     {text}
                   </p>
                 ))}
@@ -90,26 +90,6 @@ const HeaderText = () => {
 
 export default HeaderText
 const styles = {
-  box: {
-    border: '2px solid #2c3e50', // Darker border for contrast
-    padding: '20px',
-    backgroundColor: '#ffffff', // White background for cleanliness
-    //backgroundColor: "#3498db", // Dark blue-gray background
-    color: '#2c3e50', // Dark blue-gray text
-    //margin: '20px', // Centered margin for login box
-    marginLeft: '20px',
-    marginRight: '20px',
-    marginTop: '20px',
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', // Subtle shadow for depth
-    borderRadius: '8px', // Rounded corners
-  },
-  entryBox: {
-    border: '1px solid #ccc',
-    padding: '10px',
-    margin: '10px 0',
-    borderRadius: '5px',
-    backgroundColor: '#f9f9f9',
-  },
   heading: {
     color: '#3498db', // Blue heading color
     //color: "#ecf0f1", // Light gray text

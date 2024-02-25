@@ -8,7 +8,7 @@
     justify-content: space-between;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    margin: 10px;
+    margin: 5px;
 }
 
 .logoContainer, .navLinksContainer {
@@ -16,6 +16,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+
 }
 
 .titleContainer {
@@ -47,3 +49,8 @@
     height: 50px;
     width: 50px;
 }
+.flagIcon {
+    width: 30px; /* adjust as needed */
+    height: 30px; /* maintain aspect ratio */
+    cursor: pointer;
+  }

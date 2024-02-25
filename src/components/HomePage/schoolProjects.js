@@ -4,10 +4,11 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useTranslation } from 'react-i18next'
 import descriptionTextStyles from './css/descriptionText.module.css'
+import homePAgeStyles from './css/homePage.module.css'
 
-const WorkExperience = () => {
+const SchoolProjects = () => {
   const { t } = useTranslation()
-  const [workPlaces, setWorkPlaces] = useState([])
+  const [projects, setProjects] = useState([])
   const [error, setError] = useState(null)
 
   const { i18n } = useTranslation()
@@ -23,10 +24,10 @@ const WorkExperience = () => {
           },
         }
         const results = await axios.get(
-          `${process.env.REACT_APP_SERVER_URL}/work/lang`,
+          `${process.env.REACT_APP_SERVER_URL}/schoolprojects/lang`,
           config,
         )
-        setWorkPlaces(results.data)
+        setProjects(results.data)
       } catch (err) {
         setError(err.message)
       }
@@ -39,24 +40,24 @@ const WorkExperience = () => {
   }
   //console.log(workPlaces);
   return (
-    <div style={styles.box}>
-      <h2 style={styles.heading}>{t('workExperience')}</h2>
-      {workPlaces.length > 0 ? (
-        workPlaces.map((data, index) => (
-          <div key={index} style={styles.entryBox}>
+    <div className={homePAgeStyles.box}>
+      <h2 style={styles.heading}>{t('schoolProjects')}</h2>
+      {projects.length > 0 ? (
+        projects.map((data, index) => (
+          <div key={index} className={homePAgeStyles.entryBox}>
             <p>
-              <span style={styles.label}>{t('company')}:</span>
+              <span style={styles.label}>{t('projectName')}:</span>
               <span className={descriptionTextStyles.otherLines}>
-                {data.company}
+                {data.projectName}
               </span>
             </p>
             <p>
-              <span style={styles.label}>{t('jobTitle')}:</span>
+              <span style={styles.label}>{t('technologiesUsed')}:</span>
               <span className={descriptionTextStyles.otherLines}>
-                {data.job_title}
+                {data.technologiesUsed}
               </span>
             </p>
-            <p>
+            <div>
               <span style={styles.label}>{t('description')}:</span>
               <span className={descriptionTextStyles.otherLines}>
                 {data.description
@@ -68,39 +69,58 @@ const WorkExperience = () => {
                     </p>
                   ))}
               </span>
+            </div>{' '}
+            <p>
+              <span style={styles.label}>{t('courseName')}:</span>
+              <span className={descriptionTextStyles.otherLines}>
+                {data.courseName}
+              </span>
             </p>
             <div
               style={{
                 display: 'flex',
-                justifyContent: 'space-between',
-                width: '100%',
+                alignItems: 'center',
+                flexWrap: 'wrap',
+                marginBottom: '10px',
               }}
             >
-              <p>
-                <span style={styles.label}> {t('start_date')}: </span>
+              <p style={{ margin: 0 }}>
+                <span style={styles.label}>{t('grade')}:</span>
                 <span className={descriptionTextStyles.otherLines}>
-                  {' '}
-                  {data.start_date
-                    ? new Date(data.start_date).toLocaleDateString('fi-FI', {
-                        month: 'numeric',
-                        year: 'numeric',
-                      })
-                    : t('ongoing')}
+                  {data.grade}
                 </span>
               </p>
-              <p>
-                <span style={styles.label}> {t('endJobDate')}: </span>
-                <span className={descriptionTextStyles.otherLines}>
-                  {' '}
-                  {data.end_date
-                    ? new Date(data.end_date).toLocaleDateString('fi-FI', {
-                        month: 'numeric',
-                        year: 'numeric',
-                      })
-                    : t('ongoing')}
-                </span>
-              </p>
+
+              {data.repositoryLink && (
+                <a
+                  href={data.repositoryLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    marginLeft: '10px',
+                    textDecoration: 'none', // Remove underline from links
+                    color: '#3498db', // Use the same blue color for consistency
+                  }}
+                >
+                  {new URL(data.repositoryLink).hostname}
+                </a>
+              )}
             </div>
+            <p>
+              <span style={styles.label}> {t('completitionDate')}: </span>
+              <span className={descriptionTextStyles.otherLines}>
+                {' '}
+                {data.completitionDate
+                  ? new Date(data.completitionDate).toLocaleDateString(
+                      'fi-FI',
+                      {
+                        month: 'numeric',
+                        year: 'numeric',
+                      },
+                    )
+                  : t('ongoing')}
+              </span>
+            </p>
           </div>
         ))
       ) : (
@@ -110,26 +130,9 @@ const WorkExperience = () => {
   )
 }
 
-export default WorkExperience
+export default SchoolProjects
 
 const styles = {
-  box: {
-    border: '2px solid #2c3e50', // Darker border for contrast
-    padding: '20px',
-    backgroundColor: '#ffffff', // White background for cleanliness
-    //backgroundColor: "#3498db", // Dark blue-gray background
-    color: '#2c3e50', // Dark blue-gray text
-    margin: '20px auto', // Centered margin for login box
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', // Subtle shadow for depth
-    borderRadius: '8px', // Rounded corners
-  },
-  entryBox: {
-    border: '1px solid #ccc',
-    padding: '10px',
-    margin: '10px 0',
-    borderRadius: '5px',
-    backgroundColor: '#f9f9f9',
-  },
   heading: {
     color: '#3498db', // Blue heading color
     //color: "#ecf0f1", // Light gray text
@@ -140,9 +143,5 @@ const styles = {
     fontWeight: 'bold',
     marginRight: '10px', // Adds some space between the label and the value
     color: '#3498db', // Or any color you prefer for labels
-  },
-  value: {
-    color: '#2c3e50', // Dark blue-gray, or choose a different color for contrast
-    // Any additional styling for values
   },
 }

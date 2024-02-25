@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import buttonStyles from './css/button.module.css'
+import buttonStyles from '../css/button.module.css'
 import styles from './css/loginBox.module.css'
 
 const LoginBox = ({ onLogin, errorMessage, isVisible }) => {
@@ -8,6 +8,9 @@ const LoginBox = ({ onLogin, errorMessage, isVisible }) => {
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false)
+  const showPasswordImg = '/images/eye.png'
+  const hidePasswordImg = '/images/hidden.png'
 
   if (isVisible) return null // Don't render anything if not visible
 
@@ -33,16 +36,41 @@ const LoginBox = ({ onLogin, errorMessage, isVisible }) => {
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
-        <div>
+        <div style={{ position: 'relative' }}>
           <label htmlFor="password">{t('password')}</label>
-          <input
-            className={styles.input}
-            type="password"
-            id="password"
-            value={password}
-            autoComplete="current-password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <div>
+            <input
+              className={styles.input}
+              type={isPasswordVisible ? 'text' : 'password'}
+              id="password"
+              value={password}
+              autoComplete="current-password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <div>
+            <button
+              style={{
+                position: 'absolute',
+                right: -10,
+                top: '54%',
+                transform: 'translateY(-50%)',
+                backgroundColor: 'transparent',
+                border: 'none',
+                cursor: 'pointer',
+              }}
+              onClick={(e) => {
+                e.preventDefault()
+                setIsPasswordVisible(!isPasswordVisible)
+              }}
+            >
+              <img
+                src={isPasswordVisible ? hidePasswordImg : showPasswordImg}
+                alt="toggle visibility"
+                className={styles.logo}
+              />
+            </button>
+          </div>
         </div>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <button

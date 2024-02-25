@@ -1,6 +1,6 @@
 {
   "headerTitle": "Aki Kuivas | Future Software Developer",
-  "headerTitleShort": "Kuivas",
+  "headerTitleShort": "Aki Kuivas",
   "personalInfo": "Personal Info",
   "name": "Name",
   "dateOfBirth": "Birthdate",
@@ -53,10 +53,10 @@
   "headerTextTitle": "Welcome {{username}}",
   "showGrades": "Show Grades",
   "menu": "Menu",
-  "courseCode": "Course Code",
+  "courseCode": "Code",
   "credits": "Credits",
   "courseType": "Type",
-  "courseCompletionDate": "Completion Date",
+  "courseCompletionDate": "Completion",
   "basicAndProfessionalStudies": "Basic and Professional Studies",
   "recognitionOfStudies": "Recognition of Studies",
   "grade_information": "Grade Information"

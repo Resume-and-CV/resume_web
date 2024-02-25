@@ -4,8 +4,9 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
-import buttonStyles from './css/button.module.css'
+import buttonStyles from '../css/button.module.css'
 import descriptionTextStyles from './css/descriptionText.module.css'
+import homePAgeStyles from './css/homePage.module.css'
 
 const Education = () => {
   const { t } = useTranslation()
@@ -42,11 +43,11 @@ const Education = () => {
   }
   // console.log(educations);
   return (
-    <div style={styles.box}>
+    <div className={homePAgeStyles.box}>
       <h2 style={styles.heading}>{t('education')}</h2>
       {educations.length > 0 ? (
         educations.map((data, index) => (
-          <div key={index} style={styles.entryBox}>
+          <div key={index} className={homePAgeStyles.entryBox}>
             <p>
               <span style={styles.label}>{t('institution')}:</span>
               <span className={descriptionTextStyles.otherLines}>
@@ -120,23 +121,6 @@ const Education = () => {
 export default Education
 
 const styles = {
-  box: {
-    border: '2px solid #2c3e50', // Darker border for contrast
-    padding: '20px',
-    backgroundColor: '#ffffff', // White background for cleanliness
-    //backgroundColor: "#3498db", // Dark blue-gray background
-    color: '#2c3e50', // Dark blue-gray text
-    margin: '20px auto', // Centered margin for login box
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', // Subtle shadow for depth
-    borderRadius: '8px', // Rounded corners
-  },
-  entryBox: {
-    border: '1px solid #ccc',
-    padding: '10px',
-    margin: '10px 0',
-    borderRadius: '5px',
-    backgroundColor: '#f9f9f9',
-  },
   heading: {
     color: '#3498db', // Blue heading color
     //color: "#ecf0f1", // Light gray text
@@ -147,9 +131,5 @@ const styles = {
     fontWeight: 'bold',
     marginRight: '10px', // Adds some space between the label and the value
     color: '#3498db', // Or any color you prefer for labels
-  },
-  value: {
-    color: '#2c3e50', // Dark blue-gray, or choose a different color for contrast
-    // Any additional styling for values
   },
 }

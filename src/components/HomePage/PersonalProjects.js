@@ -4,8 +4,9 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useTranslation } from 'react-i18next'
 import descriptionTextStyles from './css/descriptionText.module.css'
+import homePAgeStyles from './css/homePage.module.css'
 
-const SchoolProjects = () => {
+const PersonalProjects = () => {
   const { t } = useTranslation()
   const [projects, setProjects] = useState([])
   const [error, setError] = useState(null)
@@ -23,7 +24,7 @@ const SchoolProjects = () => {
           },
         }
         const results = await axios.get(
-          `${process.env.REACT_APP_SERVER_URL}/schoolprojects/lang`,
+          `${process.env.REACT_APP_SERVER_URL}/personalprojects/lang`,
           config,
         )
         setProjects(results.data)
@@ -39,11 +40,11 @@ const SchoolProjects = () => {
   }
   //console.log(workPlaces);
   return (
-    <div style={styles.box}>
-      <h2 style={styles.heading}>{t('schoolProjects')}</h2>
+    <div className={homePAgeStyles.box}>
+      <h2 style={styles.heading}>{t('personalProjects')}</h2>
       {projects.length > 0 ? (
         projects.map((data, index) => (
-          <div key={index} style={styles.entryBox}>
+          <div key={index} className={homePAgeStyles.entryBox}>
             <p>
               <span style={styles.label}>{t('projectName')}:</span>
               <span className={descriptionTextStyles.otherLines}>
@@ -56,26 +57,6 @@ const SchoolProjects = () => {
                 {data.technologiesUsed}
               </span>
             </p>
-            <p>
-              <span style={styles.label}>{t('description')}:</span>
-              <span className={descriptionTextStyles.otherLines}>
-                {data.description
-                  .replace(/\\n/g, '\n')
-                  .split('\n')
-                  .map((text, i) => (
-                    <p key={i} className={descriptionTextStyles.otherLines}>
-                      {text}
-                    </p>
-                  ))}
-              </span>
-            </p>
-            <p>
-              <span style={styles.label}>{t('courseName')}:</span>
-              <span className={descriptionTextStyles.otherLines}>
-                {data.courseName}
-              </span>
-            </p>
-
             <div
               style={{
                 display: 'flex',
@@ -85,12 +66,25 @@ const SchoolProjects = () => {
               }}
             >
               <p style={{ margin: 0 }}>
-                <span style={styles.label}>{t('grade')}:</span>
+                <span style={styles.label}>{t('deploymentStatus')}:</span>
                 <span className={descriptionTextStyles.otherLines}>
-                  {data.grade}
+                  {data.deploymentStatus}
                 </span>
               </p>
-
+              {data.projectUrl && (
+                <a
+                  href={data.projectUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    marginLeft: '10px',
+                    textDecoration: 'none', // Remove underline from links
+                    color: '#3498db', // Use the same blue color for consistency
+                  }}
+                >
+                  {new URL(data.projectUrl).hostname}
+                </a>
+              )}
               {data.repositoryLink && (
                 <a
                   href={data.repositoryLink}
@@ -102,26 +96,55 @@ const SchoolProjects = () => {
                     color: '#3498db', // Use the same blue color for consistency
                   }}
                 >
-                  {new URL(data.repositoryLink).hostname}
+                  {new URL(data.repositoryLink).hostname}{' '}
                 </a>
               )}
             </div>
-
-            <p>
-              <span style={styles.label}> {t('completitionDate')}: </span>
+            <div>
+              <span style={styles.label}>{t('description')}:</span>
               <span className={descriptionTextStyles.otherLines}>
-                {' '}
-                {data.completitionDate
-                  ? new Date(data.completitionDate).toLocaleDateString(
-                      'fi-FI',
-                      {
+                {data.description
+                  .replace(/\\n/g, '\n')
+                  .split('\n')
+                  .map((text, i) => (
+                    <p key={i} className={descriptionTextStyles.otherLines}>
+                      {text}
+                    </p>
+                  ))}
+              </span>
+            </div>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                width: '100%',
+              }}
+            >
+              <p>
+                <span style={styles.label}> {t('start_date')}: </span>
+                <span className={descriptionTextStyles.otherLines}>
+                  {' '}
+                  {data.start_date
+                    ? new Date(data.start_date).toLocaleDateString('fi-FI', {
                         month: 'numeric',
                         year: 'numeric',
-                      },
-                    )
-                  : t('ongoing')}
-              </span>
-            </p>
+                      })
+                    : t('ongoing')}
+                </span>
+              </p>
+              <p>
+                <span style={styles.label}> {t('end_date')}: </span>
+                <span className={descriptionTextStyles.otherLines}>
+                  {' '}
+                  {data.end_date
+                    ? new Date(data.end_date).toLocaleDateString('fi-FI', {
+                        month: 'numeric',
+                        year: 'numeric',
+                      })
+                    : t('ongoing')}
+                </span>
+              </p>
+            </div>
           </div>
         ))
       ) : (
@@ -131,39 +154,23 @@ const SchoolProjects = () => {
   )
 }
 
-export default SchoolProjects
+export default PersonalProjects
 
 const styles = {
-  box: {
-    border: '2px solid #2c3e50', // Darker border for contrast
-    padding: '20px',
-    backgroundColor: '#ffffff', // White background for cleanliness
-    //backgroundColor: "#3498db", // Dark blue-gray background
-    color: '#2c3e50', // Dark blue-gray text
-    margin: '20px auto', // Centered margin for login box
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', // Subtle shadow for depth
-    borderRadius: '8px', // Rounded corners
-  },
-  entryBox: {
-    border: '1px solid #ccc',
-    padding: '10px',
-    margin: '10px 0',
-    borderRadius: '5px',
-    backgroundColor: '#f9f9f9',
-  },
   heading: {
     color: '#3498db', // Blue heading color
-    //color: "#ecf0f1", // Light gray text
     marginBottom: '15px', // Spacing below heading
     textAlign: 'center', // Center-align the heading
+  },
+  detailHeader: {
+    // New style for detail headers
+    fontWeight: 'bold', // Make text bold
+    color: '#2c3e50', // Use the same dark blue-gray color for consistency
+    marginBottom: '5px', // Reduce bottom margin for a tighter grouping with its description
   },
   label: {
     fontWeight: 'bold',
     marginRight: '10px', // Adds some space between the label and the value
     color: '#3498db', // Or any color you prefer for labels
-  },
-  value: {
-    color: '#2c3e50', // Dark blue-gray, or choose a different color for contrast
-    // Any additional styling for values
   },
 }
