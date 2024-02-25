@@ -1,0 +1,69 @@
+
+.entryBox {
+    display: table;
+    width: 100%; /* Adjust as needed */  
+  }
+  
+  .entryBox th, .entryBox td {
+    width: 100px; /* Adjust as needed */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border: 1px solid #ccc;
+    transition: background-color 0.3s ease; /* Adjust as needed */
+  
+  }
+  .entryBox td:hover {
+    background-color: #f5f5f5; /* Change as needed */
+  }
+  
+  .scrollableTable {
+    overflow-x: auto;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .entryBox {
+      display: block;
+      width: 100px; /* Adjust as needed */
+    }
+  }
+  
+  
+  
+  
+  .label, .value {
+    text-align: left;
+    line-height: 1.5; /* Adjust as needed */
+    padding: 0; /* Adjust as needed */
+  }
+
+.noData {
+    color: #2c3e50;
+    text-align: center;
+    margin-top: 30px;
+    font-size: 1.2em;
+  }
+  
+  .entryBox th.courseCodeLabel, .entryBox td.course_codeValue {
+    width: 50px; /* Adjust as needed */
+  }
+  
+  .entryBox th.courseNameLabel, .entryBox td.courseNameValue {
+    width: 250px; /* Adjust as needed */
+  }
+  
+  .entryBox th.creditsLabel, .entryBox td.creditsValue {
+    width: 35px; /* Adjust as needed */
+  }
+  
+  .entryBox th.gradeLabel, .entryBox td.gradeValue {
+    width: 35px; /* Adjust as needed */
+  }
+  
+  .entryBox th.typeLabel, .entryBox td.typeValue {
+    width: 35px; /* Adjust as needed */
+  }
+  
+  .entryBox th.completionDateLabel, .entryBox td.completion_date {
+    width: 50px; /* Adjust as needed */
+  }
