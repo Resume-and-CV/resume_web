@@ -1,0 +1,21 @@
+
+
+  .entryBox th.institutionLabel, .entryBox td.institutionValue {
+    width: 300px; /* Adjust as needed */
+  }
+  
+  .entryBox th.courseNameLabel, .entryBox td.courseNameValue {
+    width: 350px; /* Adjust as needed */
+  }
+  
+  .entryBox th.creditsLabel, .entryBox td.creditsValue {
+    width: 35px; /* Adjust as needed */
+  }
+  
+  .entryBox th.typeLabel, .entryBox td.typeValue {
+    width: 35px; /* Adjust as needed */
+  }
+  
+  .entryBox th.completionDateLabel, .entryBox td.completion_date {
+    width: 50px; /* Adjust as needed */
+  }
