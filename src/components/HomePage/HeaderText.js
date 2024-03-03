@@ -54,7 +54,7 @@ const HeaderText = () => {
   if (error) {
     return <div className="info">Error: {error}</div>
   }
-  console.log('username1:', username)
+  //console.log('username1:', username)
   return (
     <div className={homePAgeStyles.box}>
       <h2 style={styles.heading}>{t('headerTextTitle', { username })}</h2>

@@ -33,9 +33,8 @@ const Header = () => {
         break
       case 'en':
       case 'fi':
-        if (location.pathname === '/' || location.pathname === '/home') {
-          changeLanguage(event.target.value) // update current language
-        }
+        changeLanguage(event.target.value) // update current language
+
         break
       default:
         break
@@ -64,7 +63,7 @@ const Header = () => {
 
   const handleDropdownClick = () => {
     setDropdownOpen((prevState) => {
-      console.log('Dropdown state before toggle:', prevState)
+      //console.log('Dropdown state before toggle:', prevState)
       return !prevState
     })
   }
@@ -79,24 +78,22 @@ const Header = () => {
       </div>
       <div className={styles.navLinksContainer}>
         <nav className={styles.navLinks}>
-          {(location.pathname === '/' || location.pathname === '/home') &&
-            currentLanguage !== 'en' && (
-              <img
-                className={styles.flagIcon}
-                src="/images/united-kingdom.png"
-                alt="English"
-                onClick={() => handleSelectChange({ target: { value: 'en' } })}
-              />
-            )}
-          {(location.pathname === '/' || location.pathname === '/home') &&
-            currentLanguage !== 'fi' && (
-              <img
-                className={styles.flagIcon}
-                src="/images/finland.png"
-                alt="Finnish"
-                onClick={() => handleSelectChange({ target: { value: 'fi' } })}
-              />
-            )}{' '}
+          {currentLanguage !== 'en' && (
+            <img
+              className={styles.flagIcon}
+              src="/images/united-kingdom.png"
+              alt="English"
+              onClick={() => handleSelectChange({ target: { value: 'en' } })}
+            />
+          )}
+          {currentLanguage !== 'fi' && (
+            <img
+              className={styles.flagIcon}
+              src="/images/finland.png"
+              alt="Finnish"
+              onClick={() => handleSelectChange({ target: { value: 'fi' } })}
+            />
+          )}{' '}
           {isLoggedIn ? (
             <div className={styles.logoContainer}>
               <img

@@ -34,11 +34,18 @@ const SchoolGradesPage = () => {
             Authorization: `Bearer ${token}`,
           },
         }
-
+        //console.log('language', i18n.language)
+        //console.log('education_id', education_id)
         // Fetch courses
         const coursesResponse = await axios.get(
-          `${process.env.REACT_APP_SERVER_URL}/education/courses`,
-          { ...config, params: { education_id } },
+          `${process.env.REACT_APP_SERVER_URL}/course/lang`,
+          {
+            headers: {
+              'Accept-Language': i18n.language,
+              Authorization: `Bearer ${token}`,
+              education_id: education_id,
+            },
+          },
         )
         const fetchedCourses = coursesResponse.data
         setCourses(fetchedCourses)
@@ -46,16 +53,27 @@ const SchoolGradesPage = () => {
         // Fetch exemptions for each course
         const exemptionsPromises = fetchedCourses.map((course) =>
           axios
-            .get(
-              `${process.env.REACT_APP_SERVER_URL}/education/exemptions/?course_id=${course.course_id}`,
-              config,
-            )
+            .get(`${process.env.REACT_APP_SERVER_URL}/exemption/lang`, {
+              headers: {
+                'Accept-Language': i18n.language,
+                Authorization: `Bearer ${token}`,
+                course_id: course.course_id, // Use course.course_id here
+              },
+            })
             .then((response) => ({
               course_id: course.course_id,
               exemptions: response.data,
             }))
             .catch((error) => {
-              return { course_id: course.course_id, exemptions: [] } // Return an empty array for this course in case of an error
+              if (error.response && error.response.status === 404) {
+                // No exemptions for this course, return an empty array
+                return { course_id: course.course_id, exemptions: [] }
+              } else {
+                // For other types of errors, you might want to handle them differently
+                // For example, you could log the error, show a message to the user, etc.
+                console.error(error)
+                throw error
+              }
             }),
         )
 
