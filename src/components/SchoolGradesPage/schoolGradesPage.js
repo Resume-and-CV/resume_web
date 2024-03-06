@@ -32,6 +32,7 @@ const SchoolGradesPage = () => {
           headers: {
             'Accept-Language': i18n.language,
             Authorization: `Bearer ${token}`,
+            education_id: education_id,
           },
         }
         //console.log('language', i18n.language)
@@ -39,13 +40,7 @@ const SchoolGradesPage = () => {
         // Fetch courses
         const coursesResponse = await axios.get(
           `${process.env.REACT_APP_SERVER_URL}/course/lang`,
-          {
-            headers: {
-              'Accept-Language': i18n.language,
-              Authorization: `Bearer ${token}`,
-              education_id: education_id,
-            },
-          },
+          config,
         )
         const fetchedCourses = coursesResponse.data
         setCourses(fetchedCourses)
@@ -95,9 +90,10 @@ const SchoolGradesPage = () => {
     getCoursesAndExemptions()
   }, [i18n.language, education_id])
 
-  const grades = courses.map((course) => parseInt(course.grade))
+  const validCourses = courses.filter((course) => course.grade !== null)
+  const grades = validCourses.map((course) => parseInt(course.grade))
   const sumOfGrades = grades.reduce((a, b) => a + b, 0)
-  const averageGrade = (sumOfGrades / courses.length).toFixed(2)
+  const averageGrade = (sumOfGrades / validCourses.length).toFixed(2)
 
   return (
     <div>
