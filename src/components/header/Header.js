@@ -9,7 +9,7 @@ import styles from './css/header.module.css'
 import dropdawnStyles from './css/dropdown.module.css'
 
 const Header = () => {
-  const isLoggedIn = useAuthStatus()
+  const { isLoggedIn } = useAuthStatus()
   const onLogout = useLogout()
   const onBackToHome = useBuBack()
   const logo = '/logo192.png'
