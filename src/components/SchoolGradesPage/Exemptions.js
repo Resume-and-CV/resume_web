@@ -76,7 +76,8 @@ const Exemptions = ({ exemptions }) => {
           </table>
         ) : (
           <p className={schoolGradeStyles.noData}>
-            No exemptions found. Please check back later.
+            No exemptions are available for the selected language and education.
+            Please check back later.
           </p>
         )}
       </div>

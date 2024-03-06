@@ -65,7 +65,8 @@ const BasicAndProfessionalStudies = ({ courses }) => {
           </table>
         ) : (
           <p className={schoolGradeStyles.noData}>
-            No courses found. Please check back later.
+            No courses are available for the selected language and education.
+            Please check back later.
           </p>
         )}
       </div>

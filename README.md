@@ -6,6 +6,7 @@
 
 ## Features
 
+- **Header text**: A detailed section for description text.
 - **Personal Information**: A detailed section for users to understand the resume owner's background.
 - **Contact Information**: Easy access to contact methods for potential employers or collaborators.
 - **Language Skills**: Showcases the owner's proficiency in various languages.
@@ -13,6 +14,9 @@
 - **Education**: Lists educational achievements and qualifications.
 - **Work Experience**: A timeline view of professional experiences.
 - **Hobbies**: Highlights personal interests and hobbies to give a well-rounded view of the individual.
+- **Personal projects**: A detailed section for personal projects.
+- **School Projects**: A detailed section for school projects.
+- **Send Mail**: Section for sending mail to request an account or provide feedback.
 
 ## Technology Stack
 
@@ -60,7 +64,7 @@ Building `resume_web` provided invaluable insights into modern web development p
 
 ## Future Plans for resume_web
 
-As resume_web continues to evolve, we are excited to share our roadmap for enhancing the platform to better serve our users and expand its capabilities. Our upcoming features are designed with the user experience and administrative efficiency in mind:
+As resume_web continues to evolve, i'm excited to share my roadmap for enhancing the platform to better serve my work search and expand its capabilities. My upcoming features are designed with the user experience and administrative efficiency in mind:
 
 1. Administrative Access for Data Management
    Goal: To provide a secure, intuitive administrative interface that allows designated administrators to update and manage content across the resume_web platform without direct database access or complex technical requirements.
@@ -70,10 +74,7 @@ As resume_web continues to evolve, we are excited to share our roadmap for enhan
    Goal: To offer a downloadable PDF version of the resume, allowing users and potential employers to easily obtain a printable or offline copy of the resume.
    Implementation: Integration of a PDF generation library that can convert the online resume into a well-formatted PDF document. This feature will ensure that the layout, fonts, and styles match the web version for consistency.
 
-3. Request Account via Emai
-   Goal: To streamline the process for users to request access to resume_web, making it easier to manage and track requests.
-
-4. Technical and Design Considerations
+3. Technical and Design Considerations
    User Interface Design: The administrative dashboard and PDF download feature will be designed with usability in mind, ensuring that they are intuitive and accessible to users with varying levels of technical expertise.
 
-These planned features represent the next step in making resume_web a more versatile and user-friendly platform. By enabling easier content management for administrators, offering downloadable PDF resumes, and simplifying account requests, we aim to enhance the utility and accessibility of resume_web for all users. Stay tuned for updates on our progress and launch dates for these exciting new features.
+These planned features represent the next step in making resume_web a more versatile and user-friendly platform. By enabling easier content management for administrators, offering downloadable PDF resumes, and simplifying account requests.
