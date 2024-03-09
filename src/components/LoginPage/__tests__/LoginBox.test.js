@@ -52,3 +52,28 @@ test('toggles password visibility when visibility button is clicked', () => {
   fireEvent.click(getByRole('button', { name: 'toggle visibility' }))
   expect(passwordInput.type).toBe('password')
 })
+
+test('does render when isVisible is false', () => {
+  const { queryByLabelText } = render(<LoginBox isVisible={false} />)
+  expect(queryByLabelText('userName')).toBeInTheDocument()
+  expect(queryByLabelText('password')).toBeInTheDocument()
+})
+test('does not render when isVisible is true', () => {
+  const { queryByLabelText } = render(<LoginBox isVisible={true} />)
+  expect(queryByLabelText('userName')).not.toBeInTheDocument()
+  expect(queryByLabelText('password')).not.toBeInTheDocument()
+})
+
+test('updates username and password fields when typed into', () => {
+  const { getByLabelText } = render(<LoginBox />)
+
+  fireEvent.change(getByLabelText('userName'), {
+    target: { value: 'testuser' },
+  })
+  fireEvent.change(getByLabelText('password'), {
+    target: { value: 'testpass' },
+  })
+
+  expect(getByLabelText('userName').value).toBe('testuser')
+  expect(getByLabelText('password').value).toBe('testpass')
+})

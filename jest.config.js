@@ -8,4 +8,10 @@ module.exports = {
   },
   transformIgnorePatterns: ['/node_modules/(?!axios)'],
   setupFiles: ['<rootDir>/src/setupTests.js'],
+
+  jest: {
+    moduleNameMapper: {
+      '^axios$': 'axios/dist/node/axios.cjs',
+    },
+  },
 }

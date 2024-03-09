@@ -1,7 +1,7 @@
 // src/components/WorkExperience.js
 
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import api from '../../middleWare/axiosInterceptor'
 import { useTranslation } from 'react-i18next'
 import descriptionTextStyles from './css/descriptionText.module.css'
 import homePAgeStyles from './css/homePage.module.css'
@@ -16,17 +16,12 @@ const PersonalProjects = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const token = localStorage.getItem('token') // Retrieve the token from localStorage
         const config = {
           headers: {
             'Accept-Language': i18n.language,
-            Authorization: `Bearer ${token}`,
           },
         }
-        const results = await axios.get(
-          `${process.env.REACT_APP_SERVER_URL}/personalprojects/lang`,
-          config,
-        )
+        const results = await api.get(`/personalprojects/lang`, config)
         setProjects(results.data)
       } catch (err) {
         setError(err.message)

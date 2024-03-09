@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import mainBoxStyles from '../css/mainBoxStyles.module.css'
 import Header from '../header/Header'
 import { useLocation } from 'react-router-dom'
-import axios from 'axios'
+import api from '../../middleWare/axiosInterceptor'
 import { useTranslation } from 'react-i18next'
 import styles from './css/schoolGrades.module.css'
 import BasicAndProfessionalStudies from './BasicAndProfessionalStudies'
@@ -31,27 +31,22 @@ const SchoolGradesPage = () => {
         const config = {
           headers: {
             'Accept-Language': i18n.language,
-            Authorization: `Bearer ${token}`,
             education_id: education_id,
           },
         }
         //console.log('language', i18n.language)
         //console.log('education_id', education_id)
         // Fetch courses
-        const coursesResponse = await axios.get(
-          `${process.env.REACT_APP_SERVER_URL}/course/lang`,
-          config,
-        )
+        const coursesResponse = await api.get(`/course/lang`, config)
         const fetchedCourses = coursesResponse.data
         setCourses(fetchedCourses)
 
         // Fetch exemptions for each course
         const exemptionsPromises = fetchedCourses.map((course) =>
-          axios
-            .get(`${process.env.REACT_APP_SERVER_URL}/exemption/lang`, {
+          api
+            .get(`/exemption/lang`, {
               headers: {
                 'Accept-Language': i18n.language,
-                Authorization: `Bearer ${token}`,
                 course_id: course.course_id, // Use course.course_id here
               },
             })

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import api from '../../middleWare/axiosInterceptor'
 import { useTranslation } from 'react-i18next'
 import descriptionTextStyles from './css/descriptionText.module.css'
 import homePAgeStyles from './css/homePage.module.css'
@@ -13,19 +13,13 @@ const RecommendationsInfo = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const token = localStorage.getItem('token') // Retrieve the token from localStorage
-
       try {
         const config = {
           headers: {
             'Accept-Language': i18n.language,
-            Authorization: `Bearer ${token}`,
           },
         }
-        const results = await axios.get(
-          `${process.env.REACT_APP_SERVER_URL}/recommendations/lang`,
-          config,
-        )
+        const results = await api.get(`/recommendations/lang`, config)
         setRecommendations(results.data)
         //console.log(results.data);
       } catch (err) {

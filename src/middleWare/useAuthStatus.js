@@ -8,35 +8,47 @@ function useAuthStatus() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const token = localStorage.getItem('token')
+    const checkAuthStatus = async () => {
+      // Declared function as async
+      const token = localStorage.getItem('token')
 
-    if (token && typeof token === 'string') {
-      // Make a request to your server to verify the token
-      axios
-        .get(`${process.env.REACT_APP_SERVER_URL}/verify-token`, {
-          // replace '/verify-token' with your actual endpoint
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then((response) => {
-          // If the server responds with a success status, the token is valid
+      if (token && typeof token === 'string') {
+        // Make a request to your server to verify the token
+        try {
+          // Added try block
+          // Await the axios request
+          const response = await axios.get(
+            `${process.env.REACT_APP_SERVER_URL}/verify-token`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            },
+          )
+
           setIsLoggedIn(true)
           console.log('User is logged in')
-        })
-        .catch((error) => {
-          // If the server responds with an error status, the token is invalid or expired
-          setIsLoggedIn(false)
-          localStorage.removeItem('token') // remove the expired token from local storage
-        })
-        .finally(() => {
-          // Once the request completes, set loading to false
+        } catch (error) {
+          // Added catch block to handle errors
+          if (error.response && error.response.status === 401) {
+            // Unauthorized (invalid/expired token)
+            setIsLoggedIn(false)
+            localStorage.removeItem('token')
+          } else {
+            // Handle other errors
+            console.error('Error verifying token:', error)
+          }
+        } finally {
+          // Finally block will execute after try or catch
           setLoading(false)
-        })
-    } else {
-      setIsLoggedIn(false)
-      setLoading(false)
+        }
+      } else {
+        setIsLoggedIn(false)
+        setLoading(false)
+      }
     }
+
+    checkAuthStatus() // Call the async function
   }, [])
 
   return { isLoggedIn, loading }
