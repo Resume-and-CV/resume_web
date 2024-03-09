@@ -1,7 +1,7 @@
 // src/components/Education.js
 
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import api from '../../middleWare/axiosInterceptor'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import buttonStyles from '../css/button.module.css'
@@ -19,17 +19,12 @@ const Education = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const token = localStorage.getItem('token') // Retrieve the token from localStorage
         const config = {
           headers: {
             'Accept-Language': i18n.language,
-            Authorization: `Bearer ${token}`,
           },
         }
-        const results = await axios.get(
-          `${process.env.REACT_APP_SERVER_URL}/education/lang`,
-          config,
-        )
+        const results = await api.get(`/education/lang`, config)
         setEducations(results.data)
       } catch (err) {
         setError(err.message)

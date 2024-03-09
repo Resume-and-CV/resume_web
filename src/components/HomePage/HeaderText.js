@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import api from '../../middleWare/axiosInterceptor'
 import { useTranslation } from 'react-i18next'
 import { jwtDecode } from 'jwt-decode'
 import homePAgeStyles from './css/homePage.module.css'
@@ -27,18 +27,13 @@ const HeaderText = () => {
 
       try {
         const config = {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+          headers: {},
           params: {
             user_id: userId,
             language: i18n.language,
           },
         }
-        const results = await axios.get(
-          `${process.env.REACT_APP_SERVER_URL}/headertext/getbyuserid`,
-          config,
-        )
+        const results = await api.get(`/headertext/getbyuserid`, config)
         if (Array.isArray(results.data)) {
           setHeaderText(results.data)
         } else {
