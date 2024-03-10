@@ -1,10 +1,12 @@
 // useAuthStatus.js
 import { useState, useEffect } from 'react'
 import axios from 'axios' // or use fetch if you prefer
+import { jwtDecode } from 'jwt-decode' // Corrected import
 
-// Custom hook for checking login status
+// Custom hook for checking login status and role
 function useAuthStatus() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [role, setRole] = useState(null) // Add state for role
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -13,9 +15,11 @@ function useAuthStatus() {
       const token = localStorage.getItem('token')
 
       if (token && typeof token === 'string') {
+        // Decode the token and extract the type field
+        const decodedToken = jwtDecode(token) // Corrected usage
+        setRole(decodedToken.type) // Set the role
         // Make a request to your server to verify the token
         try {
-          // Added try block
           // Await the axios request
           await axios.get(`${process.env.REACT_APP_SERVER_URL}/verify-token`, {
             headers: {
@@ -48,7 +52,7 @@ function useAuthStatus() {
     checkAuthStatus() // Call the async function
   }, [])
 
-  return { isLoggedIn, loading }
+  return { isLoggedIn, role, loading } // Return role
 }
 
 export default useAuthStatus
