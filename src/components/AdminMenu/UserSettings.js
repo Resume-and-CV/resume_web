@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import api from '../../middleWare/axiosInterceptor'
 import styles from './css/userSettings.module.css'
 import UserDetail from './UserDetail'
+import AddUser from './AddUser'
 
 const UserSettings = () => {
   const [selectedSetting, setSelectedSetting] = useState('')
@@ -63,12 +64,14 @@ const UserSettings = () => {
             Select setting to modify:
             <select value={selectedSetting} onChange={handleChange}>
               <option value="">--Please choose an option--</option>
-              <option value="setting1">Setting 1</option>
-              <option value="setting2">Setting 2</option>
               <option value="showUserAccounts">Show user accounts</option>
+              <option value="addUserAccount">Add user account</option>
+              <option value="setting2">Setting 2</option>
             </select>
           </label>
         </form>
+        {selectedSetting === 'addUserAccount' && <AddUser />}
+
         {showUserAccounts && (
           <div>
             <h3>Select a user account:</h3>
