@@ -1,0 +1,11 @@
+.adminMainBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers items horizontally */
+    justify-content: flex-start; /* Aligns items to the top */
+}
+.menu {
+    display: flex;
+    justify-content: center; /* Centers items horizontally */
+    width: 100%; /* Takes up the full width of its container */
+}
