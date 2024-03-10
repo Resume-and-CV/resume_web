@@ -27,7 +27,6 @@ const SchoolGradesPage = () => {
   useEffect(() => {
     const getCoursesAndExemptions = async () => {
       try {
-        const token = localStorage.getItem('token')
         const config = {
           headers: {
             'Accept-Language': i18n.language,
