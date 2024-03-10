@@ -17,14 +17,11 @@ function useAuthStatus() {
         try {
           // Added try block
           // Await the axios request
-          const response = await axios.get(
-            `${process.env.REACT_APP_SERVER_URL}/verify-token`,
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
+          await axios.get(`${process.env.REACT_APP_SERVER_URL}/verify-token`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
             },
-          )
+          })
 
           setIsLoggedIn(true)
           console.log('User is logged in')

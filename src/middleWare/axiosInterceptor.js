@@ -1,6 +1,7 @@
 //axiosInterceptor.js
 
 import axios from 'axios'
+import { toast } from 'react-toastify'
 
 const api = axios.create({
   baseURL: process.env.REACT_APP_SERVER_URL,
@@ -26,7 +27,7 @@ api.interceptors.response.use(
   (error) => {
     if (error.response.status === 401) {
       // Token has expired, redirect to login page
-      window.location.href = '/login'
+      window.location.href = '/'
     }
     return Promise.reject(error)
   },
