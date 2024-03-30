@@ -47,9 +47,15 @@ const UserSettings = () => {
     // Add your logic to edit the user
   }
 
-  const handleDeleteUser = (user) => {
+  const handleDeleteUser = async (user) => {
     console.log('Delete user:', user)
-    // Add your logic to delete the user
+    try {
+      await api.delete(`/user/delete/${user.user_id}`) // Replace with your endpoint
+      // After deleting, remove the user from the local state
+      setUserAccounts(userAccounts.filter((u) => u.user_id !== user.user_id))
+    } catch (error) {
+      console.error('Failed to delete user:', error)
+    }
   }
 
   console.log('userAccounts:', userAccounts)

@@ -19,9 +19,11 @@ const HeaderText = () => {
       const decodedToken = jwtDecode(token)
       const userId = decodedToken.id
       setUsername(decodedToken.username) // Add this line
+      //console.log('decodedToken:', decodedToken)
 
       if (!userId || !i18n.language) {
         console.error('userId or language is undefined')
+        console.error('userId:', userId, 'language:', i18n.language)
         return
       }
 
