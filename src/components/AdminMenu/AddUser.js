@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import api from '../../middleWare/axiosInterceptor'
+import { toast } from 'react-toastify'
 
-const AddUser = () => {
+const AddUser = ({ onAddUser }) => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [type, setType] = useState('user') // Default to 'user'
@@ -25,8 +26,14 @@ const AddUser = () => {
         }) // Assume the user ID is returned in the user creation response
         console.log('Expiring link created:', linkResponse.data)
       }
+
+      toast.success('User added successfully')
+      // Call the function passed from the parent component
+      onAddUser()
     } catch (error) {
       console.error('Failed to add user:', error)
+
+      toast.error('Failed to add user')
     }
   }
 
