@@ -7,9 +7,10 @@ import { useLanguageSwitcher } from '../../middleWare/useLanguageSwitcher' // Ad
 import { useLocation } from 'react-router-dom'
 import styles from './css/header.module.css'
 import dropdawnStyles from './css/dropdown.module.css'
+import { useNavigate } from 'react-router-dom'
 
 const Header = () => {
-  const { isLoggedIn } = useAuthStatus()
+  const { isLoggedIn, role } = useAuthStatus()
   const onLogout = useLogout()
   const onBackToHome = useBuBack()
   const logo = '/logo192.png'
@@ -17,6 +18,7 @@ const Header = () => {
   const { t, i18n } = useTranslation()
   const [currentLanguage, setCurrentLanguage] = useState(i18n.language || 'en') // default language
   const [dropdownOpen, setDropdownOpen] = useState(false) // add this line to define the dropdownOpen state
+  const navigate = useNavigate()
 
   const { changeLanguage } = useLanguageSwitcher(
     currentLanguage,
@@ -25,16 +27,9 @@ const Header = () => {
 
   const handleSelectChange = (event) => {
     switch (event.target.value) {
-      case 'logout':
-        onLogout()
-        break
-      case 'backToLogin':
-        onBackToHome()
-        break
       case 'en':
       case 'fi':
         changeLanguage(event.target.value) // update current language
-
         break
       default:
         break
@@ -114,6 +109,15 @@ const Header = () => {
                         onClick={onBackToHome}
                       />
                     )}
+
+                  {role === 'admin' && ( // Only render settings icon if user is admin
+                    <img
+                      src="/images/settings.png"
+                      alt="Logo"
+                      className={dropdawnStyles.icon}
+                      onClick={() => navigate('/admin-menu')}
+                    />
+                  )}
                   <img
                     src="/images/logout.png"
                     alt="Logo"

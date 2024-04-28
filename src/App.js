@@ -8,6 +8,8 @@ import LoginPage from './components/LoginPage/LoginPage'
 import PrivateRoute from './middleWare/PrivateRoute2' // Adjust the path as necessary
 import LinkLoginPage from './components/LinkLoginPage/LinkLoginPage'
 import SchoolGradesPage from './components/SchoolGradesPage/schoolGradesPage'
+import AdminRoute from './middleWare/AdminRoute' // Adjust the path as necessary
+import AdminMenu from './components/AdminMenu/AdminMenu'
 
 function App() {
   return (
@@ -30,6 +32,14 @@ function App() {
             <PrivateRoute>
               <SchoolGradesPage />
             </PrivateRoute>
+          }
+        />
+        <Route
+          path="/admin-menu"
+          element={
+            <AdminRoute>
+              <AdminMenu />
+            </AdminRoute>
           }
         />
       </Routes>

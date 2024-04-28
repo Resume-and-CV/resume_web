@@ -1,0 +1,49 @@
+/* userSettings.module.css */
+
+/* userSettings.module.css */
+
+/* userSettings.module.css */
+
+.box {
+    border: 2px solid #2c3e50;
+    padding: 10px;
+    background-color: #ffffff;
+    color: #2c3e50;
+    margin: 10px 5%; /* Keep this */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: calc(100% - 20px); /* Change this */
+    height: 100%;
+    box-sizing: border-box;
+}
+
+/* ...rest of the styles... */
+
+/* ...rest of the styles... */
+
+/* userSettings.module.css */
+
+.entryBox {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.heading {
+    color: #3498db;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.firstLine {
+    font-size: 16px;
+    font-family: Arial;
+}
+
+.otherLines {
+    font-size: 14px;
+    font-family: Arial;
+    color: #2c3e50;
+}

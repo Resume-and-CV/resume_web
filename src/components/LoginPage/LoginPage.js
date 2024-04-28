@@ -77,7 +77,7 @@ const LoginPage = () => {
   return (
     <div>
       <Header />
-      <div className={mainboxStyles.mainBox}>
+      <div className={mainboxStyles.mainBox} style={{ alignItems: 'center' }}>
         {isLoginBoxVisible && (
           <LoginBox onLogin={handleLogin} errorMessage={errorMessage} />
         )}

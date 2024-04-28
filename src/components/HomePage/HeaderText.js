@@ -19,9 +19,11 @@ const HeaderText = () => {
       const decodedToken = jwtDecode(token)
       const userId = decodedToken.id
       setUsername(decodedToken.username) // Add this line
+      //console.log('decodedToken:', decodedToken)
 
       if (!userId || !i18n.language) {
         console.error('userId or language is undefined')
+        console.error('userId:', userId, 'language:', i18n.language)
         return
       }
 
@@ -51,7 +53,7 @@ const HeaderText = () => {
   }
   //console.log('username1:', username)
   return (
-    <div className={homePAgeStyles.box}>
+    <div className={homePAgeStyles.headerTextBox}>
       <h2 style={styles.heading}>{t('headerTextTitle', { username })}</h2>
       <div className={homePAgeStyles.entryBox}>
         {headerText && headerText.length > 0 ? (
