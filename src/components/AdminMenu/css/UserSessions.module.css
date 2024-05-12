@@ -5,4 +5,23 @@
     margin-bottom: 10px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    list-style-type: none;
+
+
+}
+
+.styles.session {
+    padding-left: 0;
+    margin-left: 0;
+    list-style-type: none;
+}
+
+/* UserSessions.module.css */
+.label {
+    font-weight: bold;
+    color: #333;
+}
+
+.value {
+    color: #666;
 }
