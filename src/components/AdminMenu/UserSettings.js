@@ -5,16 +5,23 @@ import api from '../../middleWare/axiosInterceptor'
 import styles from './css/userSettings.module.css'
 import UserDetail from './UserDetail'
 import AddUser from './AddUser'
+import UserSessions from './UserSessions'
 
 const UserSettings = () => {
   const [selectedSetting, setSelectedSetting] = useState('')
   const [userAccounts, setUserAccounts] = useState([])
   const [selectedUserData, setSelectedUserData] = useState(null)
+  const [userSessions, setUserSessions] = useState([]) // Added userSessions state
   const [error] = useState(null) // Removed setError as it's not being used
 
   useEffect(() => {
-    fetchUserAccounts()
-  }, [])
+    if (selectedSetting === 'showUserAccounts') {
+      fetchUserAccounts()
+    }
+    if (selectedSetting === 'userSessions') {
+      fetchUserSessions()
+    }
+  }, [selectedSetting])
 
   const fetchUserAccounts = async () => {
     try {
@@ -27,6 +34,16 @@ const UserSettings = () => {
 
   if (error) {
     return <div>Error: {error}</div>
+  }
+
+  const fetchUserSessions = async () => {
+    try {
+      const response = await api.get('/userSessions/get/all') // Replace with your endpoint
+      console.log('User sessions:', response.data)
+      setUserSessions(response.data)
+    } catch (error) {
+      console.error('Failed to fetch user sessions:', error)
+    }
   }
 
   // Removed handleChange as it's not being used
@@ -79,8 +96,8 @@ const UserSettings = () => {
           <button onClick={() => setSelectedSetting('addUserAccount')}>
             Add user account
           </button>
-          <button onClick={() => setSelectedSetting('setting2')}>
-            Setting 2
+          <button onClick={() => setSelectedSetting('userSessions')}>
+            User sessions
           </button>
         </div>
         {selectedSetting === 'addUserAccount' && (
@@ -110,6 +127,9 @@ const UserSettings = () => {
               />
             )}
           </div>
+        )}
+        {selectedSetting === 'userSessions' && (
+          <UserSessions userSessions={userSessions} />
         )}
       </div>
     </div>
