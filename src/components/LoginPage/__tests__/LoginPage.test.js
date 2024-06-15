@@ -98,7 +98,7 @@ describe('LoginPage', () => {
     )
   })
 
-  /*   it('test accountRequest submitted', async () => {
+  it('test accountRequest submitted', async () => {
     axios.post.mockClear()
     axios.post.mockResolvedValue({ data: {} })
 
@@ -133,9 +133,9 @@ describe('LoginPage', () => {
         },
       ),
     )
-  }) */
+  })
 
-  /*  it('displays error message when login fails', async () => {
+  it('displays error message when login fails', async () => {
     axios.post.mockRejectedValueOnce({
       response: { data: { message: 'Invalid credentials' } },
     })
@@ -154,5 +154,5 @@ describe('LoginPage', () => {
     })
 
     expect(await findByText('Invalid credentials')).toBeInTheDocument()
-  }) */
+  })
 })

@@ -6,7 +6,7 @@ import styles from './css/userSettings.module.css'
 import UserDetail from './UserDetail'
 import AddUser from './AddUser'
 import UserSessions from './UserSessions'
-import { use } from 'i18next'
+//import { use } from 'i18next'
 
 const UserSettings = () => {
   const [selectedSetting, setSelectedSetting] = useState('')
