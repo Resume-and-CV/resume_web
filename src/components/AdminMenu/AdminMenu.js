@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import Header from '../header/Header'
 import UserSettings from './UserSettings'
 
-import mainboxStyles from '../css/mainBoxStyles.module.css'
 import styles from './css/AdminMenu.module.css'
 
 const AdminMenu = () => {
@@ -11,7 +10,7 @@ const AdminMenu = () => {
   return (
     <div>
       <Header />
-      <div className={`${mainboxStyles.mainBox} ${styles.adminMainBox}`}>
+      <div className={styles.mainBox}>
         <h1>This is the admin menu.</h1>
         <div className={styles.menu}>
           <button onClick={() => setShowUsers(true)}>Users</button>
