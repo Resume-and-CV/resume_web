@@ -1,4 +1,4 @@
-// Server.js
+//server.js
 
 const express = require('express')
 const path = require('path')
@@ -15,11 +15,20 @@ app.use((req, res, next) => {
 })
 
 // Serve static files from the React app
-app.use(express.static(path.join(__dirname, 'client/build')))
+const staticPath = path.join(__dirname, 'build')
+console.log('Serving static files from:', staticPath)
+app.use(express.static(staticPath))
 
 // Catch-all handler
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
+  const indexPath = path.join(staticPath, 'index.html')
+  console.log('Serving index.html from:', indexPath)
+  res.sendFile(indexPath, (err) => {
+    if (err) {
+      console.error('Error sending index.html:', err)
+      res.status(404).send('File not found')
+    }
+  })
 })
 
 // Start the server
