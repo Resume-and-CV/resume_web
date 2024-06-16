@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
 
-import mainBoxStyles from '../css/mainBoxStyles.module.css'
+//import mainBoxStyles from '../css/mainBoxStyles.module.css'
 import Header from '../header/Header'
 import { useLocation } from 'react-router-dom'
 import api from '../../middleWare/axiosInterceptor'
 import { useTranslation } from 'react-i18next'
 import styles from './css/schoolGrades.module.css'
 import BasicAndProfessionalStudies from './BasicAndProfessionalStudies'
-import Exemptions from './Exemptions'
+//import Exemptions from './Exemptions'
 
 const SchoolGradesPage = () => {
   let { state } = useLocation()
@@ -17,7 +17,7 @@ const SchoolGradesPage = () => {
   const { i18n } = useTranslation()
 
   const [courses, setCourses] = useState([])
-  const [exemptions, setExemptions] = useState([])
+  //const [exemptions, setExemptions] = useState([])
 
   const sumOfCredits = courses.reduce(
     (sum, course) => sum + parseInt(course.credits),
@@ -41,7 +41,7 @@ const SchoolGradesPage = () => {
         setCourses(fetchedCourses)
 
         // Fetch exemptions for each course
-        const exemptionsPromises = fetchedCourses.map((course) =>
+        /* const exemptionsPromises = fetchedCourses.map((course) =>
           api
             .get(`/exemption/lang`, {
               headers: {
@@ -73,9 +73,9 @@ const SchoolGradesPage = () => {
         const exemptionsObject = exemptionsForCourses.reduce((acc, current) => {
           acc[current.course_id] = current.exemptions
           return acc
-        }, {})
+        }, {}) */
 
-        setExemptions(exemptionsObject)
+        //  setExemptions(exemptionsObject)
       } catch (error) {
         console.error('Error fetching courses or exemptions:', error)
       }
@@ -92,7 +92,7 @@ const SchoolGradesPage = () => {
   return (
     <div>
       <Header />
-      <div className={mainBoxStyles.mainBox}>
+      <div className={styles.mainBox}>
         <div className={styles.box}>
           <h1 className={styles.heading}>{t('grade_information')}</h1>
           <h2 className={styles.heading2}>
@@ -105,7 +105,7 @@ const SchoolGradesPage = () => {
           {/* Subheading for Courses */}
           <BasicAndProfessionalStudies courses={courses} />
           {/* Subheading for Exemptions */}
-          <Exemptions exemptions={exemptions} />
+          {/*   <Exemptions exemptions={exemptions} /> */}
         </div>
       </div>
     </div>

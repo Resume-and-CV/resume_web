@@ -26,9 +26,7 @@ const BasicAndProfessionalStudies = ({ courses }) => {
                 <th className={`${styles.label} ${styles.gradeLabel}`}>
                   {t('grade')}
                 </th>
-                <th className={`${styles.label} ${styles.typeLabel}`}>
-                  {t('courseType')}
-                </th>
+                {/* ß */}
                 <th className={`${styles.label} ${styles.completionDateLabel}`}>
                   {t('courseCompletionDate')}
                 </th>
@@ -49,9 +47,9 @@ const BasicAndProfessionalStudies = ({ courses }) => {
                   <td className={`${styles.value} ${styles.gradeValue}`}>
                     {data.grade}
                   </td>
-                  <td className={`${styles.value} ${styles.typeValue}`}>
+                  {/*                   <td className={`${styles.value} ${styles.typeValue}`}>
                     {data.type}
-                  </td>
+                  </td> */}
                   <td className={`${styles.value} ${styles.completion_date}`}>
                     {data.completion_date
                       ? new Date(data.completion_date).toLocaleDateString(

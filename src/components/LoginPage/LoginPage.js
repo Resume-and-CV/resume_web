@@ -7,7 +7,7 @@ import LoginBox from './LoginBox'
 import Header from '../header/Header'
 import ContactForm from './ContactForm'
 
-import mainboxStyles from '../css/mainBoxStyles.module.css'
+import styles from './css/loginPage.module.css'
 import buttonStyles from '../css/button.module.css'
 const LoginPage = () => {
   const navigate = useNavigate()
@@ -77,7 +77,7 @@ const LoginPage = () => {
   return (
     <div>
       <Header />
-      <div className={mainboxStyles.mainBox} style={{ alignItems: 'center' }}>
+      <div className={styles.mainBox} style={{ alignItems: 'center' }}>
         {isLoginBoxVisible && (
           <LoginBox onLogin={handleLogin} errorMessage={errorMessage} />
         )}
