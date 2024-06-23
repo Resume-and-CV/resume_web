@@ -52,12 +52,12 @@ const LoginBox = ({ onLogin, errorMessage, isVisible }) => {
             <button
               style={{
                 position: 'absolute',
-                right: -10,
+                right: 20,
                 top: '54%',
                 transform: 'translateY(-50%)',
                 backgroundColor: 'transparent',
-                border: 'none',
                 cursor: 'pointer',
+                border: 'none',
               }}
               onClick={(e) => {
                 e.preventDefault()
