@@ -7,6 +7,9 @@ const AddUser = ({ onAddUser }) => {
   const [password, setPassword] = useState('')
   const [type, setType] = useState('user') // Default to 'user'
   const [createExpiringLink, setCreateExpiringLink] = useState(false)
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false)
+  const showPasswordImg = '/images/eye.png'
+  const hidePasswordImg = '/images/hidden.png'
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -54,11 +57,32 @@ const AddUser = ({ onAddUser }) => {
           <label>
             Password:
             <input
-              type="password"
+              type={isPasswordVisible ? 'text' : 'password'}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </label>
+          <button
+            style={{
+              position: 'absolute',
+              right: -10,
+              top: '54%',
+              transform: 'translateY(-50%)',
+              backgroundColor: 'transparent',
+              border: 'none',
+              cursor: 'pointer',
+            }}
+            onClick={(e) => {
+              e.preventDefault()
+              setIsPasswordVisible(!isPasswordVisible)
+            }}
+          >
+            <img
+              src={isPasswordVisible ? hidePasswordImg : showPasswordImg}
+              alt="toggle visibility"
+              style={styles.logo}
+            />
+          </button>
         </li>
         <li>
           <label>
@@ -84,3 +108,8 @@ const AddUser = ({ onAddUser }) => {
 }
 
 export default AddUser
+
+// Define your styles object
+const styles = {
+  logo: { height: 20, width: 20 },
+}
